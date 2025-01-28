@@ -14,6 +14,8 @@ $routes->get('/login', 'AuthController::login');
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register/submit', 'AuthController::registerSubmit');
 $routes->post('/login/submit', 'AuthController::loginSubmit');
+$routes->get('/logout', 'AuthController::logout');
 
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
 $routes->get('/admin/produk', 'AdminController::produk');
+$routes->get('/admin/produk/tambah', 'AdminController::produkTambah');

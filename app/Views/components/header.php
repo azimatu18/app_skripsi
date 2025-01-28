@@ -16,6 +16,7 @@
 	<link href="/homepage/css/tiny-slider.css" rel="stylesheet">
 	<link href="/homepage/css/style.css" rel="stylesheet">
 	<title>CV Gedrian Intimed Abadi</title>
+    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
 </head>
 
 <body>
@@ -34,11 +35,11 @@
 			<div class="collapse navbar-collapse" id="navbarsFurni">
 				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 					<li class="nav-item active">
-						<a class="nav-link" href="/">Home</a>
+						<a class="nav-link" href="/">Beranda</a>
 					</li>
-					<li><a class="nav-link" href="/shop">Shop</a></li>
-					<li><a class="nav-link" href="/about">About</a></li>
-					<li><a class="nav-link" href="/contact">Contact</a></li>
+					<li><a class="nav-link" href="/shop">Toko</a></li>
+					<li><a class="nav-link" href="/about">Tentang</a></li>
+					<li><a class="nav-link" href="/contact">Kontak</a></li>
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -46,7 +47,7 @@
 						<li><a class="nav-link" href="#"><img src="/homepage/images/user.svg"></a></li>
 						<li><a class="nav-link" href="cart.html"><img src="/homepage/images/cart.svg"></a></li>
 					<?php else: ?>
-						<li><a href="/login" class="btn btn-light">Login</a></li>
+						<li><a href="/login" class="btn btn-light">Masuk</a></li>
 					<?php endif ?>
 				</ul>
 			</div>

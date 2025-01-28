@@ -1,6 +1,7 @@
 <?= $this->extend('admin/app_layout') ?>
 
 <?= $this->section('konten') ?>
+
 <div class="container-fluid">
     <!--  Row 1 -->
     <div class="row">
@@ -9,18 +10,12 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Sales Overview</h5>
-                        </div>
-                        <div>
-                            <select class="form-select">
-                                <option value="1">March 2023</option>
-                                <option value="2">April 2023</option>
-                                <option value="3">May 2023</option>
-                                <option value="4">June 2023</option>
-                            </select>
+                            <h4>Selamat datang di aplikasi</h4>
+                            <h5 class="card-title fw-semibold">
+                                Hallo, <?= model('UserModel')->data()['nama'] ?>
+                            </h5>
                         </div>
                     </div>
-                    <div id="chart"></div>
                 </div>
             </div>
         </div>

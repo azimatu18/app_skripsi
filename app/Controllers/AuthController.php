@@ -10,6 +10,10 @@ class AuthController extends BaseController
 {
     public function login()
     {
+        $sudah_login = $this->session->get('sudah_login');
+        if ($sudah_login) {
+            return redirect()->to(base_url('admin/dashboard'));
+        }
         return view('auth/login');
     }
 
@@ -23,8 +27,10 @@ class AuthController extends BaseController
         if ($data) {
             $cek_password = password_verify($password, $data['password']);
             if ($cek_password) {
+                $this->session->set('sudah_login', true);
+                $this->session->set('user_id', $data['id']);
                 session()->setFlashData('pesan', 'Anda berhasil login');
-                return redirect()->to(base_url('/admin/dashboard')) ;
+                return redirect()->to(base_url('/admin/dashboard'));
             }
             session()->setFlashData('pesan', 'Email atau password salah');
         } else {
@@ -53,6 +59,13 @@ class AuthController extends BaseController
             'level' => 'konsumen'
         ]);
 
+        return redirect()->to(base_url('/login'));
+    }
+
+    function logout()
+    {
+        $this->session->remove('sudah_login');
+        $this->session->remove('user_id');
         return redirect()->to(base_url('/login'));
     }
 }

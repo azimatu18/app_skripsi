@@ -43,4 +43,12 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    function data()
+    {
+        $user_id = session()->get('user_id');
+        $user = UserModel::where('id', $user_id)->first();
+        return $user;
+    }
 }
