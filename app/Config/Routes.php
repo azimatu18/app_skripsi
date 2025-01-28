@@ -17,5 +17,7 @@ $routes->post('/login/submit', 'AuthController::loginSubmit');
 $routes->get('/logout', 'AuthController::logout');
 
 $routes->get('/admin/dashboard', 'AdminController::dashboard');
-$routes->get('/admin/produk', 'AdminController::produk');
-$routes->get('/admin/produk/tambah', 'AdminController::produkTambah');
+$routes->get('/admin/produk', 'ProdukController::produk');
+$routes->get('/admin/produk/tambah', 'ProdukController::produkTambah');
+$routes->post('/admin/produk/submit', 'ProdukController::produkSubmit');
+

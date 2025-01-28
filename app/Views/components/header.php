@@ -15,8 +15,9 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<link href="/homepage/css/tiny-slider.css" rel="stylesheet">
 	<link href="/homepage/css/style.css" rel="stylesheet">
+	<link href="/homepage/css/custom.css" rel="stylesheet">
 	<title>CV Gedrian Intimed Abadi</title>
-    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
+	<link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
 </head>
 
 <body>

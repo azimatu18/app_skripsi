@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ProdukModel;
+
 class HomeController extends BaseController
 {
     public function index(): string
@@ -10,7 +12,9 @@ class HomeController extends BaseController
     }
     public function shop(): string
     {
-        return view('shop');
+        $produk = new ProdukModel();
+        $data['data_produk'] = $produk->findAll();
+        return view('shop', $data);
     }
     public function about(): string
     {
