@@ -15,13 +15,13 @@
                     <p class="lead">
                     <?= $produk['deskripsi'] ?>
                     </p>
-                    <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <form action="/keranjang/tambah/<?= $produk['id'] ?>" method="post" class="d-flex">
+                        <input class="form-control text-center me-3" name="jumlah" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                        <button class="btn btn-outline-dark flex-shrink-0">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

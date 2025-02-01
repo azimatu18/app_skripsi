@@ -21,3 +21,6 @@ $routes->get('/admin/dashboard', 'AdminController::dashboard', ['filter' => 'adm
 $routes->get('/admin/produk', 'ProdukController::produk', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/tambah', 'ProdukController::produkTambah', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter' => 'admin_filter']);
+
+$routes->get('/keranjang', 'KeranjangController::index', ['filter' => 'konsumen_filter']);
+$routes->post('/keranjang/tambah/(:any)', 'KeranjangController::tambah/$1', ['filter' => 'konsumen_filter']);

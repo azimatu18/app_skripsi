@@ -45,7 +45,16 @@
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 					<?php if (session('user_id')): ?>
-						<li><a class="nav-link" href="cart.html"><img src="/homepage/images/cart.svg"></a></li>
+						<li>
+							<div class="d-flex">
+								<a class="nav-link" href="cart.html"><img src="/homepage/images/cart.svg"></a>
+								<div class="fw-bold">
+									<div class="rounded-circle bg-white text-danger d-flex align-items-center justify-content-center" style="width: 20px; height: 20px">
+										<span><?= App\Models\KeranjangModel::count() ?></span>
+									</div>
+								</div>
+							</div>
+						</li>
 
 						<li class="nav-item dropdown">
 							<a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
