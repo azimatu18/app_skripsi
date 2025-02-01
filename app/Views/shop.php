@@ -24,7 +24,7 @@
             <?php foreach ($data_produk as $no => $produk): ?>
                 <!-- Start Column 1 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="/shop/detail">
+                    <a class="product-item" href="/detail_produk/<?= $produk['id'] ?>">
                         <div class="product-item-hover">
                             <button class="btn btn-sm btn-primary">Detail</button>
                         </div>

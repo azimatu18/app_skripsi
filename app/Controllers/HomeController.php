@@ -24,4 +24,14 @@ class HomeController extends BaseController
     {
         return view('contact');
     }
+    public function detail_produk($id)
+    {
+        $produk = new ProdukModel();
+        $data['produk'] = $produk->find($id);
+
+        $produk_lain = new ProdukModel();
+        $data['produk_lain'] = $produk_lain->limit(4)->findAll();
+
+        return view('detail_produk', $data);
+    }
 }
