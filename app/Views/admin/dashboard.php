@@ -12,7 +12,7 @@
                         <div class="mb-3 mb-sm-0">
                             <h4>Selamat datang di aplikasi</h4>
                             <h5 class="card-title fw-semibold">
-                                Hallo, <?= model('UserModel')->data()['nama'] ?>
+                                Hallo, <?= \App\Models\UserModel::data()['nama'] ?>
                             </h5>
                         </div>
                     </div>

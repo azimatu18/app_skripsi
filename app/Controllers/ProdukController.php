@@ -8,20 +8,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class ProdukController extends BaseController
 {
-    function __construct()
-    {
-        // return redirect()->to(base_url('/login'));
-        $sudah_login = session()->get('sudah_login');
-        if (!$sudah_login) {
-            header('Location: ' . base_url('/login'));
-            exit();
-        }
-    }
-
     public function produk()
     {
-        $produk = new ProdukModel();
-        $data['data_produk'] = $produk->findAll();
+        $data['data_produk'] = ProdukModel::get();
         return view('admin/produk', $data);
     }
 
@@ -41,8 +30,7 @@ class ProdukController extends BaseController
         $nama_gambar = 'produk_' . time() . '.' . $gambar->getClientExtension();
         $gambar->move('uploads/gambar', $nama_gambar);
 
-        $produk = new ProdukModel();
-        $produk->insert([
+        $produk = ProdukModel::create([
             'judul' => $judul,
             'tipe' => $tipe,
             'harga' => $harga,

@@ -17,7 +17,7 @@ $routes->post('/register/submit', 'AuthController::registerSubmit');
 $routes->post('/login/submit', 'AuthController::loginSubmit');
 $routes->get('/logout', 'AuthController::logout');
 
-$routes->get('/admin/dashboard', 'AdminController::dashboard');
-$routes->get('/admin/produk', 'ProdukController::produk');
-$routes->get('/admin/produk/tambah', 'ProdukController::produkTambah');
-$routes->post('/admin/produk/submit', 'ProdukController::produkSubmit');
+$routes->get('/admin/dashboard', 'AdminController::dashboard', ['filter' => 'admin_filter']);
+$routes->get('/admin/produk', 'ProdukController::produk', ['filter' => 'admin_filter']);
+$routes->get('/admin/produk/tambah', 'ProdukController::produkTambah', ['filter' => 'admin_filter']);
+$routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter' => 'admin_filter']);

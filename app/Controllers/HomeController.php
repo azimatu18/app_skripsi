@@ -12,8 +12,7 @@ class HomeController extends BaseController
     }
     public function shop(): string
     {
-        $produk = new ProdukModel();
-        $data['data_produk'] = $produk->findAll();
+        $data['data_produk'] = ProdukModel::orderBy('judul', 'ASC')->get();
         return view('shop', $data);
     }
     public function about(): string
@@ -26,12 +25,8 @@ class HomeController extends BaseController
     }
     public function detail_produk($id)
     {
-        $produk = new ProdukModel();
-        $data['produk'] = $produk->find($id);
-
-        $produk_lain = new ProdukModel();
-        $data['produk_lain'] = $produk_lain->limit(4)->findAll();
-
+        $data['produk'] = ProdukModel::find($id);
+        $data['produk_lain'] = ProdukModel::limit(4)->get();
         return view('detail_produk', $data);
     }
 }

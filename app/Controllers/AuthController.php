@@ -22,15 +22,19 @@ class AuthController extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        $user = new UserModel();
-        $data = $user->where('email', $email)->first();
+        $data = UserModel::where('email', $email)->first();
         if ($data) {
             $cek_password = password_verify($password, $data['password']);
             if ($cek_password) {
                 $this->session->set('sudah_login', true);
                 $this->session->set('user_id', $data['id']);
                 session()->setFlashData('pesan', 'Anda berhasil login');
-                return redirect()->to(base_url('/admin/dashboard'));
+
+                if ($data['level']=='operasional' || $data['level']=='pemasaran') {
+                    return redirect()->to(base_url('/admin/dashboard'));
+                }
+
+                    return redirect()->to(base_url('/'));
             }
             session()->setFlashData('pesan', 'Email atau password salah');
         } else {
@@ -51,8 +55,7 @@ class AuthController extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        $user = new UserModel();
-        $user->insert([
+        $user = UserModel::create([
             'nama' => $nama,
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
@@ -66,6 +69,6 @@ class AuthController extends BaseController
     {
         $this->session->remove('sudah_login');
         $this->session->remove('user_id');
-        return redirect()->to(base_url('/login'));
+        return redirect()->to(base_url('/'));
     }
 }

@@ -44,9 +44,22 @@
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-					<?php if (session('is_login')): ?>
-						<li><a class="nav-link" href="#"><img src="/homepage/images/user.svg"></a></li>
+					<?php if (session('user_id')): ?>
 						<li><a class="nav-link" href="cart.html"><img src="/homepage/images/cart.svg"></a></li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<img src="/homepage/images/user.svg">
+								<span class="text-white"><?= App\Models\UserModel::data()['nama'] ?></span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+								<div class="message-body" style="width: 250px;">
+									<h6 class="p-3">Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di ...</h6>
+									<a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+								</div>
+							</div>
+						</li>
 					<?php else: ?>
 						<li><a href="/login" class="btn btn-light">Masuk</a></li>
 					<?php endif ?>
