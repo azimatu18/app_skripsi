@@ -1,22 +1,40 @@
-<?php include('components/header.php') ?>
+<?= $this->extend('components/layoutberanda') ?>
+<?= $this->section('konten') ?>
 
 		<!-- Start Hero Section -->
 			<div class="hero" style="padding: 80px;">
 				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>CV GEDRIAN INTIMED ABADI</h1>
-								<p class="mb-4">CV Gedrian Intimed Abadi berkomitmen untuk menyediakan alat kesehatan berkualitas tinggi bagi rumah sakit, klinik, dan individu. Dedikasi kami memastikan solusi yang andal untuk mendukung kesehatan yang lebih baik. Kami hadir untuk memenuhi kebutuhan kesehatan Anda dengan inovasi dan pelayanan terbaik.</p>
-								<p><a href="/shop" class="btn btn-secondary me-2">Belanja Sekarang</a></p>
+					<?php if (session('user_id')): ?>
+						<div class="row justify-content-between">
+							<div class="col-lg-5">
+								<div class="intro-excerpt">
+									<h2>Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di CV Gedrian Intimed Abadi</h2>
+									<p class="mb-4">CV Gedrian Intimed Abadi berkomitmen untuk menyediakan alat kesehatan berkualitas tinggi bagi rumah sakit, klinik, dan individu. Dedikasi kami memastikan solusi yang andal untuk mendukung kesehatan yang lebih baik. Kami hadir untuk memenuhi kebutuhan kesehatan Anda dengan inovasi dan pelayanan terbaik.</p>
+									<p><a href="/shop" class="btn btn-secondary me-2">Belanja Sekarang</a></p>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="hero-img-wrap">
+									<img src="/homepage/images/gabungan.png" class="img-fluid">
+								</div>
 							</div>
 						</div>
-						<div class="col-lg-7">
-							<div class="hero-img-wrap">
-								<img src="/homepage/images/gabungan.png" class="img-fluid">
+					<?php else: ?>
+						<div class="row justify-content-between">
+							<div class="col-lg-5">
+								<div class="intro-excerpt">
+									<h2>CV GEDRIAN INTIMED ABADI</h2>
+									<p class="mb-4">CV Gedrian Intimed Abadi berkomitmen untuk menyediakan alat kesehatan berkualitas tinggi bagi rumah sakit, klinik, dan individu. Dedikasi kami memastikan solusi yang andal untuk mendukung kesehatan yang lebih baik. Kami hadir untuk memenuhi kebutuhan kesehatan Anda dengan inovasi dan pelayanan terbaik.</p>
+									<p><a href="/shop" class="btn btn-secondary me-2">Belanja Sekarang</a></p>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="hero-img-wrap">
+									<img src="/homepage/images/gabungan.png" class="img-fluid">
+								</div>
 							</div>
 						</div>
-					</div>
+					<?php endif ?>
 				</div>
 			</div>
 		<!-- End Hero Section -->
@@ -87,6 +105,6 @@
 
 <?php include('components/kelebihan.php') ?>
 
-<?php include('components/footer.php') ?>
+<?= $this->endSection() ?>
 
 

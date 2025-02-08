@@ -14,7 +14,7 @@ class AuthController extends BaseController
         if ($sudah_login) {
             return redirect()->to(base_url('admin/dashboard'));
         }
-        return view('auth/login');
+            return view('auth/login');
     }
 
     public function loginSubmit()
@@ -40,7 +40,7 @@ class AuthController extends BaseController
         } else {
             session()->setFlashData('pesan', 'Akun tidak ditemukan');
         }
-
+        
         return redirect()->to(base_url('/login'));
     }
 

@@ -1,4 +1,5 @@
-<?php include('components/header.php') ?>
+<?= $this->extend('components/layoutberanda') ?>
+<?= $this->section('konten') ?>
 
 <!-- Start Hero Section -->
 <div class="hero" style="padding: 60px;">
@@ -6,7 +7,7 @@
         <div class="row justify-content-between">
             <div class="col-lg-5">
                 <div class="intro-excerpt">
-                    <h1 style="white-space: nowrap;">Alat Kesehatan Yang Tersedia</h1>
+                    <h2 style="white-space: nowrap;">Alat Kesehatan Yang Tersedia</h2>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -44,4 +45,4 @@
     </div>
 </div>
 
-<?php include('components/footer.php') ?>
+<?= $this->endSection() ?>

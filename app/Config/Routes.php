@@ -24,3 +24,5 @@ $routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter
 
 $routes->get('/keranjang', 'KeranjangController::index', ['filter' => 'konsumen_filter']);
 $routes->post('/keranjang/tambah/(:any)', 'KeranjangController::tambah/$1', ['filter' => 'konsumen_filter']);
+$routes->post('/keranjang/ubah/(:any)', 'KeranjangController::ubah/$1', ['filter' => 'konsumen_filter']);
+

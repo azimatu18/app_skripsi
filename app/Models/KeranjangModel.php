@@ -11,4 +11,9 @@ class KeranjangModel extends Model
     public $timestamps = false;    // Gunakan timestamps jika ada
 
     protected $guarded = ['id']; // Kolom yang boleh diisi
+
+    function produk()
+    {
+        return $this->belongsTo(ProdukModel::class, 'produk_id');
+    }
 }

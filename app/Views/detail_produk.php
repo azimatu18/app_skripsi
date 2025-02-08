@@ -1,4 +1,5 @@
-<?php include('components/header.php') ?>
+<?= $this->extend('components/layoutberanda') ?>
+<?= $this->section('konten') ?>
 
 <body>
     <!-- Product section-->
@@ -8,7 +9,7 @@
                 <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<?= base_url('uploads/gambar/'.$produk['gambar']) ?>" alt="..." /></div>
                 <div class="col-md-6">
                     <div class=" mb-1">Tipe: <?= $produk['tipe'] ?></div>
-                    <h1 class="display-5 fw-bolder"><?= $produk['judul'] ?></h1>
+                    <h2 class="display-5 fw-bolder"><?= $produk['judul'] ?></h2>
                     <div class="fs-5 mb-5">
                         <span>Rp. <?= number_format($produk['harga'],0,'.','.') ?></span>
                     </div>
@@ -55,4 +56,5 @@
             </div>
         </div>
     </section>
-    <?php include('components/footer.php') ?>
+
+<?= $this->endSection() ?>

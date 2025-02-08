@@ -1,4 +1,5 @@
-<?php include('components/header.php') ?>
+<?= $this->extend('components/layoutberanda') ?>
+<?= $this->section('konten') ?>
 
 		<!-- Start Hero Section -->
 			<div class="hero">
@@ -6,7 +7,7 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Hubungi Kami</h1>
+								<h2>Hubungi Kami</h2>
 								<p class="mb-4">Kami siap membantu kebutuhan Anda! Jika ada pertanyaan, informasi lebih lanjut, atau permintaan khusus, jangan ragu untuk menghubungi kami.</p>
 								<p><a href="/shop" class="btn btn-secondary me-2">Belanja Sekarang</a></p>
 							</div>
@@ -98,4 +99,4 @@
 
   <!-- End Contact Form -->
 
-<?php include('components/footer.php') ?>
+  <?= $this->endSection() ?>
