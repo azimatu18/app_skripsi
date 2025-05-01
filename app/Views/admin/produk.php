@@ -2,39 +2,59 @@
 <?= $this->section('konten') ?>
 
 <div class="container-fluid">
-    <div class="d-flex">
-        <h4 class="me-auto">Daftar Produk</h4>
-        <div>
-            <a href="/admin/produk/tambah" class="btn btn-primary">Tambah Produk</a>
-        </div>
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h4 class="text-primary"><i class="bi bi-boxes me-2"></i>Daftar Produk</h4>
+        <a href="/admin/produk/tambah" class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i> Tambah Produk
+        </a>
     </div>
 
-    <div class="card mt-4">
+    <!-- Cari produk -->
+    <div class="card shadow-sm border-0">
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Judul</th>
-                        <th>Tipe</th>
-                        <th>Harga</th>
-                        <th>Deskripsi</th>
-                        <th>Gambar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($data_produk as $no=>$produk): ?>
-                        <tr>
-                            <td><?= $no+1 ?></td>
-                            <td><?= $produk['judul'] ?></td>
-                            <td><?= $produk['tipe'] ?></td>
-                            <td><?= $produk['harga'] ?></td>
-                            <td><?= $produk['deskripsi'] ?></td>
-                            <td><img width="80" src="<?= base_url('uploads/gambar/'.$produk['gambar']) ?>" alt=""></td>
+            <div class="mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Cari produk...">
+            </div>
+            <script>
+                document.getElementById('searchInput').addEventListener('keyup', function() {
+                    const keyword = this.value.toLowerCase();
+                    const rows = document.querySelectorAll('table tbody tr');
+
+                    rows.forEach(row => {
+                        const rowText = row.innerText.toLowerCase();
+                        row.style.display = rowText.includes(keyword) ? '' : 'none';
+                    });
+                });
+            </script>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle table-hover">
+                    <thead class="table-primary">
+                        <tr class="text-center">
+                            <th scope="col">No</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Tipe</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Gambar</th>
                         </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data_produk as $no => $produk): ?>
+                            <tr>
+                                <td class="text-center"><?= $no + 1 ?></td>
+                                <td><strong><?= $produk['judul'] ?></strong></td>
+                                <td><span class="badge bg-secondary"><?= $produk['tipe'] ?></span></td>
+                                <td>Rp <?= number_format($produk['harga'], 0, ',', '.') ?></td>
+                                <td><?= $produk['deskripsi'] ?></td>
+                                <td>
+                                    <img width="80" class="img-thumbnail" src="<?= base_url('uploads/gambar/' . $produk['gambar']) ?>" alt="gambar produk">
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

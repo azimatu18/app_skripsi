@@ -2,7 +2,7 @@
 <?= $this->section('konten') ?>
 
 		<!-- Start Hero Section -->
-			<div class="hero">
+			<div class="hero" style="padding: 70px;">
 				<div class="container">
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
@@ -14,7 +14,7 @@
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">
-								<img src="/homepage/images/gabungan.png" class="img-fluid">
+								<img src="/homepage/images/gabungan.png" class="img-fluid" style="padding-top: 50px;">
 							</div>
 						</div>
 					</div>

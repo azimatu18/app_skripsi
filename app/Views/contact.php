@@ -43,7 +43,7 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>Jalan Palapa II Gang Venus Iringmulyo, Kec. Metro Timur, Kota Metro, Provinsi Lampung</p>
+                      <p>Jl. Palapa II Gang Venus Iringmulyo, Metro Timur</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>
@@ -77,7 +77,7 @@
 
               <div class="map-container" style="width: 100%; height: 450px;">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d677.3129887022822!2d105.31933298080466!3d-5.12368303664258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40bea9f71fe077%3A0xf2ebe631378e279d!2sGg.%20Venus%20IV%2C%20Iringmulyo%2C%20Kec.%20Metro%20Tim.%2C%20Kota%20Metro%2C%20Lampung%2034124!5e0!3m2!1sid!2sid!4v1735915986388!5m2!1sid!2sid" 
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d993.4690094623924!2d105.31858326958675!3d-5.1236686639320235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNcKwMDcnMjUuMiJTIDEwNcKwMTknMDkuMiJF!5e0!3m2!1sid!2sid!4v1738564436022!5m2!1sid!2sid"
                   style="width: 100%; height: 100%; border: 0;" 
                   allowfullscreen="" 
                   loading="lazy" 

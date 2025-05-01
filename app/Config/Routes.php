@@ -26,3 +26,6 @@ $routes->get('/keranjang', 'KeranjangController::index', ['filter' => 'konsumen_
 $routes->post('/keranjang/tambah/(:any)', 'KeranjangController::tambah/$1', ['filter' => 'konsumen_filter']);
 $routes->post('/keranjang/ubah/(:any)', 'KeranjangController::ubah/$1', ['filter' => 'konsumen_filter']);
 
+$routes->get('/pemesanan', 'PemesananController::index', ['filter' => 'konsumen_filter']);
+$routes->post('/pemesanan/submit', 'PemesananController::submit', ['filter' => 'konsumen_filter']);
+$routes->get('/pemesanan/detail/(:any)', 'PemesananController::detail/$1', ['filter' => 'konsumen_filter']);

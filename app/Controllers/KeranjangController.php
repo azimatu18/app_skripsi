@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class KeranjangController extends BaseController
 {
+    // Menampilkan halaman keranjang dengan produk yang dimiliki pengguna
     public function index()
     {
         $user = UserModel::data();
@@ -18,6 +19,7 @@ class KeranjangController extends BaseController
         return view('keranjang', $data);
     }
 
+    // Menambahkan atau memperbarui produk di keranjang
     function tambah($id_produk)
     {
         $jumlah = request()->getPost('jumlah');
@@ -35,6 +37,8 @@ class KeranjangController extends BaseController
         }
         return redirect()->back();
     }
+
+    // Mengubah jumlah produk dalam keranjang
     function ubah($id_keranjang)
     {
         $tombolqty = request()->getPost('tombol_qty');
@@ -42,6 +46,7 @@ class KeranjangController extends BaseController
         $user = UserModel::data();
         $keranjang = KeranjangModel::where('user_id', $user['id'])->where('id', $id_keranjang)->first();
 
+        // Menambah atau mengurangi jumlah produk
         if ($tombolqty == 'tambah') {
             $keranjang->jumlah = $keranjang->jumlah + 1;
         } else {
@@ -50,7 +55,7 @@ class KeranjangController extends BaseController
         $keranjang->update();
 
 
-        // return json_encode($keranjang);
+        // Menghapus produk jika jumlahnya kurang dari 1
         if ($keranjang->jumlah < 1) {
             $keranjang->delete();
         }

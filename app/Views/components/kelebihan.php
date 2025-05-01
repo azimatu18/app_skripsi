@@ -1,10 +1,9 @@
 		<!-- Start Why Choose Us Section -->
-		<div class="why-choose-section">
+		<div class="why-choose-section" style="padding: 30px;" >
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-lg-6">
 						<h2 class="section-title">Kenapa Memilih Kami</h2>
-						<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
 
 						<div class="row my-5">
 							<div class="col-6 col-md-6">

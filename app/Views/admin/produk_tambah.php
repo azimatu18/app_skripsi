@@ -2,26 +2,50 @@
 <?= $this->section('konten') ?>
 
 <div class="container-fluid">
-    <div class="d-flex">
-        <h4 class="me-auto">Tambah Produk</h4>
-        <div>
-            <a href="/admin/produk" class="btn btn-primary">Kembali</a>
-        </div>
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h4 class="text-primary"><i class="bi bi-box-seam-fill me-2"></i>Tambah Produk</h4>
+        <a href="/admin/produk" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left-circle me-1"></i> Kembali
+        </a>
     </div>
-    <div class="card">
+
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <strong><i class="bi bi-plus-circle me-2"></i>Form Tambah Produk</strong>
+        </div>
         <div class="card-body">
             <form action="/admin/produk/submit" method="post" enctype="multipart/form-data">
-                <label>Judul</label>
-                <input type="text" name="judul" class="form-control mb-2" required>
-                <label>Type</label>
-                <input type="text" name="tipe" class="form-control mb-2" required>
-                <label>Harga</label>
-                <input type="number" name="harga" class="form-control mb-2" required>
-                <label>Deskripsi</label>
-                <input type="text" name="deskripsi" class="form-control mb-2" required>
-                <label>Gambar</label>
-                <input type="file" name="gambar" class="form-control mb-2" required>
-                <button class="btn btn-primary mt-2">Tambah</button>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Judul Produk</label>
+                        <input type="text" name="judul" class="form-control" placeholder="Contoh: Alat Ukur Tekanan Darah" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Type</label>
+                        <input type="text" name="tipe" class="form-control" placeholder="Contoh: Digital, Manual" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Harga</label>
+                        <div class="input-group">
+                            <span class="input-group-text">Rp</span>
+                            <input type="number" name="harga" class="form-control" placeholder="Contoh: 250000" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Gambar Produk</label>
+                        <input type="file" name="gambar" class="form-control" accept="image/*" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Deskripsi</label>
+                        <textarea name="deskripsi" class="form-control" rows="4" placeholder="Tuliskan deskripsi lengkap produk..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end">
+                    <button class="btn btn-success px-4">
+                        <i class="bi bi-save2 me-1"></i> Simpan Produk
+                    </button>
+                </div>
             </form>
         </div>
     </div>

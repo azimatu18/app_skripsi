@@ -34,13 +34,20 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarsFurni">
+				<?php $current_url = $_SERVER['REQUEST_URI']; ?>
 				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-					<li class="nav-item active">
+					<li class="nav-item <?= ($current_url == '/' ? 'active' : '') ?>">
 						<a class="nav-link" href="/">Beranda</a>
 					</li>
-					<li><a class="nav-link" href="/shop">Toko</a></li>
-					<li><a class="nav-link" href="/about">Tentang</a></li>
-					<li><a class="nav-link" href="/contact">Kontak</a></li>
+					<li class="nav-item <?= (strpos($current_url, '/shop') !== false ? 'active' : '') ?>">
+						<a class="nav-link" href="/shop">Toko</a>
+					</li>
+					<li class="nav-item <?= (strpos($current_url, '/about') !== false ? 'active' : '') ?>">
+						<a class="nav-link" href="/about">Tentang</a>
+					</li>
+					<li class="nav-item <?= (strpos($current_url, '/contact') !== false ? 'active' : '') ?>">
+						<a class="nav-link" href="/contact">Kontak</a>
+					</li>
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -75,79 +82,62 @@
 				</ul>
 			</div>
 		</div>
-
 	</nav>
 	<!-- End Header/Navigation -->
 	<?= $this->renderSection('konten') ?>
-    	<!-- Start Footer Section -->
-		<footer class="footer-section" style="padding: 30px;">
-			<div class="container relative">
+	<!-- Start Footer Section -->
+	<footer class="footer-section" style="padding: 20px;">
+		<div class="container relative">
 
-				<div class="row g-5 mb-5">
-					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><img src="/homepage/images/logo.png" class="img-fluid" style="height: 50px;"></div>
-						<p class="mb-4">Jalan Palapa II Gang Venus Iringmulyo, Kec. Metro Timur, Kota Metro, Provinsi Lampung</p>
+			<div class="row g-5 mb-5">
+				<div class="col-lg-4">
+					<div class="mb-4 footer-logo-wrap"><img src="/homepage/images/logo.png" class="img-fluid" style="height: 50px;"></div>
+					<p class="mb-4">Jalan Palapa II Gang Venus Iringmulyo, Kec. Metro Timur, Kota Metro, Provinsi Lampung</p>
 
-						<ul class="list-unstyled custom-social">
-                            <li><a href="#"><span class="fa fa-solid fa-envelope"></span></a></li>
-                            <li><a href="#"><span class="fa fa-solid fa-phone"></span></a></li>
-						</ul>
-					</div>
-
-					<div class="col-lg-8">
-						<div class="row links-wrap">
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-                                    <li><a href="#">Home</a></li>
-									<li><a href="#">About</a></li>
-									<li><a href="#">Contact</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Support</a></li>
-									<li><a href="#">Knowledge base</a></li>
-									<li><a href="#">Live chat</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Jobs</a></li>
-									<li><a href="#">Our team</a></li>
-									<li><a href="#">Leadership</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Nordic Chair</a></li>
-									<li><a href="#">Kruzo Aero</a></li>
-									<li><a href="#">Ergonomic Chair</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
+					<ul class="list-unstyled custom-social">
+						<li><a href="#"><span class="fa fa-solid fa-envelope"></span></a></li>
+						<li><a href="#"><span class="fa fa-solid fa-phone"></span></a></li>
+					</ul>
 				</div>
 
-				<div class="border-top copyright">
-					<div class="row pt-4">
-						<div class="col-lg-6">
-							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. CV Gedrian Intimed Abadi &mdash; By <a href="https://www.linkedin.com/in/azimatu-al-munawwaroh-bb733627b/" target="_blank" rel="noopener noreferrer">Azimatu Al Munawwaroh</a> </p>
+				<div class="col-lg-6">
+					<div class="row links-wrap">
+						<div class="col-6 col-sm-6 col-md-3">
+							<a href="#">Beranda</a>
+						</div>
+
+						<div class="col-6 col-sm-6 col-md-3">
+							<a href="/shop">Toko</a>
+						</div>
+
+						<div class="col-6 col-sm-6 col-md-3">
+							<a href="/about">Tentang</a>
+						</div>
+
+						<div class="col-6 col-sm-6 col-md-3">
+							<a href="/contact">Kontak</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<!-- End Footer Section -->	
+
+			<div class="border-top copyright">
+				<div class="row pt-4">
+					<div class="col-lg-6">
+						<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>
+								document.write(new Date().getFullYear());
+							</script>. CV Gedrian Intimed Abadi &mdash; By <a href="https://www.linkedin.com/in/azimatu-al-munawwaroh-bb733627b/" target="_blank" rel="noopener noreferrer">Azimatu Al Munawwaroh</a> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End Footer Section -->
 
 
-		<script src="/homepage/js/bootstrap.bundle.min.js"></script>
-		<script src="/homepage/js/tiny-slider.js"></script>
-		<script src="/homepage/js/custom.js"></script>
-	</body>
+	<script src="/homepage/js/bootstrap.bundle.min.js"></script>
+	<script src="/homepage/js/tiny-slider.js"></script>
+	<script src="/homepage/js/custom.js"></script>
+</body>
 
 </html>

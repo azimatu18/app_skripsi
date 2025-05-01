@@ -2,7 +2,7 @@
 <?= $this->section('konten') ?>
 
 <!-- Start Hero Section -->
-<div class="hero" style="padding: 60px;">
+<div class="hero" style="padding: 30px;">
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-lg-5">
@@ -17,13 +17,11 @@
 </div>
 <!-- End Hero Section -->
 
-
-
 <div class="untree_co-section product-section before-footer-section">
     <div class="container">
         <div class="row">
             <?php foreach ($data_produk as $no => $produk): ?>
-                <!-- Start Column 1 -->
+                <!-- Start Column -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5">
                     <a class="product-item" href="/detail_produk/<?= $produk['id'] ?>">
                         <div class="product-item-hover">
@@ -39,7 +37,7 @@
                         </span>
                     </a>
                 </div>
-                <!-- End Column 1 -->
+                <!-- End Column -->
             <?php endforeach ?>
         </div>
     </div>

@@ -2,20 +2,20 @@
 <?= $this->section('konten') ?>
 
 		<!-- Start Hero Section -->
-			<div class="hero" style="padding: 80px;">
+			<div class="hero" style="padding: 70px;">
 				<div class="container">
 					<?php if (session('user_id')): ?>
 						<div class="row justify-content-between">
 							<div class="col-lg-5">
 								<div class="intro-excerpt">
-									<h2>Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di CV Gedrian Intimed Abadi</h2>
+									<h2>Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di CV. Gedrian Intimed Abadi</h2>
 									<p class="mb-4">CV Gedrian Intimed Abadi berkomitmen untuk menyediakan alat kesehatan berkualitas tinggi bagi rumah sakit, klinik, dan individu. Dedikasi kami memastikan solusi yang andal untuk mendukung kesehatan yang lebih baik. Kami hadir untuk memenuhi kebutuhan kesehatan Anda dengan inovasi dan pelayanan terbaik.</p>
 									<p><a href="/shop" class="btn btn-secondary me-2">Belanja Sekarang</a></p>
 								</div>
 							</div>
 							<div class="col-lg-7">
 								<div class="hero-img-wrap">
-									<img src="/homepage/images/gabungan.png" class="img-fluid">
+									<img src="/homepage/images/gabungan.png" class="img-fluid" style="padding-top: 50px;">
 								</div>
 							</div>
 						</div>
@@ -23,14 +23,14 @@
 						<div class="row justify-content-between">
 							<div class="col-lg-5">
 								<div class="intro-excerpt">
-									<h2>CV GEDRIAN INTIMED ABADI</h2>
+									<h2>CV. GEDRIAN INTIMED ABADI</h2>
 									<p class="mb-4">CV Gedrian Intimed Abadi berkomitmen untuk menyediakan alat kesehatan berkualitas tinggi bagi rumah sakit, klinik, dan individu. Dedikasi kami memastikan solusi yang andal untuk mendukung kesehatan yang lebih baik. Kami hadir untuk memenuhi kebutuhan kesehatan Anda dengan inovasi dan pelayanan terbaik.</p>
 									<p><a href="/shop" class="btn btn-secondary me-2">Belanja Sekarang</a></p>
 								</div>
 							</div>
 							<div class="col-lg-7">
 								<div class="hero-img-wrap">
-									<img src="/homepage/images/gabungan.png" class="img-fluid">
+									<img src="/homepage/images/gabungan.png" class="img-fluid" style="padding-top: 50px;">
 								</div>
 							</div>
 						</div>
@@ -40,15 +40,15 @@
 		<!-- End Hero Section -->
 
 		<!-- Start Product Section -->
-		<div class="product-section">
+		<div class="product-section" style="padding: 60px;">
 			<div class="container">
 				<div class="row">
 
 					<!-- Start Column 1 -->
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
-						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
-						<p><a href="shop.html" class="btn">Explore</a></p>
+						<h2 class="mb-4 section-title">Mitra Terpercaya Kebutuhan Alat Kesehatan Anda</h2>
+						<p class="mb-4">CV Gedrian Intimed Abadi siap memenuhi kebutuhan alat kesehatan dengan produk berkualitas, pengiriman cepat, harga bersaing, dan dukungan teknis yang profesional.</p>
+						<p><a href="/shop" class="btn">Belanja Sekarang</a></p>
 					</div> 
 					<!-- End Column 1 -->
 
