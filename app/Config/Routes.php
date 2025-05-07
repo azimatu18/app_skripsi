@@ -22,6 +22,9 @@ $routes->get('/admin/konsumen', 'AdminController::konsumen', ['filter' => 'admin
 $routes->get('/admin/produk', 'ProdukController::produk', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/tambah', 'ProdukController::produkTambah', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter' => 'admin_filter']);
+$routes->get('/admin/produk/edit/(:num)', 'ProdukController::produkEdit/$1', ['filter' => 'admin_filter']);
+$routes->post('/admin/produk/update/(:num)', 'ProdukController::produkUpdate/$1', ['filter' => 'admin_filter']);
+$routes->post('/admin/produk/hapus/(:num)', 'ProdukController::produkHapus/$1', ['filter' => 'admin_filter']);
 
 $routes->get('/admin/pemesanan', 'AdminPemesananController::index', ['filter' => 'admin_filter']);
 $routes->post('/admin/pemesanan/submit', 'AdminPemesananController::submit', ['filter' => 'admin_filter']);
@@ -42,3 +45,4 @@ $routes->post('/pemesanan/dp/upload', 'PemesananController::dp_submit', ['filter
 
 $routes->get('/pemesanan/cetak/surat_jalan/(:any)', 'PemesananController::cetak_surat_jalan/$1');
 $routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::cetak_faktur_penjualan/$1');
+$routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1');

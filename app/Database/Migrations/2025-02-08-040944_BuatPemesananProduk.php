@@ -31,6 +31,10 @@ class BuatPemesananProduk extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '50'
 			],
+			'merek'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '50'
+			],
 			'jumlah'       => [
 				'type'           => 'INT',
 				'constraint'     => 11

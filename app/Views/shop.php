@@ -32,9 +32,11 @@
                         <div class="product-type">Type: <?= $produk['tipe'] ?></div> <!-- Menggunakan div untuk pemisah -->
                         <strong class="product-price">Rp. <?= number_format($produk['harga'], 0, '.', '.') ?></strong>
 
-                        <span class="icon-cross">
-                            <img src="/homepage/images/cross.svg" class="img-fluid">
-                        </span>
+                        <form action="/keranjang/tambah/<?= $produk['id'] ?>" method="post" class="d-flex align-items-center">
+                            <button type="submit" class="icon-cross rounded-circle bg-dark p-2" style="background: none; border: none; padding: 0;">
+                                <img src="/homepage/images/cross.svg" class="img-fluid">
+                            </button>
+                        </form>
                     </a>
                 </div>
                 <!-- End Column -->

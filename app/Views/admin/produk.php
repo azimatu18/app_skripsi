@@ -34,9 +34,11 @@
                             <th scope="col">No</th>
                             <th scope="col">Judul</th>
                             <th scope="col">Tipe</th>
+                            <th scope="col">Merek</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Deskripsi</th>
                             <th scope="col">Gambar</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,10 +47,22 @@
                                 <td class="text-center"><?= $no + 1 ?></td>
                                 <td><strong><?= $produk['judul'] ?></strong></td>
                                 <td><span class="badge bg-secondary"><?= $produk['tipe'] ?></span></td>
+                                <td><?= $produk['merek'] ?></td>
                                 <td>Rp <?= number_format($produk['harga'], 0, ',', '.') ?></td>
                                 <td><?= $produk['deskripsi'] ?></td>
                                 <td>
                                     <img width="80" class="img-thumbnail" src="<?= base_url('uploads/gambar/' . $produk['gambar']) ?>" alt="gambar produk">
+                                </td>
+                                <td class="text-center">
+                                    <a href="/admin/produk/edit/<?= $produk['id'] ?>" class="btn btn-sm btn-warning mb-1">
+                                        <i class="bi bi-pencil"></i> Edit
+                                    </a>
+                                    <form action="<?= base_url('admin/produk/hapus/' . $produk['id']) ?>" method="post" onsubmit="return confirm('Yakin ingin menghapus produk ini?');">
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i> Hapus
+                                        </button>
+                                    </form>
+
                                 </td>
                             </tr>
                         <?php endforeach ?>

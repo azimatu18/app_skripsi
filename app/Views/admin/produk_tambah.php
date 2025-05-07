@@ -25,6 +25,10 @@
                         <input type="text" name="tipe" class="form-control" placeholder="Contoh: Digital, Manual" required>
                     </div>
                     <div class="col-md-6">
+                        <label class="form-label">Merek</label>
+                        <input type="text" name="merek" class="form-control" placeholder="Contoh: Digital, Manual" required>
+                    </div>
+                    <div class="col-md-6">
                         <label class="form-label">Harga</label>
                         <div class="input-group">
                             <span class="input-group-text">Rp</span>

@@ -23,6 +23,10 @@ class BuatProdukTabel extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '50'
 			],
+			'merek'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '50'
+			],
 			'harga' => [
 				'type'           => 'BIGINT',
                 'constraint'     => 50

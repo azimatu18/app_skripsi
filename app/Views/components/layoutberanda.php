@@ -52,7 +52,6 @@
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 					<?php if (session('user_id')): ?>
-						
 						<li class="nav-item <?= (strpos($current_url, '/daftar-pemesanan') !== false ? 'active' : '') ?>">
 							<a class="nav-link" href="/daftar-pemesanan">Daftar Pemesanan</a>
 						</li>

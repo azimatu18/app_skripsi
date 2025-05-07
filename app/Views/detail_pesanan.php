@@ -49,7 +49,7 @@
                             <p><strong>Email:</strong> <?= $pemesanan['email'] ?></p>
                             <p><strong>No Handphone:</strong> <?= $pemesanan['no_hp'] ?></p>
                             <p><strong>Catatan:</strong> <?= $pemesanan['catatan'] ?: '-' ?></p>
-                        </div>
+                        <!-- </div>
                         <div class="col-md-5">
                             <?php if ($pemesanan['status_tipe'] == '4'): ?>
                                 <div class="bg-primary bg-opacity-25 p-3 rounded mt-5">
@@ -61,7 +61,7 @@
                                     <a href="/pemesanan/cetak/faktur_penjualan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Faktur Penjualan</a>
                                 </div>
                             <?php endif; ?>
-                        </div>
+                        </div> -->
                     </div>
 
                     <h4 class="text-black mt-4">Daftar Pesanan</h4>

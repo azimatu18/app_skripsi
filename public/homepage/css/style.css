@@ -9,6 +9,21 @@ body {
   overflow-x: hidden;
   position: relative; }
 
+  :root {
+    --biru-tua: #003366;
+  }
+  
+  /* custom */
+  .btn-custom {
+    background-color: var(--biru-tua);
+    color: white;
+  }
+  
+  .text-biru {
+    color: var(--biru-tua);
+  }
+  
+
 body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
