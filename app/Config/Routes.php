@@ -18,14 +18,27 @@ $routes->post('/login/submit', 'AuthController::loginSubmit');
 $routes->get('/logout', 'AuthController::logout');
 
 $routes->get('/admin/dashboard', 'AdminController::dashboard', ['filter' => 'admin_filter']);
+$routes->get('/admin/konsumen', 'AdminController::konsumen', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk', 'ProdukController::produk', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/tambah', 'ProdukController::produkTambah', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter' => 'admin_filter']);
+
+$routes->get('/admin/pemesanan', 'AdminPemesananController::index', ['filter' => 'admin_filter']);
+$routes->post('/admin/pemesanan/submit', 'AdminPemesananController::submit', ['filter' => 'admin_filter']);
+$routes->get('/admin/pemesanan/detail/(:any)', 'AdminPemesananController::detail/$1', ['filter' => 'admin_filter']);
+$routes->post('/admin/pemesanan/konfirmasi', 'AdminPemesananController::konfirmasi', ['filter' => 'admin_filter']);
+$routes->post('/admin/pemesanan/kirim', 'AdminPemesananController::kirim', ['filter' => 'admin_filter']);
+
 
 $routes->get('/keranjang', 'KeranjangController::index', ['filter' => 'konsumen_filter']);
 $routes->post('/keranjang/tambah/(:any)', 'KeranjangController::tambah/$1', ['filter' => 'konsumen_filter']);
 $routes->post('/keranjang/ubah/(:any)', 'KeranjangController::ubah/$1', ['filter' => 'konsumen_filter']);
 
 $routes->get('/pemesanan', 'PemesananController::index', ['filter' => 'konsumen_filter']);
+$routes->get('/daftar-pemesanan', 'PemesananController::daftar', ['filter' => 'konsumen_filter']);
 $routes->post('/pemesanan/submit', 'PemesananController::submit', ['filter' => 'konsumen_filter']);
 $routes->get('/pemesanan/detail/(:any)', 'PemesananController::detail/$1', ['filter' => 'konsumen_filter']);
+$routes->post('/pemesanan/dp/upload', 'PemesananController::dp_submit', ['filter' => 'konsumen_filter']);
+
+$routes->get('/pemesanan/cetak/surat_jalan/(:any)', 'PemesananController::cetak_surat_jalan/$1');
+$routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::cetak_faktur_penjualan/$1');

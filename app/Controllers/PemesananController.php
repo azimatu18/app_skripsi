@@ -17,6 +17,7 @@ class PemesananController extends BaseController
         $data['keranjang_produk'] = KeranjangModel::with('produk')->where('user_id', $user['id'])->get();
         return view('pemesanan', $data);
     }
+    
     function submit()
     {
         $konsumen = request()->getPost('konsumen');
@@ -35,8 +36,11 @@ class PemesananController extends BaseController
         $pemesanan->catatan = $catatan;
         $pemesanan->email = $email;
         $pemesanan->no_faktur = 'F' . date('my') . PemesananModel::count() + 1;
-        $pemesanan->no_po = 'PO-' . $user['id'] . '-' . date('dmy') . rand(100, 999);
+        // $pemesanan->no_po = 'PO-' . $user['id'] . '-' . date('dmy') . rand(100, 999);
+        $pemesanan->no_po = '';
         $pemesanan->save();
+
+        $total_harga=0;
 
         $user = UserModel::data();
         $keranjang_produk = KeranjangModel::with('produk')->where('user_id', $user['id'])->get();
@@ -52,8 +56,13 @@ class PemesananController extends BaseController
             $pemesanan_produk->gambar = $produk['produk']['gambar'];
             $pemesanan_produk->save();
 
+            $total_harga += $produk['jumlah'] * $produk['produk']['harga'];
+
             $produk->delete();
         }
+        
+        $pemesanan->total_harga = $total_harga;
+        $pemesanan->update();
 
         return redirect()->to(base_url('/pemesanan/detail/' . $pemesanan->id));
     }
@@ -75,4 +84,67 @@ class PemesananController extends BaseController
         return view('detail_pesanan', $data);
     }
 
+    function daftar() {
+        $user = UserModel::data();
+
+        $pemesanan = $user->pemesanan()->orderBy('id','desc')->get();
+        $data = ['pemesanan'=>$pemesanan];
+
+        return view('daftar_pemesanan', $data);
+    }
+
+    function dp_submit() {
+        $id = request()->getPost('id');     
+        $bukti_dp = request()->getFile('bukti_dp');
+
+        $nama_bukti_dp = 'produk_' . time() . '.' . $bukti_dp->getClientExtension();
+        $bukti_dp->move('uploads/bukti_dp', $nama_bukti_dp);
+
+        $user = UserModel::data();
+
+        $pemesanan = $user->pemesanan()->where('id', $id)->first();
+        $pemesanan->bukti_dp=$nama_bukti_dp;
+        $pemesanan->status_tipe=2;
+        $pemesanan->save();
+
+        return redirect()->to(base_url('/pemesanan/detail/' . $pemesanan->id));
+    }
+
+    function cetak_surat_jalan($id) {
+        $user = UserModel::data();
+
+        if ($user->level=='konsumen') {
+            $pemesanan = $user->pemesanan()->where('id', $id)->first();
+        } else{
+            $pemesanan = PemesananModel::find($id);
+        }
+
+        $produk = $pemesanan->pemesanan_produk()->orderBy('judul', 'asc')->get();
+
+        $data = [
+            'pemesanan'=>$pemesanan, 
+            'produk'=>$produk
+        ];
+
+        return view('cetak_surat_jalan', $data);   
+    }
+
+    function cetak_faktur_penjualan($id) {
+        $user = UserModel::data();
+
+        if ($user->level=='konsumen') {
+            $pemesanan = $user->pemesanan()->where('id', $id)->first();
+        } else{
+            $pemesanan = PemesananModel::find($id);
+        }
+
+        $produk = $pemesanan->pemesanan_produk()->orderBy('judul', 'asc')->get();
+
+        $data = [
+            'pemesanan'=>$pemesanan, 
+            'produk'=>$produk
+        ];
+
+        return view('cetak_faktur_penjualan', $data);   
+    }
 }

@@ -11,4 +11,9 @@ class PemesananModel extends Model
     public $timestamps = false;    // Gunakan timestamps jika ada
 
     protected $guarded = ['id']; // Kolom yang boleh diisi
+    
+    function pemesanan_produk()
+    {
+        return $this->hasMany(PemesananProdukModel::class, 'pemesanan_id');
+    }
 }

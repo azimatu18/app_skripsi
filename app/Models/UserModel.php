@@ -12,11 +12,15 @@ class UserModel extends Model
 
     protected $guarded = ['id']; // Kolom yang boleh diisi
 
-
     static function data()
     {
         $user_id = session()->get('user_id');
         $user = UserModel::where('id', $user_id)->first();
         return $user;
+    }
+    
+    function pemesanan()
+    {
+        return $this->hasMany(PemesananModel::class, 'user_id');
     }
 }

@@ -12,4 +12,10 @@ class AdminController extends BaseController
     {
         return view('admin/dashboard');
     }
+
+    function konsumen()
+    {
+        $data['konsumen'] = UserModel::all(); 
+        return view('admin/konsumen', $data);
+    }
 }

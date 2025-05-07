@@ -52,6 +52,11 @@
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 					<?php if (session('user_id')): ?>
+						
+						<li class="nav-item <?= (strpos($current_url, '/daftar-pemesanan') !== false ? 'active' : '') ?>">
+							<a class="nav-link" href="/daftar-pemesanan">Daftar Pemesanan</a>
+						</li>
+						
 						<li>
 							<div class="d-flex">
 								<a class="nav-link" href="/keranjang"><img src="/homepage/images/cart.svg"></a>
@@ -88,7 +93,6 @@
 	<!-- Start Footer Section -->
 	<footer class="footer-section" style="padding: 20px;">
 		<div class="container relative">
-
 			<div class="row g-5 mb-5">
 				<div class="col-lg-4">
 					<div class="mb-4 footer-logo-wrap"><img src="/homepage/images/logo.png" class="img-fluid" style="height: 50px;"></div>
@@ -105,15 +109,12 @@
 						<div class="col-6 col-sm-6 col-md-3">
 							<a href="#">Beranda</a>
 						</div>
-
 						<div class="col-6 col-sm-6 col-md-3">
 							<a href="/shop">Toko</a>
 						</div>
-
 						<div class="col-6 col-sm-6 col-md-3">
 							<a href="/about">Tentang</a>
 						</div>
-
 						<div class="col-6 col-sm-6 col-md-3">
 							<a href="/contact">Kontak</a>
 						</div>
