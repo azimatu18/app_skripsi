@@ -19,6 +19,13 @@
 
                         </div>
                         <div class="col-md-5">
+                            <div class="alert alert-primary mb-2">
+                                <b>Status: </b>
+                                <?php
+                                $tipe = $pemesanan['status_tipe'];
+                                echo status_pemesanan($tipe);
+                                ?>
+                            </div>
 
                             <?php if ($pemesanan['status_tipe'] == '2' && !empty($pemesanan['bukti_dp'])): ?>
                                 <div class="bg-primary bg-opacity-25 p-3 rounded">
@@ -32,26 +39,43 @@
                                     </form>
                                 </div>
                             <?php elseif ($pemesanan['status_tipe'] == '3'): ?>
-                                <div class="bg-primary bg-opacity-25 p-3 rounded">
-                                    <h4>Pesanan Sudah Siap Kirim</h4>
-                                    <p>
-                                        Silahkan Masukan NO PO atau SR Jika Konsumen Menyertakan nomor PO sebagai data surat jalan
-                                    </p>
-                                    <form action="/admin/pemesanan/kirim" method="post">
-                                        <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
-                                        <input type="text" name="no_po" class="form-control mb-3 border-dark" value="<?= $pemesanan->no_po ?>">
-                                        <button class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                            <?php elseif ($pemesanan['status_tipe'] == '4'): ?>
-                                <div class="bg-primary bg-opacity-25 p-3 rounded">
-                                    <h4>Pesanan Sudah di Kirim</h4>
+                                <div class="bg-primary bg-opacity-25 p-3 mb-4 rounded">
+                                    <h4>Surat Jalan</h4>
                                     <p>
                                         Silahkan Unduh surat jalan dan faktur penjualan berikut
                                     </p>
-                                    <a href="/pemesanan/cetak/surat_jalan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2">Surat jalan</a>
-                                    <a href="/pemesanan/cetak/faktur_penjualan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Faktur Penjualan</a>
-                                    <a href="/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Berita Acara</a>
+                                    <a href="/admin/pemesanan/cetak/surat_jalan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2">Surat jalan</a>
+                                </div>
+                                <div class="bg-primary bg-opacity-25 p-3 rounded">
+                                    <h4>Pesanan Sudah Siap Kirim</h4>
+                                    <p>
+                                        Silahkan tekan tombol dibawah jika pesanan sudah siap dikirim
+                                    </p>
+                                    <form action="/admin/pemesanan/kirim" method="post">
+                                        <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
+                                        <button class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            <?php elseif ($pemesanan['status_tipe'] == '6' && !empty($pemesanan['bukti_lunas'])): ?>
+                                <div class="bg-primary bg-opacity-25 p-3 rounded">
+                                    <h4>Konsumen sudah mengirim bukti pembayaran lunas</h4>
+                                    <p>
+                                        Pastikan Bukti pelunasna yang dikirim sudah sesuai dengan tagihan dan dana yang masuk
+                                    </p>
+                                    <form action="/admin/pemesanan/lunas" method="post">
+                                        <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
+                                        <button type="submit" class="btn btn-success">Konfirmasi & Ubah ke Selesai</button>
+                                    </form>
+                                </div>
+                            <?php elseif ($pemesanan['status_tipe'] == '7'): ?>
+                                <div class="bg-primary bg-opacity-25 p-3 rounded">
+                                    <h4>Pesanan Sudah selesai</h4>
+                                    <p>
+                                        Silahkan Unduh surat jalan dan faktur penjualan berikut
+                                    </p>
+                                    <a href="/admin/pemesanan/cetak/surat_jalan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2">Surat jalan</a>
+                                    <a href="/admin/pemesanan/cetak/faktur_penjualan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Faktur Penjualan</a>
+                                    <!-- <a href="/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Berita Acara</a> -->
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -85,14 +109,28 @@
                         </tbody>
                     </table>
 
-                    <?php if (!empty($pemesanan['bukti_dp'])): ?>
-                        <h4 class="text-black mt-4">Bukti Pembayaran DP</h4>
-                        <div class="mb-3">
-                            <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="Bukti DP" class="img-fluid img-thumbnail" style="max-width: 400px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?php if (!empty($pemesanan['bukti_dp'])): ?>
+                                <h4 class="text-black mt-4">Bukti Pembayaran DP</h4>
+                                <div class="mb-3">
+                                    <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="Bukti DP" class="img-fluid img-thumbnail" style="max-width: 400px;">
+                                </div>
+                            <?php else: ?>
+                                <div class="alert alert-warning mt-4">Belum ada bukti pembayaran DP yang diunggah.</div>
+                            <?php endif; ?>
                         </div>
-                    <?php else: ?>
-                        <div class="alert alert-warning mt-4">Belum ada bukti pembayaran DP yang diunggah.</div>
-                    <?php endif; ?>
+                        <div class="col-md-6">
+                            <?php if (!empty($pemesanan['bukti_lunas'])): ?>
+                                <h4 class="text-black mt-4">Bukti Pembayaran lunas</h4>
+                                <div class="mb-3">
+                                    <img src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" alt="Bukti DP" class="img-fluid img-thumbnail" style="max-width: 400px;">
+                                </div>
+                            <?php else: ?>
+                                <div class="alert alert-warning mt-4">Belum ada bukti pelunasan yang diunggah.</div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <a href="/admin/pemesanan" class="btn btn-black btn-lg py-3">Kembali</a>

@@ -52,6 +52,7 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        helper(['fungsi']);
 
         // E.g.: $this->session = service('session');
         $this->session = service('session');

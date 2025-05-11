@@ -9,21 +9,6 @@
     <!-- Cari produk -->
     <div class="card shadow-sm border-0">
         <div class="card-body">
-            <div class="mb-3">
-                <input type="text" id="searchInput" class="form-control" placeholder="Cari produk...">
-            </div>
-            <script>
-                document.getElementById('searchInput').addEventListener('keyup', function() {
-                    const keyword = this.value.toLowerCase();
-                    const rows = document.querySelectorAll('table tbody tr');
-
-                    rows.forEach(row => {
-                        const rowText = row.innerText.toLowerCase();
-                        row.style.display = rowText.includes(keyword) ? '' : 'none';
-                    });
-                });
-            </script>
-
             <div class="table-responsive">
                 <table class="table table-bordered align-middle table-hover">
                     <thead class="table-primary">
@@ -50,27 +35,7 @@
                                 <td>
                                     <?php
                                     $tipe = $data['status_tipe'];
-                                    switch ($tipe) {
-                                        case 1:
-                                            echo 'Menunggu Pembayaran';
-                                            break;
-                                        case 2:
-                                            echo 'Menunggu Konfirmasi Pembayaran';
-                                            break;
-                                        case 3:
-                                            echo 'Diproses';
-                                            break;
-                                        case 4:
-                                            echo 'Dikirim';
-                                            break;
-                                        case 5:
-                                            echo 'Selesai';
-                                            break;
-
-                                        default:
-                                            echo 'Tipe Tidak Sesuai';
-                                            break;
-                                    }
+                                    echo status_pemesanan($tipe);
                                     ?>
                                 </td>
 

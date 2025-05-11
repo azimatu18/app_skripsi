@@ -12,25 +12,32 @@
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="konsumen" class="text-black">Nama Konsumen <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="konsumen" name="konsumen" placeholder="Masukan nama konsumen atau perusahan">
+                                <input type="text" class="form-control" id="konsumen" name="konsumen" placeholder="Masukan nama konsumen atau perusahan" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="alamat" class="text-black">Alamat <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan alamat lengkap">
+                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan alamat lengkap" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="no_po" class="text-black">Nomor PO</label>
+                                <input type="text" class="form-control" id="no_po" name="no_po" placeholder="Masukan No PO jika ada">
                             </div>
                         </div>
 
                         <div class="form-group row mb-5">
                             <div class="col-md-6">
                                 <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Masukan alamat email">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Masukan alamat email" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="no_hp" class="text-black">No Handphone <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukan nomor handphone">
+                                <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukan nomor handphone" required>
                             </div>
                         </div>
 

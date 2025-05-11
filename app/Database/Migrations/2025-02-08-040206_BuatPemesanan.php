@@ -64,9 +64,14 @@ class BuatPemesanan extends Migration
 			'status_tipe' => [
 				'type'           => 'INT',
 				'constraint'     => 10,
-				'default'		=> 1 // 1= menunggu pemabayaran, 2= menunggu konfirmasi pembayaran, 3= diproses, 4= dikirim, 5= selesai
+				'default'		=> 1 // 1= menunggu pemabayaran, 2= menunggu konfirmasi pembayaran, 3= diproses, 4= dikirim, 5= menunggu pelunasan, 6= konfirmasi pelunasan, 7= selesai
 			],
 			'bukti_dp'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => 255,
+				'default' => NULL
+			],
+			'bukti_lunas'      => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 				'default' => NULL

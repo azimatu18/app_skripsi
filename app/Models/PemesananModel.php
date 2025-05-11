@@ -16,4 +16,8 @@ class PemesananModel extends Model
     {
         return $this->hasMany(PemesananProdukModel::class, 'pemesanan_id');
     }
+    function penerimaan()
+    {
+        return $this->hasOne(PenerimaanModel::class, 'pemesanan_id');
+    }
 }

@@ -154,19 +154,33 @@
         </tbody>
     </table>
 
-    <p>Nama Rumah Sakit: _____________________________________</p>
-    <p>Alamat: ________________________________________________</p>
+    <p>Nama Rumah Sakit: <?= $pemesanan['konsumen'] ?></p>
+    <p>Alamat: <?= $pemesanan['alamat'] ?></p>
 
     <div class="section-title">Dengan hasil sebagai berikut:</div>
-
-    <p>1. Produk berfungsi dengan baik <span class="checkbox"></span> Ya <span class="checkbox"></span> Tidak</p>
-    <p>....................................................................................................................................................</p>
-
-    <p>2. Training penggunaan dan perawatan produk dipahami dengan baik <span class="checkbox"></span> Ya <span class="checkbox"></span> Tidak</p>
-    <p>....................................................................................................................................................</p>
+    <table class="table table-bordered">
+        <tr>
+            <td>1. Produk berfungsi dengan baik</td>
+            <td>
+                <input type="radio" name="fungsi" value="1" <?= $penerimaan['fungsi'] ? 'checked' : '' ?>> YA
+            </td>
+            <td>
+                <input type="radio" name="fungsi" value="0" <?= $penerimaan['fungsi'] ? '' : 'checked' ?>> TidAK
+            </td>
+        </tr>
+        <tr>
+            <td>2. Training penggunaan dan perawatan produk dipahami dengan baik</td>
+            <td>
+                <input type="radio" name="training" value="1" <?= $penerimaan['training'] ? 'checked' : '' ?>> YA
+            </td>
+            <td>
+                <input type="radio" name="training" value="0" <?= $penerimaan['training'] ? '' : 'checked' ?>> TIDAK
+            </td>
+        </tr>
+    </table>
 
     <div class="section-title">Saran:</div>
-    <div class="saran-box"></div>
+    <div class="saran-box"><?= $penerimaan['saran'] ?></div>
 
     <table class="signature" width="100%">
         <tr>
@@ -175,11 +189,9 @@
         </tr>
         <tr>
             <td>______________________________</td>
-            <td>______________________________</td>
-        </tr>
-        <tr>
-            <td>Jabatan:</td>
-            <td>Jabatan:</td>
+            <td><?= $pemesanan['konsumen'] ?>
+                <div>Jabatan:</div>
+        </td>
         </tr>
     </table>
 

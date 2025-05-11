@@ -30,7 +30,10 @@ $routes->get('/admin/pemesanan', 'AdminPemesananController::index', ['filter' =>
 $routes->post('/admin/pemesanan/submit', 'AdminPemesananController::submit', ['filter' => 'admin_filter']);
 $routes->get('/admin/pemesanan/detail/(:any)', 'AdminPemesananController::detail/$1', ['filter' => 'admin_filter']);
 $routes->post('/admin/pemesanan/konfirmasi', 'AdminPemesananController::konfirmasi', ['filter' => 'admin_filter']);
+$routes->post('/admin/pemesanan/lunas', 'AdminPemesananController::konfirmasi_lunas', ['filter' => 'admin_filter']);
 $routes->post('/admin/pemesanan/kirim', 'AdminPemesananController::kirim', ['filter' => 'admin_filter']);
+$routes->get('/admin/pemesanan/cetak/surat_jalan/(:any)', 'AdminPemesananController::cetak_surat_jalan/$1', ['filter' => 'admin_filter']);
+$routes->get('/admin/pemesanan/cetak/faktur_penjualan/(:any)', 'AdminPemesananController::cetak_faktur_penjualan/$1', ['filter' => 'admin_filter']);
 
 
 $routes->get('/keranjang', 'KeranjangController::index', ['filter' => 'konsumen_filter']);
@@ -42,7 +45,11 @@ $routes->get('/daftar-pemesanan', 'PemesananController::daftar', ['filter' => 'k
 $routes->post('/pemesanan/submit', 'PemesananController::submit', ['filter' => 'konsumen_filter']);
 $routes->get('/pemesanan/detail/(:any)', 'PemesananController::detail/$1', ['filter' => 'konsumen_filter']);
 $routes->post('/pemesanan/dp/upload', 'PemesananController::dp_submit', ['filter' => 'konsumen_filter']);
+$routes->post('/pemesanan/lunas/upload', 'PemesananController::lunas_submit', ['filter' => 'konsumen_filter']);
+$routes->get('/pemesanan/cetak/invoice/(:any)', 'PemesananController::cetak_invoice/$1', ['filter' => 'konsumen_filter']);
+$routes->post('/pemesanan/konfirmasi/(:any)', 'PemesananController::konfirmasi/$1', ['filter' => 'konsumen_filter']);
+$routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::cetak_faktur_penjualan/$1', ['filter' => 'konsumen_filter']);
+$routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1', ['filter' => 'konsumen_filter']);
 
-$routes->get('/pemesanan/cetak/surat_jalan/(:any)', 'PemesananController::cetak_surat_jalan/$1');
-$routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::cetak_faktur_penjualan/$1');
-$routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1');
+
+// $routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1');

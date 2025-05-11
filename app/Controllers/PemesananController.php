@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\KeranjangModel;
 use App\Models\PemesananModel;
 use App\Models\PemesananProdukModel;
+use App\Models\PenerimaanModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -23,6 +24,7 @@ class PemesananController extends BaseController
         $konsumen = request()->getPost('konsumen');
         $alamat = request()->getPost('alamat');
         $no_hp = request()->getPost('no_hp');
+        $no_po = request()->getPost('no_po');
         $catatan = request()->getPost('catatan');
         $email = request()->getPost('email');
 
@@ -33,11 +35,11 @@ class PemesananController extends BaseController
         $pemesanan->konsumen = $konsumen;
         $pemesanan->alamat = $alamat;
         $pemesanan->no_hp = $no_hp;
+        $pemesanan->no_po = $no_po;
         $pemesanan->catatan = $catatan;
         $pemesanan->email = $email;
         $pemesanan->no_faktur = 'F' . date('my') . PemesananModel::count() + 1;
         // $pemesanan->no_po = 'PO-' . $user['id'] . '-' . date('dmy') . rand(100, 999);
-        $pemesanan->no_po = '';
         $pemesanan->save();
 
         $total_harga = 0;
@@ -99,7 +101,7 @@ class PemesananController extends BaseController
         $id = request()->getPost('id');
         $bukti_dp = request()->getFile('bukti_dp');
 
-        $nama_bukti_dp = 'produk_' . time() . '.' . $bukti_dp->getClientExtension();
+        $nama_bukti_dp = 'dp_' . time() . '.' . $bukti_dp->getClientExtension();
         $bukti_dp->move('uploads/bukti_dp', $nama_bukti_dp);
 
         $user = UserModel::data();
@@ -112,8 +114,26 @@ class PemesananController extends BaseController
         return redirect()->to(base_url('/pemesanan/detail/' . $pemesanan->id));
     }
 
-    function cetak_surat_jalan($id)
+    function lunas_submit()
     {
+        $id = request()->getPost('id');
+        $bukti_lunas = request()->getFile('bukti_lunas');
+
+        $nama_bukti_lunas = 'lunas_' . time() . '.' . $bukti_lunas->getClientExtension();
+        $bukti_lunas->move('uploads/bukti_lunas', $nama_bukti_lunas);
+
+        $user = UserModel::data();
+
+        $pemesanan = $user->pemesanan()->where('id', $id)->first();
+        $pemesanan->bukti_lunas = $nama_bukti_lunas;
+        $pemesanan->status_tipe = 6;
+        $pemesanan->save();
+
+        return redirect()->to(base_url('/pemesanan/detail/' . $pemesanan->id));
+    }
+
+
+    function cetak_invoice($id)  {
         $user = UserModel::data();
 
         if ($user->level == 'konsumen') {
@@ -129,7 +149,24 @@ class PemesananController extends BaseController
             'produk' => $produk
         ];
 
-        return view('cetak_surat_jalan', $data);
+        return view('cetak_invoice', $data);
+    }
+
+    function konfirmasi($id) {
+        $user = UserModel::data();
+        $pemesanan = $user->pemesanan()->where('id', $id)->first();
+        
+        $penerimaan = new PenerimaanModel();
+        $penerimaan->user_id=$user->id;
+        $penerimaan->pemesanan_id=$pemesanan->id;
+        $penerimaan->fungsi=request()->getPost('fungsi');
+        $penerimaan->training=request()->getPost('training');
+        $penerimaan->saran=request()->getPost('saran');
+        $penerimaan->save();
+
+        $pemesanan->status_tipe=5;
+        $pemesanan->update();
+        return redirect()->to(base_url('/pemesanan/detail/' . $pemesanan->id));
     }
 
     function cetak_faktur_penjualan($id)
@@ -149,7 +186,7 @@ class PemesananController extends BaseController
             'produk' => $produk
         ];
 
-        return view('cetak_faktur_penjualan', $data);
+        return view('admin/cetak_faktur_penjualan', $data);
     }
 
     function cetak_berita_acara($id)
@@ -163,12 +200,14 @@ class PemesananController extends BaseController
         }
 
         $produk = $pemesanan->pemesanan_produk()->orderBy('judul', 'asc')->get();
+        $penerimaan = $pemesanan->penerimaan;
 
         $data = [
             'pemesanan' => $pemesanan,
-            'produk' => $produk
+            'produk' => $produk,
+            'penerimaan' => $penerimaan,
         ];
 
-        return view('cetak_berita_acara', $data);
+        return view('admin/cetak_berita_acara', $data);
     }
 }
