@@ -55,7 +55,7 @@
 						<li class="nav-item <?= (strpos($current_url, '/daftar-pemesanan') !== false ? 'active' : '') ?>">
 							<a class="nav-link" href="/daftar-pemesanan">Daftar Pemesanan</a>
 						</li>
-						
+
 						<li>
 							<div class="d-flex">
 								<a class="nav-link" href="/keranjang"><img src="/homepage/images/cart.svg"></a>
@@ -133,7 +133,112 @@
 		</div>
 	</footer>
 	<!-- End Footer Section -->
+	<?php if (session('user_id')): ?>
+		<section id="chat-assist" style="display: none;">
+			<div class="container py-5">
 
+				<div class="row d-flex justify-content-center">
+					<div class="col-12">
+
+						<div class="card" id="chat2">
+							<div class="card-header d-flex justify-content-between align-items-center p-3">
+								<h5 class="mb-0">Chat</h5>
+								<button type="button" class="btn btn-light btn-sm" id="btn-close-chat" data-mdb-ripple-color="dark">
+									Tutup
+								</button>
+							</div>
+							<div class="card-body" id="chat-body" data-mdb-perfect-scrollbar-init style="position: relative; height: 400px;overflow-y:scroll;">
+								<?php
+								foreach (App\Models\UserModel::data()->chat_konsumen()->get() as $chat):
+								?>
+									<?php if ($chat->user_id): ?>
+										<!-- untuk pemasaran -->
+										<div class="d-flex flex-row justify-content-start">
+											<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+												alt="avatar 1" style="width: 45px; height: 100%;">
+											<div>
+												<p class="small p-2 ms-3 mb-1 rounded-3 bg-light"><?= $chat->pesan ?></p>
+												<p class="small ms-3 mb-3 rounded-3 text-muted"><?= $chat->waktu ?></p>
+											</div>
+										</div>
+									<?php else : ?>
+										<!-- untuk konsumen -->
+										<div class="d-flex flex-row justify-content-end mb-4 pt-1">
+											<div>
+												<p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"><?= $chat->pesan ?></p>
+												<p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end"><?= $chat->waktu ?></p>
+											</div>
+											<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+												alt="avatar 1" style="width: 45px; height: 100%;">
+										</div>
+									<?php endif ?>
+								<?php endforeach ?>
+							</div>
+							<form action="/chat/tambah" method="post" class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+								<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+									alt="avatar 3" style="width: 40px; height: 100%;">
+								<input type="text" name="pesan" class="form-control form-control-lg" id="exampleFormControlInput1"
+									placeholder="Type message">
+								<button class="btn btn-light ms-3" href="#!"><i class="fas fa-paper-plane"></i></button>
+							</form>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+
+		<button id="chat-logo" class="btn-light" style="position:fixed; display:block; right: 20px; bottom: 20px; z-index:999; border-radius: 100%; width: 70px; height:70px;">
+			<img src="/homepage/images/icon-chat.png" width="24" height="24" />
+		</button>
+
+		<script>
+			const chatSection = document.getElementById('chat-assist');
+			const chatLogo = document.getElementById('chat-logo');
+			const closeBtn = document.getElementById('btn-close-chat');
+
+			// Ketika tombol tutup diklik, sembunyikan chat dan tampilkan logo
+			closeBtn.addEventListener('click', function() {
+				chatSection.style.display = 'none';
+				chatLogo.style.display = 'block';
+			});
+
+			// Ketika logo chat diklik, tampilkan chat dan sembunyikan logo
+			chatLogo.addEventListener('click', function() {
+				chatSection.style.display = 'block';
+				chatLogo.style.display = 'none';
+				const chatBody = document.getElementById('chat-body');
+				if (chatBody) {
+					chatBody.scrollTop = chatBody.scrollHeight;
+				}
+			});
+		</script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const chatBody = document.getElementById('chat-body');
+				if (chatBody) {
+					chatBody.scrollTop = chatBody.scrollHeight;
+				}
+			});
+		</script>
+
+		<?php if (session()->getFlashdata('open_chat')) : ?>
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					// Buka chat otomatis
+					document.getElementById('chat-assist').style.display = 'block';
+					document.getElementById('chat-logo').style.display = 'none';
+					const chatBody = document.getElementById('chat-body');
+					if (chatBody) {
+						chatBody.scrollTop = chatBody.scrollHeight;
+					}
+				});
+			</script>
+		<?php endif; ?>
+	<?php endif; ?>
 
 	<script src="/homepage/js/bootstrap.bundle.min.js"></script>
 	<script src="/homepage/js/tiny-slider.js"></script>

@@ -69,7 +69,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin/chat" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-message"></i>
                                 </span>

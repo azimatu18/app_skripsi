@@ -23,4 +23,14 @@ class UserModel extends Model
     {
         return $this->hasMany(PemesananModel::class, 'user_id');
     }
+
+    function chat_konsumen()
+    {
+        return $this->hasMany(ChatModel::class, 'konsumen_id');
+    }
+
+    function chat_pemasaran()
+    {
+        return $this->hasMany(ChatModel::class, 'user_id');
+    }
 }
