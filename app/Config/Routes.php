@@ -50,6 +50,3 @@ $routes->get('/pemesanan/cetak/invoice/(:any)', 'PemesananController::cetak_invo
 $routes->post('/pemesanan/konfirmasi/(:any)', 'PemesananController::konfirmasi/$1', ['filter' => 'konsumen_filter']);
 $routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::cetak_faktur_penjualan/$1', ['filter' => 'konsumen_filter']);
 $routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1', ['filter' => 'konsumen_filter']);
-
-
-// $routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1');

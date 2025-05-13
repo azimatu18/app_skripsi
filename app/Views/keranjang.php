@@ -32,6 +32,7 @@
               <th class="product-thumbnail">Gambar</th>
               <th class="product-name">Judul</th>
               <th class="product-price">Harga</th>
+              <th class="product-price">Diskon</th>
               <th class="product-quantity">Jumlah</th>
               <th class="product-total">Total</th>
               <th class="product-remove">Hapus</th>
@@ -49,6 +50,7 @@
                   <h2 class="h5 text-black"><?= $keranjang['produk']['judul'] ?></h2>
                 </td>
                 <td>Rp. <?= number_format($keranjang['produk']['harga'], 0, '.', '.') ?></td>
+                <td><?= $keranjang ['produk']['diskon'] ?>%</td>
                 <td>
                   <form action="/keranjang/ubah/<?= $keranjang['id'] ?>" method="post">
                     <div class="input-group mb-3 d-flex align-items-center" style="max-width: 120px;">
@@ -64,7 +66,8 @@
                 </td>
                 <td>
                   <?php
-                  $total =  $keranjang['produk']['harga'] * $keranjang['jumlah'];
+                  $harga_diskon = $keranjang['produk']['harga'] - ($keranjang['produk']['harga'] * $keranjang['produk']['diskon'] / 100);
+                  $total = $harga_diskon * $keranjang['jumlah'];
                   $total_belanja += $total;
                   echo 'Rp.' . number_format($total, 0, '.', '.');
                   ?>

@@ -127,12 +127,13 @@
             foreach ($produk as $no => $data):
                 $total += $data['jumlah'] * $data['harga'];
             ?>
+            <!-- PR bagian diskon tidak muncul -->
                 <tr>
                     <td class="text-center"><?= $no + 1 ?></td>
                     <td><?= $data['judul'] ?></td>
                     <td><?= $data['jumlah'] ?> Unit</td>
                     <td>Rp. <?= number_format($data['harga'], 0, '.', '.') ?></td>
-                    <td>30%</td>
+                    <td><?= $data['diskon'] ?></td>
                     <td>-</td>
                     <td class="text-right">Rp. <?= number_format($data['jumlah'] * $data['harga'], 0, '.', '.') ?></td>
                 </tr>

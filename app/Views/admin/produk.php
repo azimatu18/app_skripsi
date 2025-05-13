@@ -36,7 +36,7 @@
                             <th scope="col">Tipe</th>
                             <th scope="col">Merek</th>
                             <th scope="col">Harga</th>
-                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Diskon</th>
                             <th scope="col">Gambar</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -49,7 +49,7 @@
                                 <td><span class="badge bg-secondary"><?= $produk['tipe'] ?></span></td>
                                 <td><?= $produk['merek'] ?></td>
                                 <td>Rp <?= number_format($produk['harga'], 0, ',', '.') ?></td>
-                                <td><?= $produk['deskripsi'] ?></td>
+                                <td><?= $produk['diskon'] ?>%</td>
                                 <td>
                                     <img width="80" class="img-thumbnail" src="<?= base_url('uploads/gambar/' . $produk['gambar']) ?>" alt="gambar produk">
                                 </td>

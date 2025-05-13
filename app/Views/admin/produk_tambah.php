@@ -36,6 +36,13 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <label class="form-label">Diskon</label>
+                        <div class="input-group">
+                            <input type="number" name="diskon" class="form-control" placeholder="Contoh: 20" value="0" required>
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <label class="form-label">Gambar Produk</label>
                         <input type="file" name="gambar" class="form-control" accept="image/*" required>
                     </div>

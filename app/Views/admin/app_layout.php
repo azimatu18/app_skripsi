@@ -77,7 +77,6 @@
                             </a>
                         </li>
                     </ul>
-                    
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>

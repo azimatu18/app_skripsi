@@ -23,8 +23,9 @@ class ProdukController extends BaseController
     {
         $judul = request()->getPost('judul');
         $tipe = request()->getPost('tipe');
-        $tipe = request()->getPost('merek');
+        $merek = request()->getPost('merek');
         $harga = request()->getPost('harga');
+        $diskon = request()->getPost('diskon');
         $deskripsi = request()->getPost('deskripsi');
         $gambar = request()->getFile('gambar');
 
@@ -34,8 +35,9 @@ class ProdukController extends BaseController
         $produk = ProdukModel::create([
             'judul' => $judul,
             'tipe' => $tipe,
-            'merek' => $tipe,
+            'merek' => $merek,
             'harga' => $harga,
+            'diskon' => $diskon,
             'deskripsi' => $deskripsi,
             'gambar' => $nama_gambar
         ]);
@@ -58,6 +60,7 @@ class ProdukController extends BaseController
         $tipe = request()->getPost('tipe');
         $merek = request()->getPost('merek');
         $harga = request()->getPost('harga');
+        $diskon = request()->getPost('diskon');
         $deskripsi = request()->getPost('deskripsi');
         $gambar = request()->getFile('gambar');
 
@@ -66,6 +69,7 @@ class ProdukController extends BaseController
             'tipe' => $tipe,
             'merek' => $merek,
             'harga' => $harga,
+            'diskon' => $diskon,
             'deskripsi' => $deskripsi
         ];
 

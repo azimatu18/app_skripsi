@@ -31,6 +31,10 @@ class BuatProdukTabel extends Migration
 				'type'           => 'BIGINT',
                 'constraint'     => 50
 			],
+			'diskon' => [
+				'type'           => 'INT',
+                'constraint'     => 10
+			],
 			'deskripsi'      => [
 				'type'           => 'TEXT',
 			],

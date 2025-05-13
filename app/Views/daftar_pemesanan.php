@@ -29,29 +29,9 @@
                                 <td>Rp <?= number_format($data['total_harga'], 0, ',', '.') ?></td>
 
                                 <td>
-                                <?php
+                                    <?php
                                     $tipe = $data['status_tipe'];
-                                    switch ($tipe) {
-                                        case 1:
-                                            echo 'Menunggu Pembayaran';
-                                            break;
-                                        case 2:
-                                            echo 'Menunggu Konfirmasi Pembayaran';
-                                            break;
-                                        case 3:
-                                            echo 'Diproses';
-                                            break;
-                                        case 4:
-                                            echo 'Dikirim';
-                                            break;
-                                        case 5:
-                                            echo 'Selesai';
-                                            break;
-
-                                        default:
-                                            echo 'Tipe Tidak Sesuai';
-                                            break;
-                                    }
+                                    echo status_pemesanan($tipe);
                                     ?>
                                 </td>
 

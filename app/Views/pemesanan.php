@@ -55,23 +55,28 @@
                                 <table class="table site-block-order-table mb-5">
                                     <thead>
                                         <th>Produk</th>
-                                        <th>Total</th>
+                                        <th>Diskon</th>
+                                        <th class="text-center">Total</th>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $total_belanja = 0;
                                         foreach ($keranjang_produk as $no => $keranjang):
-                                            $total =  $keranjang['produk']['harga'] * $keranjang['jumlah'];
+                                            $harga_diskon = $keranjang['produk']['harga'] - ($keranjang['produk']['harga'] * $keranjang['produk']['diskon'] / 100);
+                                            $total =  $harga_diskon * $keranjang['jumlah'];
                                             $total_belanja += $total;
                                         ?>
                                             <tr>
                                                 <td><?= $keranjang['produk']['judul'] ?> <strong class="mx-2">x</strong> <?= $keranjang['jumlah'] ?></td>
-                                                <td>Rp. <?= number_format($total, 0, '.', '.') ?></td>
+                                                <td><?= $keranjang['produk']['diskon'] ?> % </td>
+                                                <td class="text-center text-black font-weight-bold">Rp. <?= number_format($total, 0, '.', '.') ?></td>
                                             </tr>
                                         <?php endforeach ?>
                                         <tr>
-                                            <td class="text-black font-weight-bold"><strong>Total Pesanan</strong></td>
-                                            <td class="text-black font-weight-bold"><strong>Rp. <?= number_format($total_belanja, 0, '.', '.') ?></strong></td>
+                                            <td colspan="2" style="color: black; font-weight: bold;">TOTAL PESANAN</td>
+                                            <td class="text-center text-black font-weight-bold">
+                                                <strong>Rp. <?= number_format($total_belanja, 0, '.', '.') ?>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -86,6 +91,7 @@
                                             <p class="mb-0">
                                                 Pembayaran dapat ditranfer melalui: Bank BCA Ni Ketut Sri Nilowati
                                             </p>
+                                            <p>No. Rekening: 5625049137</p>
                                         </div>
                                     </div>
                                 </div>

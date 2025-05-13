@@ -21,7 +21,7 @@
                             </span>
                         </div>
                         <div>
-                            <a href="/pemesanan/cetak/invoice/<?= $pemesanan['id'] ?>" class="btn btn-sm btn-primary w-100">Invoice</a>
+                            <a href="/pemesanan/cetak/invoice/<?= $pemesanan['id'] ?>" class="btn btn-sm btn-primary w-100">Cetak Invoice</a>
                         </div>
                         <?php if ($pemesanan['status_tipe'] == 4): ?>
                             <div>
@@ -47,7 +47,6 @@
                                     </p>
                                     <a href="/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2">Berita Acara</a>
                                     <a href="/pemesanan/cetak/faktur_penjualan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Faktur Penjualan</a>
-                                    <!-- <a href="/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Berita Acara</a> -->
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -60,23 +59,28 @@
                                 <th>Produk</th>
                                 <th>Jumlah</th>
                                 <th>Harga</th>
+                                <th>Diskon</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $total_belanja = 0; ?>
                             <?php foreach ($detail_pesanan as $item): ?>
-                                <?php $subtotal = $item['harga'] * $item['jumlah']; ?>
+                                <?php
+                                $harga_diskon = $item['harga'] - ($item['harga'] * $item['diskon'] / 100);
+
+                                $subtotal = $harga_diskon * $item['jumlah']; ?>
                                 <tr>
                                     <td><?= $item['judul'] ?></td>
                                     <td><?= $item['jumlah'] ?></td>
                                     <td>Rp. <?= number_format($item['harga'], 0, '.', '.') ?></td>
+                                    <td><?= $item['diskon'] ?> % </td>
                                     <td>Rp. <?= number_format($subtotal, 0, '.', '.') ?></td>
                                 </tr>
                                 <?php $total_belanja += $subtotal; ?>
                             <?php endforeach; ?>
                             <tr>
-                                <td colspan="3" class="text-black font-weight-bold"><strong>Total</strong></td>
+                                <td colspan="4" class="text-black font-weight-bold"><strong>Total</strong></td>
                                 <td class="text-black font-weight-bold"><strong>Rp. <?= number_format($total_belanja, 0, '.', '.') ?></strong></td>
                             </tr>
                         </tbody>
@@ -100,7 +104,7 @@
                                     <input type="file" name="bukti_dp" accept="image/*" onchange="form.submit()">
                                 </form>
                                 <?php if ($pemesanan['bukti_dp']): ?>
-                                    <img class="img-thumbnail mt-5" src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="gambar produk">
+                                    <img class="img-thumbnail mt-5" src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="gambar produk" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalBuktiDP">
                                 <?php endif ?>
                             </div>
                         </div>
@@ -115,7 +119,7 @@
                                     </form>
 
                                     <?php if ($pemesanan['bukti_lunas']): ?>
-                                        <img class="img-thumbnail mt-5" src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" alt="gambar produk">
+                                        <img class="img-thumbnail mt-5" src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" alt="gambar produk" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalBuktiLunas">
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -129,6 +133,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
@@ -173,5 +178,39 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Bukti DP -->
+<?php if ($pemesanan['bukti_dp']): ?>
+    <div class="modal fade" id="modalBuktiDP" tabindex="-1" aria-labelledby="modalBuktiDPLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBuktiDPLabel">Bukti Pembayaran DP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="Bukti DP" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<!-- Modal Bukti Pelunasan -->
+<?php if ($pemesanan['bukti_lunas']): ?>
+    <div class="modal fade" id="modalBuktiLunas" tabindex="-1" aria-labelledby="modalBuktiLunasLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBuktiLunasLabel">Bukti Pelunasan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" alt="Bukti Pelunasan" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
 <?= $this->endSection() ?>

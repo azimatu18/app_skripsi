@@ -54,11 +54,14 @@ class PemesananController extends BaseController
             $pemesanan_produk->tipe = $produk['produk']['tipe'];
             $pemesanan_produk->jumlah = $produk['jumlah'];
             $pemesanan_produk->harga = $produk['produk']['harga'];
+            $pemesanan_produk->diskon = $produk['produk']['diskon'];
             $pemesanan_produk->deskripsi = $produk['produk']['deskripsi'];
             $pemesanan_produk->gambar = $produk['produk']['gambar'];
             $pemesanan_produk->save();
 
-            $total_harga += $produk['jumlah'] * $produk['produk']['harga'];
+            $harga_diskon = $produk['produk']['harga'] - ($produk['produk']['harga'] * $produk['produk']['diskon'] / 100);
+
+            $total_harga += $produk['jumlah'] * $harga_diskon;
 
             $produk->delete();
         }
@@ -133,7 +136,8 @@ class PemesananController extends BaseController
     }
 
 
-    function cetak_invoice($id)  {
+    function cetak_invoice($id)
+    {
         $user = UserModel::data();
 
         if ($user->level == 'konsumen') {
@@ -152,19 +156,20 @@ class PemesananController extends BaseController
         return view('cetak_invoice', $data);
     }
 
-    function konfirmasi($id) {
+    function konfirmasi($id)
+    {
         $user = UserModel::data();
         $pemesanan = $user->pemesanan()->where('id', $id)->first();
-        
+
         $penerimaan = new PenerimaanModel();
-        $penerimaan->user_id=$user->id;
-        $penerimaan->pemesanan_id=$pemesanan->id;
-        $penerimaan->fungsi=request()->getPost('fungsi');
-        $penerimaan->training=request()->getPost('training');
-        $penerimaan->saran=request()->getPost('saran');
+        $penerimaan->user_id = $user->id;
+        $penerimaan->pemesanan_id = $pemesanan->id;
+        $penerimaan->fungsi = request()->getPost('fungsi');
+        $penerimaan->training = request()->getPost('training');
+        $penerimaan->saran = request()->getPost('saran');
         $penerimaan->save();
 
-        $pemesanan->status_tipe=5;
+        $pemesanan->status_tipe = 5;
         $pemesanan->update();
         return redirect()->to(base_url('/pemesanan/detail/' . $pemesanan->id));
     }

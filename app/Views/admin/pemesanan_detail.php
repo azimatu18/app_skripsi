@@ -114,7 +114,12 @@
                             <?php if (!empty($pemesanan['bukti_dp'])): ?>
                                 <h4 class="text-black mt-4">Bukti Pembayaran DP</h4>
                                 <div class="mb-3">
-                                    <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="Bukti DP" class="img-fluid img-thumbnail" style="max-width: 400px;">
+                                    <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>"
+                                        alt="Bukti DP"
+                                        class="img-fluid img-thumbnail"
+                                        style="max-width: 400px; cursor: pointer;"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalBuktiDP">
                                 </div>
                             <?php else: ?>
                                 <div class="alert alert-warning mt-4">Belum ada bukti pembayaran DP yang diunggah.</div>
@@ -124,7 +129,12 @@
                             <?php if (!empty($pemesanan['bukti_lunas'])): ?>
                                 <h4 class="text-black mt-4">Bukti Pembayaran lunas</h4>
                                 <div class="mb-3">
-                                    <img src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" alt="Bukti DP" class="img-fluid img-thumbnail" style="max-width: 400px;">
+                                    <img src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>"
+                                        alt="Bukti Lunas"
+                                        class="img-fluid img-thumbnail"
+                                        style="max-width: 400px; cursor: pointer;"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalBuktiLunas">
                                 </div>
                             <?php else: ?>
                                 <div class="alert alert-warning mt-4">Belum ada bukti pelunasan yang diunggah.</div>
@@ -140,5 +150,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Bukti DP -->
+<div class="modal fade" id="modalBuktiDP" tabindex="-1" aria-labelledby="modalBuktiDPLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalBuktiDPLabel">Bukti Pembayaran DP</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" class="img-fluid" alt="Bukti DP">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Bukti Lunas -->
+<div class="modal fade" id="modalBuktiLunas" tabindex="-1" aria-labelledby="modalBuktiLunasLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalBuktiDPLabel">Bukti Pembayaran Lunas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" class="img-fluid" alt="Bukti Lunas">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?= $this->endSection() ?>
