@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
-    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
+	<title>CV Gedrian Intimed Abadi</title>
+	<link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
     <link rel="stylesheet" href="/admin/css/styles.min.css" />
 </head>
 
@@ -30,7 +30,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Home</span>
+                            <span class="hide-menu">Menu</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/admin/dashboard" aria-expanded="false">
@@ -39,10 +39,6 @@
                                 </span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
-                        </li>
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">MENU</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/admin/produk" aria-expanded="false">

@@ -38,7 +38,6 @@ $routes->post('/admin/pemesanan/kirim', 'AdminPemesananController::kirim', ['fil
 $routes->get('/admin/pemesanan/cetak/surat_jalan/(:any)', 'AdminPemesananController::cetak_surat_jalan/$1', ['filter' => 'admin_filter']);
 $routes->get('/admin/pemesanan/cetak/faktur_penjualan/(:any)', 'AdminPemesananController::cetak_faktur_penjualan/$1', ['filter' => 'admin_filter']);
 
-
 $routes->get('/keranjang', 'KeranjangController::index', ['filter' => 'konsumen_filter']);
 $routes->post('/keranjang/tambah/(:any)', 'KeranjangController::tambah/$1', ['filter' => 'konsumen_filter']);
 $routes->post('/keranjang/ubah/(:any)', 'KeranjangController::ubah/$1', ['filter' => 'konsumen_filter']);

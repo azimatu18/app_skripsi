@@ -1,16 +1,22 @@
 <?= $this->extend('admin/app_layout') ?>
 <?= $this->section('konten') ?>
 
+<style>
+    .text-custom-blue {
+        color: #003366;
+    }
+</style>
+
 <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between mb-4">
-        <h4 class="text-primary"><i class="bi bi-box-seam-fill me-2"></i>Tambah Produk</h4>
+        <h4 class="text-custom-blue"><i class="bi bi-box-seam-fill me-2"></i>Tambah Produk</h4>
         <a href="/admin/produk" class="btn btn-outline-primary">
             <i class="bi bi-arrow-left-circle me-1"></i> Kembali
         </a>
     </div>
 
     <div class="card shadow-sm border-0">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header" style="background-color: #003366; color: white;">
             <strong><i class="bi bi-plus-circle me-2"></i>Form Tambah Produk</strong>
         </div>
         <div class="card-body">
@@ -53,7 +59,7 @@
                 </div>
 
                 <div class="mt-4 d-flex justify-content-end">
-                    <button class="btn btn-success px-4">
+                    <button class="btn btn-blue px-4">
                         <i class="bi bi-save2 me-1"></i> Simpan Produk
                     </button>
                 </div>

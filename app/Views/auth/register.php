@@ -2,13 +2,10 @@
 <html lang="en">
 
 <head>
-    <!-- Meta dan Title -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register | Modernize</title>
-
-    <!-- Favicon dan CSS -->
-    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
+    <title>CV Gedrian Intimed Abadi</title>
+    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
     <link rel="stylesheet" href="/admin/css/styles.min.css" />
 </head>
 

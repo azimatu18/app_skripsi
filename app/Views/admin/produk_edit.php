@@ -28,6 +28,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="diskon" class="form-label">Diskon</label>
+                    <input type="number" name="diskon" class="form-control" id="diskon" value="<?= esc($produk['diskon']) ?>" required>
+                </div>
+
+                <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea name="deskripsi" class="form-control" rows="4" required><?= esc($produk['deskripsi']) ?></textarea>
                 </div>

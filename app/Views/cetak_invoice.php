@@ -111,7 +111,7 @@
 
     <table>
         <thead>
-            <tr>
+            <tr style="background-color: #2e7d32; color: white;">
                 <th>No</th>
                 <th>Deskripsi Item</th>
                 <th>Kuantitas</th>
@@ -125,46 +125,48 @@
             <?php
             $total = 0;
             foreach ($produk as $no => $data):
-                $total += $data['jumlah'] * $data['harga'];
+                $diskon = $data['diskon'] / 100;
+                $harga_diskon = $data['harga'] - ($data['harga'] * $diskon);
+                $total_diskon = $data['harga'] * $data['jumlah'] * $diskon;
+                $sub_total = $data['harga'] * $data['jumlah'];
+                $total =  $harga_diskon * $data['jumlah'];
             ?>
-            <!-- PR bagian diskon tidak muncul -->
                 <tr>
-                    <td class="text-center"><?= $no + 1 ?></td>
-                    <td><?= $data['judul'] ?></td>
-                    <td><?= $data['jumlah'] ?> Unit</td>
-                    <td>Rp. <?= number_format($data['harga'], 0, '.', '.') ?></td>
-                    <td><?= $data['diskon'] ?></td>
-                    <td>-</td>
-                    <td class="text-right">Rp. <?= number_format($data['jumlah'] * $data['harga'], 0, '.', '.') ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?= $no + 1 ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?= $data['judul'] ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?= $data['jumlah'] ?> Unit</td>
+                    <td style="text-align: center; vertical-align: middle;">Rp. <?= number_format($data['harga'], 0, '.', '.') ?></td>
+                    <td style="text-align: center; vertical-align: middle;"><?= $data['diskon'] ?> %</td>
+                    <td style="text-align: center; vertical-align: middle;">-</td>
+                    <td class="text-right">Rp. <?= number_format($total, 0, '.', '.') ?></td>
                 </tr>
             <?php endforeach ?>
-
         </tbody>
     </table>
 
     <table>
         <tr>
             <td colspan="4" class="no-border text-right"><strong>Subtotal</strong></td>
-            <td class="text-right">Rp. 328.320.000</td>
+            <td class="text-right">Rp. <?= number_format($sub_total, 0, '.', '.') ?></td>
         </tr>
         <tr>
             <td colspan="4" class="no-border text-right"><strong>Total Diskon</strong></td>
-            <td class="text-right">Rp. 114.696.000</td>
+            <td class="text-right">Rp.<?= number_format($total_diskon, 0, '.', '.') ?></td>
         </tr>
         <tr>
             <td colspan="4" class="no-border text-right"><strong>Total</strong></td>
-            <td class="text-right">Rp. 267.624.000</td>
+            <td class="text-right">Rp. <?= number_format($total, 0, '.', '.') ?></td>
         </tr>
         <tr>
             <td colspan="4" class="no-border text-right"><strong>DP 50%</strong></td>
-            <td class="text-right">Rp. 133.812.000</td>
+            <td class="text-right">Rp. <?= number_format($total / 2, 0, '.', '.') ?></td>
         </tr>
     </table>
 
     <div class="signature">
         <p>CV. Gedrian Intimed Abadi</p>
         <br><br><br>
-        <p><strong>Ni Ketut Sri Nilowati</strong></p>
+        <p class="text-center"><strong>Ni Ketut Srinilowati</strong></p>
     </div>
 
     <div class="payment-info">

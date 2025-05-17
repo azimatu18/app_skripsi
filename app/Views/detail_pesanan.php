@@ -68,8 +68,8 @@
                             <?php foreach ($detail_pesanan as $item): ?>
                                 <?php
                                 $harga_diskon = $item['harga'] - ($item['harga'] * $item['diskon'] / 100);
-
-                                $subtotal = $harga_diskon * $item['jumlah']; ?>
+                                $subtotal = $harga_diskon * $item['jumlah']; 
+                                ?>
                                 <tr>
                                     <td><?= $item['judul'] ?></td>
                                     <td><?= $item['jumlah'] ?></td>
@@ -126,7 +126,7 @@
                         <?php endif ?>
                     </div>
                     <div class="form-group">
-                        <a href="/daftar-pemesanan" class="btn btn-black btn-lg py-3">Kembali</a>
+                        <a href="/daftar-pemesanan" class="btn btn-black btn-lg py-3 mt-4">Kembali</a>
                     </div>
                 </div>
             </div>

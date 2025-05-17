@@ -2,13 +2,10 @@
 <html lang="en">
 
 <head>
-  <!-- Meta dan title -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login | Modernize</title>
-
-  <!-- Favicon dan CSS -->
-  <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
+  <title>CV Gedrian Intimed Abadi</title>
+	<link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
   <link rel="stylesheet" href="/admin/css/styles.min.css" />
 </head>
 
@@ -63,7 +60,7 @@
 
                   <!-- Tombol submit -->
                   <button type="submit" class="btn btn-primary w-100 py-2 fs-5" style="background-color: #003366;">
-                    Masuk
+                    Login
                   </button>
 
                   <!-- Link ke halaman register -->

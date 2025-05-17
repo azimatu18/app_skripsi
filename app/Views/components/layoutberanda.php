@@ -35,9 +35,11 @@
 
 			<div class="collapse navbar-collapse" id="navbarsFurni">
 				<?php $current_url = $_SERVER['REQUEST_URI']; ?>
+
 				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+
 					<li class="nav-item <?= ($current_url == '/' ? 'active' : '') ?>">
-						<a class="nav-link" href="/">Beranda</a>
+						<a class="nav-link" href="/">Dashboard</a>
 					</li>
 					<li class="nav-item <?= (strpos($current_url, '/shop') !== false ? 'active' : '') ?>">
 						<a class="nav-link" href="/shop">Toko</a>
@@ -49,41 +51,39 @@
 						<a class="nav-link" href="/contact">Kontak</a>
 					</li>
 				</ul>
-
-				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-					<?php if (session('user_id')): ?>
-						<li class="nav-item <?= (strpos($current_url, '/daftar-pemesanan') !== false ? 'active' : '') ?>">
-							<a class="nav-link" href="/daftar-pemesanan">Daftar Pemesanan</a>
-						</li>
-
-						<li>
-							<div class="d-flex">
-								<a class="nav-link" href="/keranjang"><img src="/homepage/images/cart.svg"></a>
-								<div class="fw-bold">
-									<div class="rounded-circle bg-white text-danger d-flex align-items-center justify-content-center" style="width: 20px; height: 20px">
-										<span><?= App\Models\KeranjangModel::where('user_id', session('user_id'))->count() ?></span>
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<?php if (session('user_id')): ?>
+							<li class="nav-item <?= (strpos($current_url, '/daftar-pemesanan') !== false ? 'active' : '') ?>">
+								<a class="nav-link" href="/daftar-pemesanan">Daftar Pemesanan</a>
+							</li>
+							<li>
+								<div class="d-flex">
+									<a class="nav-link" href="/keranjang"><img src="/homepage/images/cart.svg"></a>
+									<div class="fw-bold">
+										<div class="rounded-circle bg-white text-danger d-flex align-items-center justify-content-center" style="width: 20px; height: 20px">
+											<span><?= App\Models\KeranjangModel::where('user_id', session('user_id'))->count() ?></span>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
+							</li>
 
-						<li class="nav-item dropdown">
-							<a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<img src="/homepage/images/user.svg">
-								<span class="text-white"><?= App\Models\UserModel::data()['nama'] ?></span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-								<div class="message-body" style="width: 250px;">
-									<h6 class="p-3">Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di ...</h6>
-									<a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+							<li class="nav-item dropdown">
+								<a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+									aria-expanded="false">
+									<img src="/homepage/images/user.svg">
+									<span class="text-white"><?= App\Models\UserModel::data()['nama'] ?></span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+									<div class="message-body" style="width: 250px;">
+										<h6 class="p-3">Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di ...</h6>
+										<a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+									</div>
 								</div>
-							</div>
-						</li>
-					<?php else: ?>
-						<li><a href="/login" class="btn btn-light">Masuk</a></li>
-					<?php endif ?>
-				</ul>
+							</li>
+						<?php else: ?>
+							<li><a href="/login" class="btn btn-light">Login</a></li>
+						<?php endif ?>
+					</ul>
 			</div>
 		</div>
 	</nav>
@@ -136,10 +136,8 @@
 	<?php if (session('user_id')): ?>
 		<section id="chat-assist" style="display: none;">
 			<div class="container py-5">
-
 				<div class="row d-flex justify-content-center">
 					<div class="col-12">
-
 						<div class="card" id="chat2">
 							<div class="card-header d-flex justify-content-between align-items-center p-3">
 								<h5 class="mb-0">Chat</h5>

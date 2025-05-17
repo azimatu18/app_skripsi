@@ -15,7 +15,7 @@ class BuatPemesanan extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true
 			],
-			'user_id'       => [
+			'user_id'      => [
 				'type'           => 'INT',
 				'constraint'     => 11
 			],
@@ -38,22 +38,22 @@ class BuatPemesanan extends Migration
 			'no_po' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 50,
-				'default'		=> null
+				'default'		 => null
 			],
 			'no_surat_jalan' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 50,
-				'default'		=> null
+				'default'		 => null
 			],
 			'tanggal_dikirim' => [
 				'type'           => 'date',
-				'default'		=> null
+				'default'		 => null
 			],
-			'alamat' => [
+			'alamat'      => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 100
 			],
-			'catatan'      => [
+			'catatan'     => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255
 			],
@@ -64,17 +64,17 @@ class BuatPemesanan extends Migration
 			'status_tipe' => [
 				'type'           => 'INT',
 				'constraint'     => 10,
-				'default'		=> 1 // 1= menunggu pemabayaran, 2= menunggu konfirmasi pembayaran, 3= diproses, 4= dikirim, 5= menunggu pelunasan, 6= konfirmasi pelunasan, 7= selesai
+				'default'		 => 1 // 1= menunggu pemabayaran, 2= menunggu konfirmasi pembayaran, 3= diproses, 4= dikirim, 5= menunggu pelunasan, 6= konfirmasi pelunasan, 7= selesai
 			],
-			'bukti_dp'      => [
+			'bukti_dp'	  => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
-				'default' => NULL
+				'default'        => NULL
 			],
 			'bukti_lunas'      => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
-				'default' => NULL
+				'default' 		 => NULL
 			],
 		]);
 

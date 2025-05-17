@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between mb-4">
         <h4 class="text-primary"><i class="bi bi-boxes me-2"></i>Daftar Produk</h4>
-        <a href="/admin/produk/tambah" class="btn btn-success">
+        <a href="/admin/produk/tambah" class="btn btn-blue">
             <i class="bi bi-plus-circle me-1"></i> Tambah Produk
         </a>
     </div>

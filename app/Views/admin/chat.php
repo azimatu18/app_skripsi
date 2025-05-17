@@ -59,8 +59,10 @@
                                 </div>
 
                                 <div class="col-md-6 col-lg-7 col-xl-8">
-                                    <?php if ($idKonsumen = service('request')->getGet('id')): ?>
-                                        <div class="p-3 bg-secondary rounded text-white">Chat dengan Azi</div>
+                                    <?php if ($idKonsumen = service('request')->getGet('id')):
+                                        $nama = \App\Models\UserModel::find($idKonsumen)?->nama;
+                                    ?>
+                                        <div class="p-3 bg-secondary rounded text-white">Chat dengan <?= esc($nama) ?></div>
                                         <div class="p-3" id="data-chat" data-mdb-perfect-scrollbar-init
                                             style="position: relative; height: 500px; overflow-y: scroll;">
                                             <?php
@@ -95,7 +97,7 @@
                                                 alt="avatar 3" style="width: 40px; height: 100%;">
                                             <input type="text" name="pesan" class="form-control form-control-lg" id="exampleFormControlInput1"
                                                 placeholder="Type message">
-                                                <input type="hidden" name="konsumen" value="<?= $idKonsumen ?>">
+                                            <input type="hidden" name="konsumen" value="<?= $idKonsumen ?>">
                                             <button class="btn btn-light ms-3" href="#!"><i class="ti ti-send"></i></button>
                                         </form>
 
