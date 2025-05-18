@@ -51,39 +51,42 @@
 						<a class="nav-link" href="/contact">Kontak</a>
 					</li>
 				</ul>
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<?php if (session('user_id')): ?>
-							<li class="nav-item <?= (strpos($current_url, '/daftar-pemesanan') !== false ? 'active' : '') ?>">
-								<a class="nav-link" href="/daftar-pemesanan">Daftar Pemesanan</a>
-							</li>
-							<li>
-								<div class="d-flex">
-									<a class="nav-link" href="/keranjang"><img src="/homepage/images/cart.svg"></a>
-									<div class="fw-bold">
-										<div class="rounded-circle bg-white text-danger d-flex align-items-center justify-content-center" style="width: 20px; height: 20px">
-											<span><?= App\Models\KeranjangModel::where('user_id', session('user_id'))->count() ?></span>
-										</div>
+				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+					<?php if (session('user_id')): ?>
+						<li class="nav-item <?= (strpos($current_url, '/daftar-pemesanan') !== false ? 'active' : '') ?>">
+							<a class="nav-link" href="/daftar-pemesanan">Daftar Pemesanan</a>
+						</li>
+						<li>
+							<div class="d-flex">
+								<a class="nav-link" href="/keranjang"><img src="/homepage/images/cart.svg"></a>
+								<div class="fw-bold">
+									<div class="rounded-circle bg-white text-danger d-flex align-items-center justify-content-center" style="width: 20px; height: 20px">
+										<span><?= App\Models\KeranjangModel::where('user_id', session('user_id'))->count() ?></span>
 									</div>
 								</div>
-							</li>
+							</div>
+						</li>
 
-							<li class="nav-item dropdown">
-								<a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-									aria-expanded="false">
-									<img src="/homepage/images/user.svg">
-									<span class="text-white"><?= App\Models\UserModel::data()['nama'] ?></span>
-								</a>
-								<div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-									<div class="message-body" style="width: 250px;">
-										<h6 class="p-3">Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di ...</h6>
-										<a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-									</div>
+						<li class="nav-item dropdown">
+							<a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<img src="/homepage/images/user.svg">
+								<span class="text-white"><?= App\Models\UserModel::data()['nama'] ?></span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+								<div class="message-body" style="width: 250px;">
+									<h6 class="p-3">Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di ...</h6>
+									<!-- Tambahan Edit Profil -->
+									<a href="/profil/edit" class="btn btn-primary mx-3 mb-2 d-block">Edit Profil</a>
+									
+									<a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
 								</div>
-							</li>
-						<?php else: ?>
-							<li><a href="/login" class="btn btn-light">Login</a></li>
-						<?php endif ?>
-					</ul>
+							</div>
+						</li>
+					<?php else: ?>
+						<li><a href="/login" class="btn btn-light">Login</a></li>
+					<?php endif ?>
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -176,7 +179,7 @@
 								<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
 									alt="avatar 3" style="width: 40px; height: 100%;">
 								<input type="text" name="pesan" class="form-control form-control-lg" id="exampleFormControlInput1"
-									placeholder="Type message">
+									placeholder="Ketik pesan" required>
 								<button class="btn btn-light ms-3" href="#!"><i class="fas fa-paper-plane"></i></button>
 							</form>
 
