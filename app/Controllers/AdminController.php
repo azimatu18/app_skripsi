@@ -28,7 +28,17 @@ class AdminController extends BaseController
 
     function konsumen()
     {
-        $data['konsumen'] = UserModel::all(); 
+        $data['konsumen'] = UserModel::where('level', 'konsumen')->get();
         return view('admin/konsumen', $data);
+    }
+
+    function konsumenResetPassword($id)
+    {
+
+        $password = request()->getPost('password');
+        $konsumen = UserModel::find($id);
+        $konsumen->password = password_hash($password, PASSWORD_DEFAULT);
+        $konsumen->update();
+        return redirect()->to(base_url('/admin/konsumen'))->with('success', 'password berhasil direset');
     }
 }

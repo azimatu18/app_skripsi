@@ -1,8 +1,15 @@
 <?= $this->extend('admin/app_layout') ?>
 <?= $this->section('konten') ?>
 
-<div class="container py-4">
+<div class="container py-4" style="padding-top: 100px!important;">
     <h3 class="mb-4 fw-bold">Dashboard Admin</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <h4>Selamat Datang</h4>
+            <p>Halo, <?= App\Models\UserModel::data()['nama'] ?>. Anda Login Sebagai Staf <?= App\Models\UserModel::data()['level'] ?></p>
+        </div>
+    </div>
 
     <div class="row g-4 mb-4">
         <!-- Konsumen -->

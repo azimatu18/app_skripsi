@@ -18,7 +18,11 @@ $routes->post('/login/submit', 'AuthController::loginSubmit');
 $routes->get('/logout', 'AuthController::logout');
 
 $routes->get('/admin/dashboard', 'AdminController::dashboard', ['filter' => 'admin_filter']);
+
 $routes->get('/admin/konsumen', 'AdminController::konsumen', ['filter' => 'admin_filter']);
+$routes->post('/admin/konsumen/reset-password/(:num)', 'AdminController::konsumenResetPassword/$1', ['filter' => 'admin_filter']);
+
+
 $routes->get('/admin/produk', 'ProdukController::produk', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/tambah', 'ProdukController::produkTambah', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter' => 'admin_filter']);
@@ -54,3 +58,9 @@ $routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::c
 $routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1', ['filter' => 'konsumen_filter']);
 
 $routes->post('/chat/tambah', 'ChatController::tambah');
+
+
+$routes->get('/admin/staf', 'StafController::staf', ['filter' => 'admin_filter']);
+$routes->post('/admin/staf/submit', 'StafController::stafSubmit', ['filter' => 'admin_filter']);
+$routes->post('/admin/staf/update/(:num)', 'StafController::stafUpdate/$1', ['filter' => 'admin_filter']);
+$routes->post('/admin/staf/hapus/(:num)', 'StafController::stafHapus/$1', ['filter' => 'admin_filter']);

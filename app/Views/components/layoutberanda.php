@@ -75,9 +75,6 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
 								<div class="message-body" style="width: 250px;">
-									<h6 class="p-3">Halo <?= App\Models\UserModel::data()['nama'] ?>, Selamat datang di ...</h6>
-									<!-- Tambahan Edit Profil -->
-									<a href="/profil/edit" class="btn btn-primary mx-3 mb-2 d-block">Edit Profil</a>
 									
 									<a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
 								</div>

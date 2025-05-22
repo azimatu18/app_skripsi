@@ -31,6 +31,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,7 +40,32 @@
                                 <td class="text-center"><?= $no + 1 ?></td>
                                 <td><?= $data['nama'] ?></td>
                                 <td><?= $data['email'] ?></td>
+                                <td>
+                                    <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal<?= $data['id'] ?>">Reset Password</button>
+                                </td>
                             </tr>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModal<?= $data['id'] ?>Label" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModal<?= $data['id'] ?>Label">reset Password <?= $data['nama'] ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/admin/konsumen/reset-password/<?= $data['id'] ?>" method="post">
+                                                <label>Password</label>
+                                                <input type="text" class="form-control mb-2" name="password" value="12345678">
+                                                <button class="btn btn-primary">
+                                                    Reset password
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endforeach ?>
                     </tbody>
                 </table>

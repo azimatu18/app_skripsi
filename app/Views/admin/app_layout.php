@@ -7,6 +7,7 @@
     <title>CV Gedrian Intimed Abadi</title>
     <link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
     <link rel="stylesheet" href="/admin/css/styles.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -25,6 +26,7 @@
                         <i class="ti ti-x fs-8"></i>
                     </div>
                 </div>
+                <?php $level = App\Models\UserModel::data()['level'] ?>
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
@@ -40,14 +42,16 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/admin/produk" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-box"></i>
-                                </span>
-                                <span class="hide-menu">Produk</span>
-                            </a>
-                        </li>
+                        <?php if ($level == 'pemasaran'): ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/produk" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-box"></i>
+                                    </span>
+                                    <span class="hide-menu">Produk</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/admin/pemesanan" aria-expanded="false">
                                 <span>
@@ -56,22 +60,32 @@
                                 <span class="hide-menu">Pesanan</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/admin/konsumen" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-users"></i>
-                                </span>
-                                <span class="hide-menu">Data Konsumen</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/admin/chat" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-message"></i>
-                                </span>
-                                <span class="hide-menu">Chat</span>
-                            </a>
-                        </li>
+                        <?php if ($level == 'pemasaran'): ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/konsumen" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-users"></i>
+                                    </span>
+                                    <span class="hide-menu">Data Konsumen</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/staf" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-users"></i>
+                                    </span>
+                                    <span class="hide-menu">Data Staf</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/chat" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-message"></i>
+                                    </span>
+                                    <span class="hide-menu">Chat</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -96,7 +110,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    <img src="/admin/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                                    <img src="/admin/images/profile/admin.png" alt="" width="35" height="35" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <div class="message-body">
@@ -129,6 +143,17 @@
 
         </div>
     </div>
+
+    <?php if (!empty(session()->getFlashdata('success'))): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: "<?= session()->getFlashdata('success') ?>"
+            })
+        </script>
+    <?php endif ?>
+
     <script src="/admin/libs/jquery/dist/jquery.min.js"></script>
     <script src="/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/admin/js/sidebarmenu.js"></script>

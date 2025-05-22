@@ -22,22 +22,26 @@
                             <div class="alert alert-primary mb-2">
                                 <b>Status: </b>
                                 <?php
+                                $level = App\Models\UserModel::data()['level'];
                                 $tipe = $pemesanan['status_tipe'];
                                 echo status_pemesanan($tipe);
                                 ?>
                             </div>
 
+
                             <?php if ($pemesanan['status_tipe'] == '2' && !empty($pemesanan['bukti_dp'])): ?>
-                                <div class="bg-primary bg-opacity-25 p-3 rounded">
-                                    <h4>Konsumen sudah mengirim bukti pembayaran DP</h4>
-                                    <p>
-                                        Pastikan Bukti pembayaran yang dikirim sudah sesuai dengan tagihan dan dana dan masuk
-                                    </p>
-                                    <form action="/admin/pemesanan/konfirmasi" method="post">
-                                        <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
-                                        <button type="submit" class="btn btn-success">Konfirmasi & Ubah ke Diproses</button>
-                                    </form>
-                                </div>
+                                <?php if ($level == 'pemasaran'): ?>
+                                    <div class="bg-primary bg-opacity-25 p-3 rounded">
+                                        <h4>Konsumen sudah mengirim bukti pembayaran DP</h4>
+                                        <p>
+                                            Pastikan Bukti pembayaran yang dikirim sudah sesuai dengan tagihan dan dana dan masuk
+                                        </p>
+                                        <form action="/admin/pemesanan/konfirmasi" method="post">
+                                            <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
+                                            <button type="submit" class="btn btn-success">Konfirmasi & Ubah ke Diproses</button>
+                                        </form>
+                                    </div>
+                                <?php endif ?>
                             <?php elseif ($pemesanan['status_tipe'] == '3'): ?>
                                 <div class="bg-primary bg-opacity-25 p-3 mb-4 rounded">
                                     <h4>Surat Jalan</h4>
@@ -57,16 +61,19 @@
                                     </form>
                                 </div>
                             <?php elseif ($pemesanan['status_tipe'] == '6' && !empty($pemesanan['bukti_lunas'])): ?>
-                                <div class="bg-primary bg-opacity-25 p-3 rounded">
-                                    <h4>Konsumen sudah mengirim bukti pembayaran lunas</h4>
-                                    <p>
-                                        Pastikan Bukti pelunasna yang dikirim sudah sesuai dengan tagihan dan dana yang masuk
-                                    </p>
-                                    <form action="/admin/pemesanan/lunas" method="post">
-                                        <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
-                                        <button type="submit" class="btn btn-success">Konfirmasi & Ubah ke Selesai</button>
-                                    </form>
-                                </div>
+                                <?php if ($level == 'pemasaran'): ?>
+
+                                    <div class="bg-primary bg-opacity-25 p-3 rounded">
+                                        <h4>Konsumen sudah mengirim bukti pembayaran lunas</h4>
+                                        <p>
+                                            Pastikan Bukti pelunasna yang dikirim sudah sesuai dengan tagihan dan dana yang masuk
+                                        </p>
+                                        <form action="/admin/pemesanan/lunas" method="post">
+                                            <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
+                                            <button type="submit" class="btn btn-success">Konfirmasi & Ubah ke Selesai</button>
+                                        </form>
+                                    </div>
+                                <?php endif ?>
                             <?php elseif ($pemesanan['status_tipe'] == '7'): ?>
                                 <div class="bg-primary bg-opacity-25 p-3 rounded">
                                     <h4>Pesanan Sudah selesai</h4>
