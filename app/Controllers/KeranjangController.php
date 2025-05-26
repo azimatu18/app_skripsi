@@ -62,4 +62,16 @@ class KeranjangController extends BaseController
 
         return redirect()->back();
     }
+
+    function hapus($id_keranjang)
+    {
+        $user = UserModel::data();
+        $keranjang = KeranjangModel::where('user_id', $user['id'])->where('id', $id_keranjang)->first();
+
+        if ($keranjang) {
+            $keranjang->delete();
+        }
+
+        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang');
+    }
 }

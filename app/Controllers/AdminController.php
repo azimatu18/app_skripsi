@@ -17,6 +17,7 @@ class AdminController extends BaseController
         $jumlah_produk = ProdukModel::count();
         $jumlah_pemesanan = PemesananModel::count();
 
+        // Menyiapkan data untuk dikirim ke view
         $data = [
             'jumlah_konsumen' => $jumlah_konsumen,
             'jumlah_produk' => $jumlah_produk,
@@ -28,17 +29,19 @@ class AdminController extends BaseController
 
     function konsumen()
     {
+        // Mengambil semua user dengan level konsumen
         $data['konsumen'] = UserModel::where('level', 'konsumen')->get();
+
         return view('admin/konsumen', $data);
     }
 
     function konsumenResetPassword($id)
     {
-
         $password = request()->getPost('password');
         $konsumen = UserModel::find($id);
-        $konsumen->password = password_hash($password, PASSWORD_DEFAULT);
+        $konsumen->password = password_hash($password, PASSWORD_DEFAULT); // Mengubah password dengan enkripsi
         $konsumen->update();
+
         return redirect()->to(base_url('/admin/konsumen'))->with('success', 'password berhasil direset');
     }
 }

@@ -92,7 +92,7 @@
 	<!-- Start Footer Section -->
 	<footer class="footer-section" style="padding: 20px;">
 		<div class="container relative">
-			<div class="row g-5 mb-5">
+			<div class="row g-5 mb-2">
 				<div class="col-lg-4">
 					<div class="mb-4 footer-logo-wrap"><img src="/homepage/images/logo.png" class="img-fluid" style="height: 50px;"></div>
 					<p class="mb-4">Jalan Palapa II Gang Venus Iringmulyo, Kec. Metro Timur, Kota Metro, Provinsi Lampung</p>
@@ -106,7 +106,7 @@
 				<div class="col-lg-6">
 					<div class="row links-wrap">
 						<div class="col-6 col-sm-6 col-md-3">
-							<a href="#">Beranda</a>
+							<a href="#">Dashboard</a>
 						</div>
 						<div class="col-6 col-sm-6 col-md-3">
 							<a href="/shop">Toko</a>
@@ -152,7 +152,7 @@
 									<?php if ($chat->user_id): ?>
 										<!-- untuk pemasaran -->
 										<div class="d-flex flex-row justify-content-start">
-											<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+											<img src="/admin/images/profile/admin.png"
 												alt="avatar 1" style="width: 45px; height: 100%;">
 											<div>
 												<p class="small p-2 ms-3 mb-1 rounded-3 bg-light"><?= $chat->pesan ?></p>
@@ -166,14 +166,14 @@
 												<p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"><?= $chat->pesan ?></p>
 												<p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end"><?= $chat->waktu ?></p>
 											</div>
-											<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+											<img src="/homepage/images/user.png"
 												alt="avatar 1" style="width: 45px; height: 100%;">
 										</div>
 									<?php endif ?>
 								<?php endforeach ?>
 							</div>
 							<form action="/chat/tambah" method="post" class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-								<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+								<img src="/homepage/images/user.png"
 									alt="avatar 3" style="width: 40px; height: 100%;">
 								<input type="text" name="pesan" class="form-control form-control-lg" id="exampleFormControlInput1"
 									placeholder="Ketik pesan" required>

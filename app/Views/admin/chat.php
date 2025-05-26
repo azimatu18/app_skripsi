@@ -81,7 +81,7 @@
                                                 <?php else : ?>
                                                     <!-- untuk konsumen -->
                                                     <div class="d-flex flex-row justify-content-start">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                                                        <img src="/homepage/images/user.png"
                                                             alt="avatar 1" style="width: 45px; height: 100%;">
                                                         <div>
                                                             <p class="small p-2 ms-3 mb-1 rounded-3 bg-light"><?= $chat->pesan ?></p>
@@ -93,7 +93,7 @@
                                         </div>
 
                                         <form action="/chat/tambah" method="post" class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                                            <img src="/admin/images/profile/admin.png"
                                                 alt="avatar 3" style="width: 40px; height: 100%;">
                                             <input type="text" name="pesan" class="form-control form-control-lg" id="exampleFormControlInput1"
                                                 placeholder="Ketik pesan" required>

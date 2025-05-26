@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CV Gedrian Intimed Abadi</title>
-	<link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
+  <link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
   <link rel="stylesheet" href="/admin/css/styles.min.css" />
 </head>
 
@@ -27,7 +27,6 @@
                   <a href="/" class="d-block">
                     <img src="/admin/images/logos/logo.png" width="120" alt="Logo">
                   </a>
-                  <h3 class="mt-3 fw-bold text-dark">Selamat Datang</h3>
                   <p class="text-muted">Silakan masuk ke akun Anda</p>
                 </div>
 
@@ -35,12 +34,12 @@
                 <form action="/login/submit" method="POST">
                   <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan email Anda" required>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan email Anda" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                   </div>
 
                   <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                   </div>
 
                   <!-- Checkbox ingat saya -->
@@ -54,9 +53,14 @@
                   </div>
 
                   <!-- Pesan error kalau login gagal -->
-                  <div class="text-center text-danger mb-3">
-                    <?= session('pesan') ?>
-                  </div>
+                  <?php if (session()->has('pesan')): ?>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                      <div>
+                        <?= session('pesan') ?>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+
 
                   <!-- Tombol submit -->
                   <button type="submit" class="btn btn-primary w-100 py-2 fs-5" style="background-color: #003366;">

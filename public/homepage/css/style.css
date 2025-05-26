@@ -211,7 +211,9 @@ a {
   color: #2f2f2f; }
 
 .product-section {
-  padding: 7rem 0; }
+  padding: 7rem 0; 
+  padding-bottom: 1rem !important;
+}
   .product-section .product-item {
     text-align: center;
     text-decoration: none;
@@ -220,7 +222,7 @@ a {
     padding-bottom: 50px;
     cursor: pointer; }
     .product-section .product-item .product-thumbnail {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       position: relative;
       top: 0;
       -webkit-transition: .3s all ease;
@@ -650,7 +652,7 @@ a {
       font-size: 14px !important; }
 
 .untree_co-section {
-  padding: 7rem 0; }
+    padding: 1rem !important; }
 
 .form-control {
   height: 50px;

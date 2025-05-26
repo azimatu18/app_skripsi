@@ -24,37 +24,37 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label">Judul Produk</label>
-                        <input type="text" name="judul" class="form-control" placeholder="Contoh: Alat Ukur Tekanan Darah" required>
+                        <input type="text" name="judul" class="form-control" placeholder="Contoh: Alat Ukur Tekanan Darah" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Type</label>
-                        <input type="text" name="tipe" class="form-control" placeholder="Contoh: Digital, Manual" required>
+                        <input type="text" name="tipe" class="form-control" placeholder="Contoh: Digital, Manual" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Merek</label>
-                        <input type="text" name="merek" class="form-control" placeholder="Contoh: Digital, Manual" required>
+                        <input type="text" name="merek" class="form-control" placeholder="Contoh: Digital, Manual" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Harga</label>
                         <div class="input-group">
                             <span class="input-group-text">Rp</span>
-                            <input type="number" name="harga" class="form-control" placeholder="Contoh: 250000" required>
+                            <input type="number" name="harga" class="form-control" placeholder="Contoh: 250000" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Diskon</label>
                         <div class="input-group">
-                            <input type="number" name="diskon" class="form-control" placeholder="Contoh: 20" value="0" required>
+                            <input type="number" name="diskon" class="form-control" placeholder="Contoh: 20" value="0">
                             <span class="input-group-text">%</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Gambar Produk</label>
-                        <input type="file" name="gambar" class="form-control" accept="image/*" required>
+                        <input type="file" name="gambar" class="form-control" accept="image/*" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-12">
                         <label class="form-label">Deskripsi</label>
-                        <textarea name="deskripsi" class="form-control" rows="4" placeholder="Tuliskan deskripsi lengkap produk..." required></textarea>
+                        <textarea name="deskripsi" class="form-control" rows="4" placeholder="Tuliskan deskripsi lengkap produk..." required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')"></textarea>
                     </div>
                 </div>
 

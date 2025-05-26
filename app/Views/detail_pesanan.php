@@ -140,7 +140,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="konfirmasiModalLabel">Konfrimasi penerimaan barang</h1>
+                <h1 class="modal-title fs-5" id="konfirmasiModalLabel">Konfirmasi Penerimaan Barang</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -172,7 +172,7 @@
                     </table>
                     <label>Saran:</label>
                     <textarea name="saran" class="form-control" rows="5">-</textarea>
-                    <button class="btn btn-primary w-100 mt-2">Konfirmasi barang</button>
+                    <button class="btn btn-primary w-100 mt-2">Konfirmasi</button>
                 </form>
             </div>
         </div>

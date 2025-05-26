@@ -9,7 +9,7 @@
 							<div class="intro-excerpt">
 								<h2>Hubungi Kami</h2>
 								<p class="mb-4">Kami siap membantu kebutuhan Anda! Jika ada pertanyaan, informasi lebih lanjut, atau permintaan khusus, jangan ragu untuk menghubungi kami.</p>
-								<p><a href="/shop" class="btn btn-secondary me-2">Belanja Sekarang</a></p>
+								<p><a href="/shop" class="btn btn-secondary me-2">Hubungi Kami</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -69,7 +69,7 @@
                       </svg>
                     </div> <!-- /.icon -->
                     <div class="service-contents">
-                      <p>+1 294 3925 3939</p>
+                      <p>+62 856 0945 2823</p>
                     </div> <!-- /.service-contents-->
                   </div> <!-- /.service -->
                 </div>

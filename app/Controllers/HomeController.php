@@ -8,7 +8,8 @@ class HomeController extends BaseController
 {
     public function index(): string
     {
-        return view('home');
+        $data['produk_lain'] = ProdukModel::limit(3)->get();
+        return view('home', $data);
     }
     public function shop(): string
     {

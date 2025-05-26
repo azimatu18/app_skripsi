@@ -50,7 +50,7 @@
                   <h2 class="h5 text-black"><?= $keranjang['produk']['judul'] ?></h2>
                 </td>
                 <td>Rp. <?= number_format($keranjang['produk']['harga'], 0, '.', '.') ?></td>
-                <td><?= $keranjang ['produk']['diskon'] ?>%</td>
+                <td><?= $keranjang['produk']['diskon'] ?>%</td>
                 <td>
                   <form action="/keranjang/ubah/<?= $keranjang['id'] ?>" method="post">
                     <div class="input-group mb-3 d-flex align-items-center" style="max-width: 120px;">
@@ -72,12 +72,18 @@
                   echo 'Rp.' . number_format($total, 0, '.', '.');
                   ?>
                 </td>
-                <td><a href="#" class="btn btn-black btn-sm">X</a></td>
+                <td>
+                  <form action="<?= base_url('keranjang/hapus/' . $keranjang['id']) ?>" method="post" onsubmit="return confirm('Yakin ingin menghapus produk ini dari keranjang?');">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                      <i class="bi bi-trash"></i> X
+                    </button>
+                  </form>
+                </td>
               </tr>
             <?php endforeach ?>
           </tbody>
           <tfoot>
-            <th colspan="4">Total</th>
+            <th colspan="5">Total</th>
             <th colspan="2">Rp. <?= number_format($total_belanja, 0, '.', '.') ?></th>
           </tfoot>
         </table>

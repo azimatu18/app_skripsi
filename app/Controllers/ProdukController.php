@@ -87,7 +87,7 @@ class ProdukController extends BaseController
 
         ProdukModel::where('id', $id)->update($dataUpdate);
 
-        return redirect()->to(base_url('/admin/produk'))->with('success', 'Produk berhasil diupdate');
+        return redirect()->to(base_url('/admin/produk'))->with('success', 'Produk berhasil diperbaharui');
     }
 
     public function produkHapus($id)

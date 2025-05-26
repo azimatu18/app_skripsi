@@ -58,8 +58,7 @@
                                 </td>
                             </tr>
 
-
-                            <!-- Modal -->
+                            <!-- Modal Edit Staf-->
                             <div class="modal fade" id="exampleModal<?= $staf['id'] ?>" tabindex="-1" aria-labelledby="exampleModal<?= $staf['id'] ?>Label" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -96,7 +95,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Tambah Staf-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -107,11 +106,11 @@
             <div class="modal-body">
                 <form action="/admin/staf/submit" method="post">
                     <label>Nama</label>
-                    <input type="text" class="form-control mb-2" name="nama">
+                    <input type="text" class="form-control mb-2" name="nama" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     <label>Email</label>
-                    <input type="email" class="form-control mb-2" name="email">
+                    <input type="email" class="form-control mb-2" name="email" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     <label>Password</label>
-                    <input type="password" class="form-control mb-2" name="password">
+                    <input type="password" class="form-control mb-2" name="password" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     <label>Level</label>
                     <select name="level" class="form-control mb-2">
                         <option value="pemasaran">Pemasaran</option>

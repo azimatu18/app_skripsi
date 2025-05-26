@@ -7,7 +7,7 @@
         <div class="row justify-content-between">
             <div class="col-lg-5">
                 <div class="intro-excerpt">
-                    <h2 style="white-space: nowrap;">Alat Kesehatan Yang Tersedia</h2>
+                    <h2 style="white-space: nowrap;">Produk-Produk Pengadaan</h2>
                     <form method="get" class="mb-4">
                         <div class="input-group">
                             <input type="text" name="cari" class="form-control" placeholder="Cari produk..." value="<?= esc($_GET['cari'] ?? '') ?>">
@@ -17,14 +17,12 @@
 
                 </div>
             </div>
-            <div class="col-lg-7">
-            </div>
         </div>
     </div>
 </div>
 <!-- End Hero Section -->
 
-<div class="untree_co-section product-section before-footer-section">
+<div class="untree_co-section product-section before-footer-section" style="padding-bottom: 10px;">
     <div class="container">
         <div class="row">
             <?php foreach ($data_produk as $no => $produk): ?>

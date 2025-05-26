@@ -28,7 +28,7 @@ class AuthController extends BaseController
             if ($cek_password) {
                 $this->session->set('sudah_login', true);
                 $this->session->set('user_id', $data['id']);
-                session()->setFlashData('pesan', 'Anda berhasil login');
+                // session()->setFlashData('pesan', 'Anda berhasil login'); 
 
                 if ($data['level']=='operasional' || $data['level']=='pemasaran') {
                     return redirect()->to(base_url('/admin/dashboard'));
@@ -36,9 +36,9 @@ class AuthController extends BaseController
 
                     return redirect()->to(base_url('/'));
             }
-            session()->setFlashData('pesan', 'Email atau password salah');
+            session()->setFlashData('pesan', 'Login gagal, silahkan periksa kembali email dan password yang anda masukan');
         } else {
-            session()->setFlashData('pesan', 'Akun tidak ditemukan');
+            session()->setFlashData('pesan', 'Login gagal, akun tidak ditemukan');
         }
         
         return redirect()->to(base_url('/login'));

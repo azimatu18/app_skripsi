@@ -63,7 +63,6 @@
 <div class="product-section" style="padding: 60px;">
 	<div class="container">
 		<div class="row">
-
 			<!-- Start Column 1 -->
 			<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 				<h2 class="mb-4 section-title">Mitra Terpercaya Kebutuhan Alat Kesehatan Anda</h2>
@@ -71,53 +70,30 @@
 				<p><a href="/shop" class="btn">Belanja Sekarang</a></p>
 			</div>
 			<!-- End Column 1 -->
+			<?php foreach ($produk_lain as $no => $data): ?>
 
-			<!-- Start Column 2 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="/homepage/images/syringe.png" class="img-fluid product-thumbnail" style="height: 300px; object-fit:cover;">
-					<h3 class="product-title">Syringe Pump</h3>
-					<div class="product-type">Type: VP5</div> <!-- Menggunakan div untuk pemisah -->
-					<strong class="product-price">Rp. 25.161.750</strong>
+				<!-- Start Column 2 -->
+				<div class="col-12 col-md-4 col-lg-3 mb-5">
+					<a class="product-item" href="/detail_produk/<?= $data['id'] ?>">
+						<div class="product-item-hover">
+							<button class="btn btn-sm btn-primary">Detail</button>
+						</div>
+						<img src="<?= base_url('uploads/gambar/' . $data['gambar']) ?>" class="img-fluid product-thumbnail" style="height: 300px; object-fit:cover;">
+						<h3 class="product-title"><?= $data['judul'] ?></h3>
+						<div class="product-type">Type: <?= $data['tipe'] ?></div> <!-- Menggunakan div untuk pemisah -->
+						<?php if ($data['diskon']): ?>
+							<span style="text-decoration: line-through;">Rp. <?= number_format($data['harga'], 0, '.', '.') ?></span> <br>
+						<?php endif ?>
+						<strong class="product-price">Rp. <?= number_format(($data['harga'] - ($data['harga'] * $data['diskon'] / 100)), 0, '.', '.') ?></strong>
 
-					<span class="icon-cross">
-						<img src="/homepage/images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-
-			<!-- End Column 2 -->
-
-			<!-- Start Column 3 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="/homepage/images/pulse.png" class="img-fluid product-thumbnail" style="height: 300px; object-fit:cover;">
-					<h3 class="product-title">Pulse Oxymeter</h3>
-					<div class="product-type">Type: PM60</div>
-					<strong class="product-price">Rp. 15.577.250</strong>
-
-					<span class="icon-cross">
-						<img src="/homepage/images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 3 -->
-
-			<!-- Start Column 4 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="#">
-					<img src="/homepage/images/defibrillation.png" class="img-fluid product-thumbnail" style="height: 300px; object-fit:cover;">
-					<h3 class="product-title">Defibrilator</h3>
-					<div class="product-type">Type: Beneheart D3</div>
-					<strong class="product-price">Rp. 107.187.500</strong>
-
-					<span class="icon-cross">
-						<img src="/homepage/images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 4 -->
-
+						<form action="/keranjang/tambah/<?= $data['id'] ?>" method="post" class="d-flex align-items-center">
+							<button type="submit" class="icon-cross rounded-circle bg-dark p-2" style="background: none; border: none; padding: 0;">
+								<img src="/homepage/images/cross.svg" class="img-fluid">
+							</button>
+						</form>
+					</a>
+				</div>
+			<?php endforeach ?>
 		</div>
 	</div>
 </div>

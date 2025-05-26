@@ -24,7 +24,6 @@ class AdminPemesananController extends BaseController
         }
 
         $detail_pesanan = PemesananProdukModel::where('pemesanan_id', $id)->get();
-
         $data = [
             'pemesanan' => $pemesanan,
             'detail_pesanan' => $detail_pesanan

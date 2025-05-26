@@ -64,7 +64,7 @@ class StafController extends BaseController
 
         UserModel::where('id', $id)->update($dataUpdate);
 
-        return redirect()->to(base_url('/admin/staf'))->with('success', 'Produk berhasil diupdate');
+        return redirect()->to(base_url('/admin/staf'))->with('success', 'Produk berhasil diperbaharui');
     }
 
     public function stafHapus($id)
@@ -75,6 +75,6 @@ class StafController extends BaseController
             UserModel::where('id', $id)->delete();
         }
 
-        return redirect()->to(base_url('/admin/staf'))->with('success', 'Produk berhasil dihapus');
+        return redirect()->to(base_url('/admin/staf'))->with('success', 'Akun staf berhasil dihapus');
     }
 }

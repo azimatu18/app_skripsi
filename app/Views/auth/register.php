@@ -27,7 +27,7 @@
                                     <a href="/" class="d-block">
                                         <img src="/admin/images/logos/logo.png" width="120" alt="Logo">
                                     </a>
-                                    <h3 class="mt-3 fw-bold text-dark">Buat Akun Baru</h3>
+                                    <h4 class="mt-3 fw-bold text-dark">BUAT AKUN BARU</h4>
                                     <p class="text-muted">Silakan isi form di bawah</p>
                                 </div>
 
@@ -35,17 +35,17 @@
                                 <form action="/register/submit" method="POST">
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama lengkap" required>
+                                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama lengkap" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email aktif" required>
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email aktif" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                                     </div>
 
                                     <div class="mb-4">
                                         <label for="password" class="form-label">Password</label>
-                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                                     </div>
 
                                     <!-- Tombol registrasi -->
