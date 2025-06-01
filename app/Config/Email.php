@@ -18,7 +18,7 @@ class Email extends BaseConfig
     /**
      * The mail sending protocol: mail, sendmail, smtp
      */
-    public string $protocol = 'mail';
+    public string $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -28,22 +28,26 @@ class Email extends BaseConfig
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = '';
+    public string $SMTPHost = 'sandbox.smtp.mailtrap.io';
+    // public string $SMTPHost = 'live.smtp.mailtrap.io';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = '';
+    public string $SMTPUser = '954f58f36d405b';
+    // public string $SMTPUser = 'api';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '';
+    public string $SMTPPass = 'a419f297c4c2f7';
+    // public string $SMTPPass = 'e69fe3f9a57b7f55c27a63e87db0732c';
 
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 25;
+    public int $SMTPPort = 2525;
+    // public int $SMTPPort = 587;
 
     /**
      * SMTP Timeout (in seconds)

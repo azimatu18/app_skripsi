@@ -7,6 +7,7 @@
   <title>CV Gedrian Intimed Abadi</title>
   <link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
   <link rel="stylesheet" href="/admin/css/styles.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -37,12 +38,11 @@
                     <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan email Anda" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                   </div>
 
-                  <div class="mb-4">
+                  <div class="mb-2">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                   </div>
 
-                  <!-- Checkbox ingat saya -->
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="rememberMe">
@@ -50,7 +50,12 @@
                         Ingat saya
                       </label>
                     </div>
+                    <div class="d-flex">
+                      <p class="mb-0">Lupa pasword?</p>
+                      <a href="/lupa-password" class="text-primary fw-bold ms-2">Klik disini</a>
+                    </div>
                   </div>
+
 
                   <!-- Pesan error kalau login gagal -->
                   <?php if (session()->has('pesan')): ?>
@@ -82,6 +87,16 @@
     </div>
 
   </div> <!-- End page-wrapper -->
+
+    <?php if (!empty(session()->getFlashdata('success'))): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: "<?= session()->getFlashdata('success') ?>"
+            })
+        </script>
+    <?php endif ?>
 
   <!-- Javascript -->
   <script src="/admin/libs/jquery/dist/jquery.min.js"></script>

@@ -66,3 +66,10 @@ $routes->get('/admin/staf', 'StafController::staf', ['filter' => 'admin_filter']
 $routes->post('/admin/staf/submit', 'StafController::stafSubmit', ['filter' => 'admin_filter']);
 $routes->post('/admin/staf/update/(:num)', 'StafController::stafUpdate/$1', ['filter' => 'admin_filter']);
 $routes->post('/admin/staf/hapus/(:num)', 'StafController::stafHapus/$1', ['filter' => 'admin_filter']);
+
+$routes->get('/lupa-password', 'AuthController::lupa_password');
+$routes->post('/lupa-password/submit', 'AuthController::lupa_password_submit');
+
+$routes->get('/reset-password/(:any)', 'AuthController::reset_password/$1');
+$routes->post('/reset-password/submit', 'AuthController::reset_password_submit');
+
