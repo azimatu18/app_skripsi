@@ -18,7 +18,8 @@
 	<link href="/homepage/css/custom.css" rel="stylesheet">
 	<title>CV Gedrian Intimed Abadi</title>
 	<link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="/jquery.min.js"></script>
 </head>
 
 <body>
@@ -76,7 +77,7 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
 								<div class="message-body" style="width: 250px;">
-									
+
 									<a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
 								</div>
 							</div>
@@ -147,38 +148,15 @@
 								</button>
 							</div>
 							<div class="card-body" id="chat-body" data-mdb-perfect-scrollbar-init style="position: relative; height: 400px;overflow-y:scroll;">
-								<?php
-								foreach (App\Models\UserModel::data()->chat_konsumen()->get() as $chat):
-								?>
-									<?php if ($chat->user_id): ?>
-										<!-- untuk pemasaran -->
-										<div class="d-flex flex-row justify-content-start">
-											<img src="/admin/images/profile/admin.png"
-												alt="avatar 1" style="width: 45px; height: 100%;">
-											<div>
-												<p class="small p-2 ms-3 mb-1 rounded-3 bg-light"><?= $chat->pesan ?></p>
-												<p class="small ms-3 mb-3 rounded-3 text-muted"><?= $chat->waktu ?></p>
-											</div>
-										</div>
-									<?php else : ?>
-										<!-- untuk konsumen -->
-										<div class="d-flex flex-row justify-content-end mb-4 pt-1">
-											<div>
-												<p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"><?= $chat->pesan ?></p>
-												<p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end"><?= $chat->waktu ?></p>
-											</div>
-											<img src="/homepage/images/user.png"
-												alt="avatar 1" style="width: 45px; height: 100%;">
-										</div>
-									<?php endif ?>
-								<?php endforeach ?>
+
 							</div>
-							<form action="/chat/tambah" method="post" class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+							<form id="form-chat" class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
 								<img src="/homepage/images/user.png"
 									alt="avatar 3" style="width: 40px; height: 100%;">
-								<input type="text" name="pesan" class="form-control form-control-lg" id="exampleFormControlInput1"
+								<input type="hidden" id="form-chat-last_id" value="0">
+								<input type="text" name="pesan" class="form-control form-control-lg" id="form-chat-pesan"
 									placeholder="Ketik pesan" required>
-								<button class="btn btn-light ms-3" href="#!"><i class="fas fa-paper-plane"></i></button>
+								<button class="btn btn-light ms-3"><i class="fas fa-paper-plane"></i></button>
 							</form>
 
 						</div>
@@ -195,14 +173,14 @@
 		</button>
 
 		<?php if (!empty(session()->getFlashdata('error'))): ?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal',
-                text: "<?= session()->getFlashdata('error') ?>"
-            })
-        </script>
-    <?php endif ?>
+			<script>
+				Swal.fire({
+					icon: 'error',
+					title: 'Gagal',
+					text: "<?= session()->getFlashdata('error') ?>"
+				})
+			</script>
+		<?php endif ?>
 
 		<script>
 			const chatSection = document.getElementById('chat-assist');
@@ -224,6 +202,76 @@
 					chatBody.scrollTop = chatBody.scrollHeight;
 				}
 			});
+
+			//untuk ajax chat
+			$(document).ready(function() {
+				$('#form-chat').on('submit', function(e) {
+					e.preventDefault();
+					let pesan = $('#form-chat-pesan').val()
+					let now = new Date();
+					let waktu = now.getHours() + ":" + now.getMinutes()
+					$.post('/chat/tambah', {
+						pesan: pesan
+					}, function(result) {
+						$('#form-chat-last_id').val(result.last_id)
+						$('#form-chat-pesan').val('')
+						$('#chat-body').append(`
+							<div class="d-flex flex-row justify-content-end mb-4 pt-1">
+								<div>
+									<p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">${pesan}</p>
+									<p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">${waktu}</p>
+								</div>
+								<img src="/homepage/images/user.png"
+									alt="avatar 1" style="width: 45px; height: 100%;">
+							</div>
+						`)
+						const chatBody = document.getElementById('chat-body');
+						if (chatBody) {
+							chatBody.scrollTop = chatBody.scrollHeight;
+						}
+					})
+				})
+
+				setInterval(function() {
+					var last_id = $('#form-chat-last_id').val()
+					$.get('/chat/load', {
+						last_id: last_id
+					}, function(result) {
+						let data = result.chat
+						data.forEach(chat => {
+							$('#form-chat-last_id').val(chat.id)
+							if (chat.user_id) {
+								$('#chat-body').append(`
+								<div class="d-flex flex-row justify-content-start">
+											<img src="/admin/images/profile/admin.png"
+												alt="avatar 1" style="width: 45px; height: 100%;">
+											<div>
+												<p class="small p-2 ms-3 mb-1 rounded-3 bg-light">${chat.pesan}</p>
+												<p class="small ms-3 mb-3 rounded-3 text-muted">${chat.waktu}</p>
+											</div>
+										</div>
+								`)
+							} else {
+								$('#chat-body').append(`
+							<div class="d-flex flex-row justify-content-end mb-4 pt-1">
+								<div>
+									<p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">${chat.pesan}</p>
+									<p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">${chat.waktu}</p>
+								</div>
+								<img src="/homepage/images/user.png"
+									alt="avatar 1" style="width: 45px; height: 100%;">
+							</div>
+						`)
+							}
+
+							let chatBody = document.getElementById('chat-body');
+							if (chatBody) {
+								chatBody.scrollTop = chatBody.scrollHeight;
+							}
+						});
+					})
+				}, 1000)
+			})
 		</script>
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {

@@ -60,7 +60,7 @@ $routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::c
 // $routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1', ['filter' => 'konsumen_filter']);
 
 $routes->post('/chat/tambah', 'ChatController::tambah');
-
+$routes->get('/chat/load', 'ChatController::load');
 
 $routes->get('/admin/staf', 'StafController::staf', ['filter' => 'admin_filter']);
 $routes->post('/admin/staf/submit', 'StafController::stafSubmit', ['filter' => 'admin_filter']);

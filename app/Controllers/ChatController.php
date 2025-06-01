@@ -29,16 +29,39 @@ class ChatController extends BaseController
         }
         $chat->save();
 
-        session()->setFlashdata('open_chat', true);
-        return redirect()->back();
+        // session()->setFlashdata('open_chat', true);
+        // return redirect()->back();
+        return response()->setJSON(['status' => 'oke', 'last_id' => $chat->id]);
     }
 
-    function admin() {
+    function admin()
+    {
         $konsumen = UserModel::where('level', 'konsumen')->orderBy('nama', 'asc')->get();
         $data = [
-            'konsumen'=>$konsumen,
+            'konsumen' => $konsumen,
         ];
 
         return view('admin/chat', $data);
+    }
+
+    function load()
+    {
+        $last_id = request()->getGet('last_id');
+
+        $user = UserModel::data();
+        if ($user['level'] == 'konsumen') {
+            $chat = ChatModel::where('konsumen_id', $user['id'])
+                ->where('id', '>', $last_id)
+                ->orderBy('id', 'ASC')
+                ->get();
+        } else {
+            $konsumen = request()->getGet('konsumen');
+
+            $chat = ChatModel::where('konsumen_id', $konsumen)
+                ->where('id', '>', $last_id)
+                ->orderBy('id', 'ASC')
+                ->get();
+        }
+        return response()->setJSON(['chat' => $chat]);
     }
 }
