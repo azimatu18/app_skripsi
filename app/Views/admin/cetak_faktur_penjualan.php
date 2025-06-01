@@ -15,10 +15,18 @@
             font-size: 20px;
             font-weight: bold;
             text-decoration: underline;
+            margin-bottom: 30px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
         }
 
         .company-info {
-            margin-bottom: 10px;
+            width: 45%;
+            line-height: 1.5;
         }
 
         .company-info b {
@@ -26,10 +34,12 @@
         }
 
         .details {
+            padding-left: 300px;
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
+            /* margin-top: 10px; */
             font-size: 14px;
+            width: 45%;
         }
 
         table {
@@ -79,24 +89,22 @@
 
     <div class="title">FAKTUR PENJUALAN</div>
 
-    <div class="company-info">
-        <b>CV. GEDRIAN INTIMED ABADI</b><br>
-        Jl. Palapa II<br>
-        Metro Timur Kota Metro<br>
-        <a href="mailto:gedrianintimedabadi@gmail.com">gedrianintimedabadi@gmail.com</a>
-    </div>
-
-    <div class="details">
-        <div>
-            <strong>Kepada:</strong> <?= $pemesanan['konsumen'] ?><br>
-            <strong>No PO /SP:</strong> <?= $pemesanan['no_po'] ?><br>
-            <strong>Alamat:</strong> <?= $pemesanan['alamat'] ?>
+    <div class="header-container">
+        <div class="company-info">
+            <b>CV. GEDRIAN INTIMED ABADI</b><br>
+            Jl. Palapa II<br>
+            Metro Timur Kota Metro<br>
+            <a href="mailto:gedrianintimedabadi@gmail.com">gedrianintimedabadi@gmail.com</a>
         </div>
-        <div>
-            <strong>NO Faktur:</strong> <?= $pemesanan['no_faktur'] ?>
+        <div class="details">
+            <div>
+                <strong>Kepada      :</strong> <?= $pemesanan['konsumen'] ?><br>
+                <strong>No. PO      :</strong> <?= $pemesanan['no_po'] ?><br>
+                <strong>Alamat      :</strong> <?= $pemesanan['alamat'] ?><br>
+                <strong>No. Faktur  :</strong> <?= $pemesanan['no_faktur'] ?><br>
+            </div>
         </div>
     </div>
-
     <table>
         <thead>
             <tr>
@@ -121,8 +129,8 @@
                     </td>
                     <td><?= $data['jumlah'] ?></td>
                     <td>Unit</td>
-                    <td>Rp.<?= $data['harga'] ?></td>
-                    <td>Rp <?= $data['jumlah'] * $data['harga'] ?></td>
+                    <td>Rp. <?= number_format($data['harga'], 0, '.', '.') ?></td>
+                    <td>Rp. <?= number_format($data['jumlah'] * $data['harga'], 0, '.', '.') ?> </td>
                 </tr>
             <?php endforeach ?>
             <tr>
@@ -182,7 +190,7 @@
             </tr>
             <tr>
                 <td colspan="5" class="left">Sub Total</td>
-                <td>Rp <?= $total ?></td>
+                <td>Rp. <?= number_format($total, 0, '.', '.') ?></td>
             </tr>
             <tr>
                 <td colspan="5" class="left">PPn</td>
@@ -190,7 +198,7 @@
             </tr>
             <tr>
                 <td colspan="5" class="left"><strong>Grand Total</strong></td>
-                <td>Rp <?= $total ?></td>
+                <td>Rp. <?= number_format($total, 0, '.', '.') ?></td>
             </tr>
         </tbody>
     </table>
@@ -204,7 +212,7 @@
 
     <div class="signatures">
         <div class="signature-box">
-            Penerima<br><br><br><br>
+            <br>Penerima<br><br><br><br><br>
             ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
         </div>
         <div class="signature-box">
@@ -238,7 +246,8 @@
             echo bulan_indonesia(date('Y-m-d')); // Misal hasil: Mei 2025
             ?>
             <br>
-            Pengirim<br><br><br>
+            Pengirim<br>
+            <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"><br>
             ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
         </div>
     </div>

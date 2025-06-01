@@ -113,7 +113,7 @@
                 <td><?= $data['judul'] ?></td>
                 <td><?= $data['jumlah'] ?></td>
                 <td>Unit</td>
-                <td></td>
+                <td>-</td>
             </tr>
         <?php endforeach ?>
     </table>
@@ -136,11 +136,12 @@
 
     <div class="signatures">
         <div class="signature-box">
-            Penerima/Pembeli<br><br><br><br>
+            Penerima/Pembeli<br><br><br><br><br>
             ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
         </div>
         <div class="signature-box">
-            Pengirim/Penjual<br><br><br><br>
+            Pengirim/Penjual<br><br>
+            <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"><br>
             ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
         </div>
     </div>

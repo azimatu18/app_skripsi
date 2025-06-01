@@ -31,12 +31,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-7">
-                            <p><strong>Nama:</strong> <?= $pemesanan['konsumen'] ?></p>
-                            <p><strong>Alamat:</strong> <?= $pemesanan['alamat'] ?></p>
-                            <p><strong>No PO:</strong> <?= $pemesanan['no_po'] ?></p>
-                            <p><strong>Email:</strong> <?= $pemesanan['email'] ?></p>
-                            <p><strong>No Handphone:</strong> <?= $pemesanan['no_hp'] ?></p>
-                            <p><strong>Catatan:</strong> <?= $pemesanan['catatan'] ?: '-' ?></p>
+                            <p class="mb-1"><strong>Nama:</strong> <?= $pemesanan['konsumen'] ?></p>
+                            <p class="mb-1"><strong>Alamat:</strong> <?= $pemesanan['alamat'] ?></p>
+                            <p class="mb-1"><strong>No PO:</strong> <?= $pemesanan['no_po'] ?></p>
+                            <p class="mb-1"><strong>Email:</strong> <?= $pemesanan['email'] ?></p>
+                            <p class="mb-1"><strong>No Handphone:</strong> <?= $pemesanan['no_hp'] ?></p>
+                            <p class="mb-1"><strong>Catatan:</strong> <?= $pemesanan['catatan'] ?: '-' ?></p>
                         </div>
                         <div class="col-md-5">
                             <?php if ($pemesanan['status_tipe'] == '7'): ?>

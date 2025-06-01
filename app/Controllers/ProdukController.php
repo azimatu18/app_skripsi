@@ -42,7 +42,7 @@ class ProdukController extends BaseController
             'gambar' => $nama_gambar
         ]);
 
-        return redirect()->to(base_url('/admin/produk'));
+        return redirect()->to(base_url('/admin/produk'))->with('success', 'Produk berhasil ditambahkan');
     }
 
     public function produkEdit($id)
@@ -87,7 +87,7 @@ class ProdukController extends BaseController
 
         ProdukModel::where('id', $id)->update($dataUpdate);
 
-        return redirect()->to(base_url('/admin/produk'))->with('success', 'Produk berhasil diperbaharui');
+        return redirect()->to(base_url('/admin/produk'))->with('success', 'Produk berhasil diperbarui');
     }
 
     public function produkHapus($id)

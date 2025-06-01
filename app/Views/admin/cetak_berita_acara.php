@@ -123,7 +123,7 @@
                 <div class="checkbox"></div> Kunjungan / Maintenance
             </td>
             <td>
-                <div class="checkbox"></div> ....................................................
+                <div class="checkbox"></div> Pengadaan Produk
             </td>
         </tr>
     </table>
@@ -147,7 +147,7 @@
                     <td><?= $data['tipe'] ?></td>
                     <td><?= $data['merek'] ?></td>
                     <td style="text-align: center;"><?= $data['jumlah'] ?></td>
-                    <td></td>
+                    <td style="text-align: center;">-</td>
                 </tr>
             <?php endforeach ?>
 
@@ -162,19 +162,19 @@
         <tr>
             <td>1. Produk berfungsi dengan baik</td>
             <td>
-                <input type="radio" name="fungsi" value="1" <?= $penerimaan['fungsi'] ? 'checked' : '' ?>> YA
+                <input type="radio" name="fungsi" value="1" <?= $penerimaan['fungsi'] ? 'checked' : '' ?>> Ya
             </td>
             <td>
-                <input type="radio" name="fungsi" value="0" <?= $penerimaan['fungsi'] ? '' : 'checked' ?>> TidAK
+                <input type="radio" name="fungsi" value="0" <?= $penerimaan['fungsi'] ? '' : 'checked' ?>> Tidak
             </td>
         </tr>
         <tr>
             <td>2. Training penggunaan dan perawatan produk dipahami dengan baik</td>
             <td>
-                <input type="radio" name="training" value="1" <?= $penerimaan['training'] ? 'checked' : '' ?>> YA
+                <input type="radio" name="training" value="1" <?= $penerimaan['training'] ? 'checked' : '' ?>> Ya
             </td>
             <td>
-                <input type="radio" name="training" value="0" <?= $penerimaan['training'] ? '' : 'checked' ?>> TIDAK
+                <input type="radio" name="training" value="0" <?= $penerimaan['training'] ? '' : 'checked' ?>> Tidak
             </td>
         </tr>
     </table>
@@ -188,9 +188,9 @@
             <td>Customer/User</td>
         </tr>
         <tr>
-            <td>______________________________</td>
+            <td> <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"></td>
             <td><?= $pemesanan['konsumen'] ?>
-                <div>Jabatan:</div>
+                <!-- <div>Jabatan:</div> -->
         </td>
         </tr>
     </table>

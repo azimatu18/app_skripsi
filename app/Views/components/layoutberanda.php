@@ -18,6 +18,7 @@
 	<link href="/homepage/css/custom.css" rel="stylesheet">
 	<title>CV Gedrian Intimed Abadi</title>
 	<link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -192,6 +193,16 @@
 		<button id="chat-logo" class="btn-light" style="position:fixed; display:block; right: 20px; bottom: 20px; z-index:999; border-radius: 100%; width: 70px; height:70px;">
 			<img src="/homepage/images/icon-chat.png" width="24" height="24" />
 		</button>
+
+		<?php if (!empty(session()->getFlashdata('error'))): ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: "<?= session()->getFlashdata('error') ?>"
+            })
+        </script>
+    <?php endif ?>
 
 		<script>
 			const chatSection = document.getElementById('chat-assist');

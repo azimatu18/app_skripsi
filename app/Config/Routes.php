@@ -41,6 +41,7 @@ $routes->post('/admin/pemesanan/lunas', 'AdminPemesananController::konfirmasi_lu
 $routes->post('/admin/pemesanan/kirim', 'AdminPemesananController::kirim', ['filter' => 'admin_filter']);
 $routes->get('/admin/pemesanan/cetak/surat_jalan/(:any)', 'AdminPemesananController::cetak_surat_jalan/$1', ['filter' => 'admin_filter']);
 $routes->get('/admin/pemesanan/cetak/faktur_penjualan/(:any)', 'AdminPemesananController::cetak_faktur_penjualan/$1', ['filter' => 'admin_filter']);
+$routes->get('/admin/pemesanan/cetak/berita_acara/(:any)', 'AdminPemesananController::cetak_berita_acara/$1', ['filter' => 'admin_filter']);
 
 $routes->get('/keranjang', 'KeranjangController::index', ['filter' => 'konsumen_filter']);
 $routes->post('/keranjang/tambah/(:any)', 'KeranjangController::tambah/$1', ['filter' => 'konsumen_filter']);
@@ -56,7 +57,7 @@ $routes->post('/pemesanan/lunas/upload', 'PemesananController::lunas_submit', ['
 $routes->get('/pemesanan/cetak/invoice/(:any)', 'PemesananController::cetak_invoice/$1', ['filter' => 'konsumen_filter']);
 $routes->post('/pemesanan/konfirmasi/(:any)', 'PemesananController::konfirmasi/$1', ['filter' => 'konsumen_filter']);
 $routes->get('/pemesanan/cetak/faktur_penjualan/(:any)', 'PemesananController::cetak_faktur_penjualan/$1', ['filter' => 'konsumen_filter']);
-$routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1', ['filter' => 'konsumen_filter']);
+// $routes->get('/pemesanan/cetak/berita_acara/(:any)', 'PemesananController::cetak_berita_acara/$1', ['filter' => 'konsumen_filter']);
 
 $routes->post('/chat/tambah', 'ChatController::tambah');
 

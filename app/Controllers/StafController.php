@@ -33,7 +33,7 @@ class StafController extends BaseController
             'level' => $level,
         ]);
 
-        return redirect()->to(base_url('/admin/staf'));
+        return redirect()->to(base_url('/admin/staf'))->with('success', 'Akun staf berhasil ditambahkan');
     }
 
     public function stafEdit($id)
@@ -64,7 +64,7 @@ class StafController extends BaseController
 
         UserModel::where('id', $id)->update($dataUpdate);
 
-        return redirect()->to(base_url('/admin/staf'))->with('success', 'Produk berhasil diperbaharui');
+        return redirect()->to(base_url('/admin/staf'))->with('success', 'Akun staf berhasil diperbarui');
     }
 
     public function stafHapus($id)

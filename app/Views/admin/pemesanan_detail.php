@@ -90,7 +90,7 @@
                                             Silahkan Unduh faktur penjualan dan berita acara berikut
                                         </p>
                                         <a href="/admin/pemesanan/cetak/faktur_penjualan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2">Faktur Penjualan</a>
-                                        <a href="/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Berita Acara</a>
+                                        <a href="/admin/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Berita Acara</a>
                                     </div>
                                 <?php endif ?>
                             <?php endif; ?>

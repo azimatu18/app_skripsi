@@ -15,7 +15,13 @@ class PemesananController extends BaseController
     public function index()
     {
         $user = UserModel::data();
-        $data['keranjang_produk'] = KeranjangModel::with('produk')->where('user_id', $user['id'])->get();
+        $keranjang = KeranjangModel::with('produk')->where('user_id', $user['id'])->get();
+
+        if (count($keranjang) <= 0) {
+            return redirect()->back()->with('error', 'Belum ada produk yang dipesan');
+        }
+
+        $data['keranjang_produk'] = $keranjang;
         return view('pemesanan', $data);
     }
 
@@ -192,27 +198,5 @@ class PemesananController extends BaseController
         ];
 
         return view('admin/cetak_faktur_penjualan', $data);
-    }
-
-    function cetak_berita_acara($id)
-    {
-        $user = UserModel::data();
-
-        if ($user->level == 'konsumen') {
-            $pemesanan = $user->pemesanan()->where('id', $id)->first();
-        } else {
-            $pemesanan = PemesananModel::find($id);
-        }
-
-        $produk = $pemesanan->pemesanan_produk()->orderBy('judul', 'asc')->get();
-        $penerimaan = $pemesanan->penerimaan;
-
-        $data = [
-            'pemesanan' => $pemesanan,
-            'produk' => $produk,
-            'penerimaan' => $penerimaan,
-        ];
-
-        return view('admin/cetak_berita_acara', $data);
     }
 }

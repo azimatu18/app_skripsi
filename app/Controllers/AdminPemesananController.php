@@ -118,4 +118,26 @@ class AdminPemesananController extends BaseController
 
         return view('admin/cetak_faktur_penjualan', $data);
     }
+
+    function cetak_berita_acara($id)
+    {
+        $user = UserModel::data();
+
+        if ($user->level == 'konsumen') {
+            $pemesanan = $user->pemesanan()->where('id', $id)->first();
+        } else {
+            $pemesanan = PemesananModel::find($id);
+        }
+
+        $produk = $pemesanan->pemesanan_produk()->orderBy('judul', 'asc')->get();
+        $penerimaan = $pemesanan->penerimaan;
+
+        $data = [
+            'pemesanan' => $pemesanan,
+            'produk' => $produk,
+            'penerimaan' => $penerimaan,
+        ];
+
+        return view('admin/cetak_berita_acara', $data);
+    }
 }
