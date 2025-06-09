@@ -165,7 +165,7 @@
 
     <div class="signature">
         <p>CV. Gedrian Intimed Abadi</p>
-        <br><br><br>
+        <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"><br>
         <p class="text-center"><strong>Ni Ketut Srinilowati</strong></p>
     </div>
 

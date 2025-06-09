@@ -23,7 +23,7 @@
             <form action="/admin/produk/submit" method="post" enctype="multipart/form-data">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label">Judul Produk</label>
+                        <label class="form-label">Nama Produk</label>
                         <input type="text" name="judul" class="form-control" placeholder="Contoh: Alat Ukur Tekanan Darah" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-md-6">

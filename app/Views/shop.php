@@ -7,7 +7,7 @@
         <div class="row justify-content-between">
             <div class="col-lg-5">
                 <div class="intro-excerpt">
-                    <h2 style="white-space: nowrap;">Produk-Produk Pengadaan</h2>
+                    <h2 style="white-space: nowrap;">Produk Pengadaan</h2>
                     <form method="get" class="mb-4">
                         <div class="input-group">
                             <input type="text" name="cari" class="form-control" placeholder="Cari produk..." value="<?= esc($_GET['cari'] ?? '') ?>">

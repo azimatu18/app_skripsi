@@ -64,7 +64,7 @@ class AuthController extends BaseController
             'level' => 'konsumen'
         ]);
 
-        return redirect()->to(base_url('/login'));
+        return redirect()->to(base_url('/login'))->with('success', 'Registrasi berhasil, silahkan login.');
     }
 
     function logout()
@@ -84,7 +84,9 @@ class AuthController extends BaseController
         $email = request()->getPost('email');
         $user = UserModel::where('email', $email)->first();
         if (!$user) {
-            return redirect()->back()->with('error', 'email tidak terdaftar');
+            // return redirect()->back()->with('error', 'Email tidak terdaftar');
+            session()->setFlashData('pesan', 'Email tidak terdaftar');
+            return redirect()->back();
         }
         $token = Uuid::uuid4();
         $now = date('Y-m-d H:i:s');
@@ -112,7 +114,9 @@ class AuthController extends BaseController
             $email_service->setMailType('html');
             $email_service->setSubject('reset password');
             if ($email_service->send()) {
-                return redirect()->back()->with('succes', 'reset password berhasil dikirim silahkan email anda dan klik tautan email password ');
+                session()->setFlashData('pesan_berhasil', 'Tautan reset password berhasil dikirim. Silahkan cek email anda dan klik tautan email password ');
+                return redirect()->back();
+                // return redirect()->back()->with('success', 'Reset password berhasil dikirim. Silahkan cek email anda dan klik tautan email password ');
             } else {
                 return redirect()->back()->with('error', 'gagal mengirim email. silahkan cek koneksi anda dan coba kembal');
             }
@@ -140,6 +144,6 @@ class AuthController extends BaseController
         $user->update();
         $reset_password->delete();
 
-        return redirect()->to(base_url('/login'))->with('success', 'password berhsil direset, silahkan login menggunakan password yang baru');
+        return redirect()->to(base_url('/login'))->with('success', 'Password berhsil direset. Silahkan login menggunakan password yang baru.');
     }
 }

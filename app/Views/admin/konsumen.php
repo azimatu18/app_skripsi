@@ -7,22 +7,7 @@
     </div>
 
     <div class="card shadow-sm border-0">
-        <div class="card-body">
-            <div class="mb-3">
-                <input type="text" id="searchInput" class="form-control" placeholder="Cari konsumen...">
-            </div>
-
-            <script>
-                document.getElementById('searchInput').addEventListener('keyup', function() {
-                    const keyword = this.value.toLowerCase();
-                    const rows = document.querySelectorAll('table tbody tr');
-
-                    rows.forEach(row => {
-                        const rowText = row.innerText.toLowerCase();
-                        row.style.display = rowText.includes(keyword) ? '' : 'none';
-                    });
-                });
-            </script>
+        <div class="card-body"> 
 
             <div class="table-responsive">
                 <table class="table table-bordered align-middle table-hover">
@@ -31,7 +16,6 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,14 +24,11 @@
                                 <td class="text-center"><?= $no + 1 ?></td>
                                 <td><?= $data['nama'] ?></td>
                                 <td><?= $data['email'] ?></td>
-                                <td>
-                                    <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal<?= $data['id'] ?>">Reset Password</button>
-                                </td>
                             </tr>
 
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModal<?= $data['id'] ?>Label" aria-hidden="true">
+                            <!-- <div class="modal fade" id="exampleModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModal<?= $data['id'] ?>Label" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -65,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         <?php endforeach ?>
                     </tbody>
                 </table>

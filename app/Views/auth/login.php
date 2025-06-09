@@ -25,7 +25,7 @@
 
                 <!-- Logo dan sambutan -->
                 <div class="text-center mb-4">
-                  <a href="/" class="d-block">
+                  <a href="/" class="d-block mb-2">
                     <img src="/admin/images/logos/logo.png" width="120" alt="Logo">
                   </a>
                   <p class="text-muted">Silakan masuk ke akun Anda</p>
@@ -38,7 +38,7 @@
                     <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan email Anda" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                   </div>
 
-                  <div class="mb-2">
+                  <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                   </div>
@@ -51,8 +51,8 @@
                       </label>
                     </div>
                     <div class="d-flex">
-                      <p class="mb-0">Lupa pasword?</p>
-                      <a href="/lupa-password" class="text-primary fw-bold ms-2">Klik disini</a>
+                      <!-- <p class="mb-0">Lupa pasword?</p> -->
+                      <a href="/lupa-password" class="text-primary fw-bold ms-2">Lupa password?</a>
                     </div>
                   </div>
 

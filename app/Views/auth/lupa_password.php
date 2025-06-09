@@ -26,9 +26,10 @@
                                 <!-- Logo dan sambutan -->
                                 <div class="text-center mb-4">
                                     <a href="/" class="d-block">
-                                        <img src="/admin/images/logos/logo.png" width="120" alt="Logo">
+                                        <img src="/admin/images/logos/logo.png" width="120" alt="Logo" class="mb-2">
+                                        <h4><b>Lupa password?</b></h4>
                                     </a>
-                                    <p class="text-muted">Lupa password</p>
+                                    <p class="text-muted">Silahkan masukan email anda, untuk permintaan peraturan ulang password</p>
                                 </div>
 
                                 <!-- Form login -->
@@ -38,15 +39,23 @@
                                         <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan email Anda" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                                     </div>
 
-                                    <!-- Pesan error kalau login gagal -->
-                                    <?php if (session()->has('pesan')): ?>
+                                    <!-- Pesan error kalau email tidak terdaftar -->
+                                    <?php if (session()->has('pesan_gagal')): ?>
                                         <div class="alert alert-danger d-flex align-items-center" role="alert">
                                             <div>
-                                                <?= session('pesan') ?>
+                                                <?= session('pesan_gagal') ?>
                                             </div>
                                         </div>
                                     <?php endif; ?>
 
+                                    <!-- Pesan error kalau tautan berhasil dikriim -->
+                                    <?php if (session()->has('pesan_berhasil')): ?>
+                                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                                            <div>
+                                                <?= session('pesan_berhasil') ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
 
                                     <!-- Tombol submit -->
                                     <button type="submit" class="btn btn-primary w-100 py-2 fs-5" style="background-color: #003366;">
@@ -64,6 +73,7 @@
 
     </div> <!-- End page-wrapper -->
 
+
     <?php if (!empty(session()->getFlashdata('success'))): ?>
         <script>
             Swal.fire({
@@ -73,7 +83,7 @@
             })
         </script>
     <?php endif ?>
-    
+
     <?php if (!empty(session()->getFlashdata('error'))): ?>
         <script>
             Swal.fire({

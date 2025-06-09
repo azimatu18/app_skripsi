@@ -77,7 +77,7 @@
                                         </p>
                                         <form action="/admin/pemesanan/lunas" method="post">
                                             <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
-                                            <button type="submit" class="btn btn-primary">Konfirmasi & Ubah ke Selesai</button>
+                                            <button type="submit" class="btn btn-primary">Konfirmasi pembayaran dan ubah status menjadi diproses & Ubah ke Selesai</button>
                                         </form>
                                     </div>
                                 <?php endif ?>

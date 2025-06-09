@@ -7,6 +7,7 @@
     <title>CV Gedrian Intimed Abadi</title>
     <link rel="shortcut icon" type="image/png" href="/admin/images/logos/logocv.png" />
     <link rel="stylesheet" href="/admin/css/styles.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -28,23 +29,23 @@
                                         <img src="/admin/images/logos/logo.png" width="120" alt="Logo">
                                     </a>
                                     <h4 class="mt-3 fw-bold text-dark">BUAT AKUN BARU</h4>
-                                    <p class="text-muted">Silakan isi form di bawah</p>
+                                    <p class="text-muted">Silakan isi form di bawah ini</p>
                                 </div>
 
                                 <!-- Form Register -->
                                 <form action="/register/submit" method="POST">
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama</label>
+                                        <label for="nama" class="form-label">Nama <span class="text-danger">*</span></label>
                                         <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama lengkap" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
+                                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                                         <input type="email" name="email" id="email" class="form-control" placeholder="Email aktif" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                                     </div>
 
                                     <div class="mb-4">
-                                        <label for="password" class="form-label">Password</label>
+                                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                                         <input type="password" name="password" id="password" class="form-control" placeholder="Password" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                                     </div>
 
@@ -56,7 +57,7 @@
                                     <!-- Link ke login -->
                                     <div class="d-flex align-items-center justify-content-center mt-4">
                                         <p class="mb-0">Sudah punya akun?</p>
-                                        <a href="/login" class="text-primary fw-bold ms-2">Masuk</a>
+                                        <a href="/login" class="text-primary fw-bold ms-2">Login</a>
                                     </div>
                                 </form>
 
@@ -68,6 +69,26 @@
         </div>
 
     </div> <!-- End page-wrapper -->
+
+    <?php if (!empty(session()->getFlashdata('success'))): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: "<?= session()->getFlashdata('success') ?>"
+            })
+        </script>
+    <?php endif ?>
+
+    <?php if (!empty(session()->getFlashdata('error'))): ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: "<?= session()->getFlashdata('error') ?>"
+            })
+        </script>
+    <?php endif ?>
 
     <!-- Javascript -->
     <script src="/admin/libs/jquery/dist/jquery.min.js"></script>

@@ -98,10 +98,10 @@
         </div>
         <div class="details">
             <div>
-                <strong>Kepada      :</strong> <?= $pemesanan['konsumen'] ?><br>
-                <strong>No. PO      :</strong> <?= $pemesanan['no_po'] ?><br>
-                <strong>Alamat      :</strong> <?= $pemesanan['alamat'] ?><br>
-                <strong>No. Faktur  :</strong> <?= $pemesanan['no_faktur'] ?><br>
+                <strong>Kepada :</strong> <?= $pemesanan['konsumen'] ?><br>
+                <strong>No. PO :</strong> <?= $pemesanan['no_po'] ?><br>
+                <strong>Alamat :</strong> <?= $pemesanan['alamat'] ?><br>
+                <strong>No. Faktur :</strong> <?= $pemesanan['no_faktur'] ?><br>
             </div>
         </div>
     </div>
@@ -213,7 +213,7 @@
     <div class="signatures">
         <div class="signature-box">
             <br>Penerima<br><br><br><br><br>
-            ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+            ( <?= $pemesanan['konsumen'] ?> )
         </div>
         <div class="signature-box">
             Metro,
@@ -248,7 +248,7 @@
             <br>
             Pengirim<br>
             <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"><br>
-            ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+            ( CV Gedrian Intimed Abadi )
         </div>
     </div>
 

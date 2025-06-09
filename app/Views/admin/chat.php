@@ -17,7 +17,6 @@
 
                             <div class="row">
                                 <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
-
                                     <div class="p-3">
 
                                         <div data-mdb-perfect-scrollbar-init style="position: relative; height: 500px; overflow-y: scroll;">
@@ -31,7 +30,7 @@
                                                             <div class="d-flex flex-row">
                                                                 <div>
                                                                     <img
-                                                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                                        src="/homepage/images/user.png"
                                                                         alt="avatar" class="d-flex align-self-center me-3" width="60">
                                                                     <span class="badge bg-success badge-dot"></span>
                                                                 </div>
@@ -111,7 +110,7 @@
                                                                     <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">${pesan}</p>
                                                                     <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">${waktu}</p>
                                                                 </div>
-                                                                <img src="/homepage/images/user.png"
+                                                                <img src="/admin/images/profile/admin.png"
                                                                     alt="avatar 1" style="width: 45px; height: 100%;">
                                                             </div>
                                                         `)
@@ -139,14 +138,14 @@
                                                                             <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">${chat.pesan}</p>
                                                                             <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">${chat.waktu}</p>
                                                                         </div>
-                                                                        <img src="/homepage/images/user.png"
+                                                                        <img src="/admin/images/profile/admin.png"
                                                                             alt="avatar 1" style="width: 45px; height: 100%;">
                                                                     </div>
                                                                 `)
                                                             } else {
                                                                 $('#chat-body').append(`
                                                                 <div class="d-flex flex-row justify-content-start">
-                                                                            <img src="/admin/images/profile/admin.png"
+                                                                            <img src="/homepage/images/user.png"
                                                                                 alt="avatar 1" style="width: 45px; height: 100%;">
                                                                             <div>
                                                                                 <p class="small p-2 ms-3 mb-1 rounded-3 bg-light">${chat.pesan}</p>

@@ -11,6 +11,8 @@ class ChatController extends BaseController
 {
     public function tambah()
     {
+        date_default_timezone_set('Asia/Jakarta');
+
         $user = UserModel::data();
 
         $pesan = request()->getPost('pesan');

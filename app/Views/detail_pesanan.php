@@ -20,9 +20,13 @@
                                 ?>
                             </span>
                         </div>
-                        <div>
-                            <a href="/pemesanan/cetak/invoice/<?= $pemesanan['id'] ?>" class="btn btn-sm btn-primary w-100">Cetak Invoice</a>
-                        </div>
+
+                        <?php if ($pemesanan['bukti_dp']): ?>
+                            <div>
+                                <a href="/pemesanan/cetak/invoice/<?= $pemesanan['id'] ?>" class="btn btn-sm btn-primary w-100">Cetak Invoice</a>
+                            </div>
+                        <?php endif ?>
+
                         <?php if ($pemesanan['status_tipe'] == 4): ?>
                             <div>
                                 <a href="#" class="btn btn-sm btn-success w-100" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">Konfirmasi barang diterima</a>
@@ -45,7 +49,7 @@
                                     <p>
                                         Silahkan Unduh berita acara dan faktur penjualan berikut
                                     </p>
-                                    <a href="/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2">Berita Acara</a>
+                                    <a href="/admin/pemesanan/cetak/berita_acara/<?= $pemesanan['id'] ?>" class="btn btn-primary  w-100 mb-2">Berita Acara</a>
                                     <a href="/pemesanan/cetak/faktur_penjualan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100">Faktur Penjualan</a>
                                 </div>
                             <?php endif; ?>
@@ -68,7 +72,7 @@
                             <?php foreach ($detail_pesanan as $item): ?>
                                 <?php
                                 $harga_diskon = $item['harga'] - ($item['harga'] * $item['diskon'] / 100);
-                                $subtotal = $harga_diskon * $item['jumlah']; 
+                                $subtotal = $harga_diskon * $item['jumlah'];
                                 ?>
                                 <tr>
                                     <td><?= $item['judul'] ?></td>
@@ -90,7 +94,8 @@
                         <div>
                             <h4 class="text-black">Metode Pembayaran</h4>
                             <p>Pembayaran dapat ditransfer melalui:</p>
-                            <p><strong>Bank BCA - Ni Ketut Sri Nilowati</strong></p>
+                            <p><strong>Bank BCA - Ni Ketut Srinilowati : 5625049137</strong></p>
+
                         </div>
                     </div>
 
@@ -98,16 +103,38 @@
                         <div class="col-md-6">
                             <div class="ms-auto">
                                 <h4>Upload Bukti Pembayaran DP</h4>
-                                <p>Silahkan Upload Bukti Pembayaran DP sebesar 50% (<strong>Rp. <?= number_format($total_belanja / 2, 0, '.', '.') ?></strong>)</p>
+                                <p>Silahkan Upload Bukti Pembayaran DP sebesar 50%
+                                    (<strong>Rp. <?= number_format($total_belanja / 2, 0, '.', '.') ?></strong>)</p>
+
                                 <form action="/pemesanan/dp/upload" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
                                     <input type="file" name="bukti_dp" accept="image/*" onchange="form.submit()">
                                 </form>
+
                                 <?php if ($pemesanan['bukti_dp']): ?>
-                                    <img class="img-thumbnail mt-5" src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="gambar produk" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalBuktiDP">
+                                    <!-- Tombol untuk membuka modal -->
+                                    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalBuktiDP">
+                                        Lihat Bukti Pembayaran
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalBuktiDP" tabindex="-1" aria-labelledby="modalBuktiDPLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalBuktiDPLabel">Bukti Pembayaran DP</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img class="img-fluid" src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>" alt="Bukti Pembayaran DP">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php endif ?>
                             </div>
                         </div>
+
                         <?php if ($pemesanan['status_tipe'] >= 5): ?>
                             <div class="col-md-6">
                                 <div class="ms-auto">
@@ -119,7 +146,25 @@
                                     </form>
 
                                     <?php if ($pemesanan['bukti_lunas']): ?>
-                                        <img class="img-thumbnail mt-5" src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" alt="gambar produk" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#modalBuktiLunas">
+                                        <!-- Tombol untuk membuka modal -->
+                                        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalBuktiLunas">
+                                            Lihat Bukti Pelunasan
+                                        </button>
+
+                                        <!-- Modal Pelunasan -->
+                                        <div class="modal fade" id="modalBuktiLunas" tabindex="-1" aria-labelledby="modalBuktiLunasLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalBuktiLunasLabel">Bukti Pelunasan</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <img class="img-fluid" src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>" alt="Bukti Pelunasan">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -180,7 +225,7 @@
 </div>
 
 <!-- Modal Bukti DP -->
-<?php if ($pemesanan['bukti_dp']): ?>
+<!-- <?php if ($pemesanan['bukti_dp']): ?>
     <div class="modal fade" id="modalBuktiDP" tabindex="-1" aria-labelledby="modalBuktiDPLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -194,10 +239,10 @@
             </div>
         </div>
     </div>
-<?php endif; ?>
+<?php endif; ?> -->
 
 <!-- Modal Bukti Pelunasan -->
-<?php if ($pemesanan['bukti_lunas']): ?>
+<!-- <?php if ($pemesanan['bukti_lunas']): ?>
     <div class="modal fade" id="modalBuktiLunas" tabindex="-1" aria-labelledby="modalBuktiLunasLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -211,6 +256,6 @@
             </div>
         </div>
     </div>
-<?php endif; ?>
+<?php endif; ?> -->
 
 <?= $this->endSection() ?>

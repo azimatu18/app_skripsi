@@ -42,14 +42,16 @@
             margin-top: 20px;
         }
 
-        .signature {
-            margin-top: 40px;
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            font-size: 14px;
         }
 
-        .signature td {
-            border: none;
+        .signature-box {
             text-align: center;
-            padding-top: 40px;
+            width: 40%;
         }
 
         .saran-box {
@@ -102,31 +104,80 @@
         </h3>
     </div>
 
-    <p>Pada hari ini tanggal __________________ telah dilakukan kegiatan:</p>
+    <p>Pada hari ini tanggal
+        <?php
+        if (!function_exists('bulan_indonesia')) {
+            function bulan_indonesia($tanggal)
+            {
+                $bulan = [
+                    'January'   => 'Januari',
+                    'February'  => 'Februari',
+                    'March'     => 'Maret',
+                    'April'     => 'April',
+                    'May'       => 'Mei',
+                    'June'      => 'Juni',
+                    'July'      => 'Juli',
+                    'August'    => 'Agustus',
+                    'September' => 'September',
+                    'October'   => 'Oktober',
+                    'November'  => 'November',
+                    'December'  => 'Desember',
+                ];
+
+                $tanggal_angka = date('d', strtotime($tanggal));    // Ambil tanggal (01–31)
+                $bulanInggris = date('F', strtotime($tanggal));
+                $tahun = date('Y', strtotime($tanggal));
+                return $tanggal_angka . ' ' . $bulan[$bulanInggris] . ' ' . $tahun;
+            }
+        }
+
+        // Contoh penggunaan:
+        echo bulan_indonesia(date('Y-m-d')); // Misal hasil: Mei 2025
+        ?>
+        telah dilakukan kegiatan:</p>
     <table class="no-border">
         <tr>
             <td>
-                <div class="checkbox"></div> Install Produk
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" checked>
+                    <span>Install Produk</span>
+                </label>
             </td>
             <td>
-                <div class="checkbox"></div> Uji Fungsi dan Training
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox">
+                    <span>Uji Fungsi dan Training</span>
+                </label>
             </td>
             <td>
-                <div class="checkbox"></div> Perbaikan Produk
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox">
+                    <span>Perbaikan Produk</span>
+                </label>
             </td>
         </tr>
         <tr>
             <td>
-                <div class="checkbox"></div> Pengecekan Produk
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox">
+                    <span>Pengecekan Produk</span>
+                </label>
             </td>
             <td>
-                <div class="checkbox"></div> Kunjungan / Maintenance
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox">
+                    <span>Kunjungan / Maintenance</span>
+                </label>
             </td>
             <td>
-                <div class="checkbox"></div> Pengadaan Produk
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" checked>
+                    <span>Pengadaan Produk</span>
+                </label>
             </td>
         </tr>
     </table>
+
 
     <table>
         <thead>
@@ -182,18 +233,19 @@
     <div class="section-title">Saran:</div>
     <div class="saran-box"><?= $penerimaan['saran'] ?></div>
 
-    <table class="signature" width="100%">
-        <tr>
-            <td>CV. GEDRIAN INTIMED ABADI</td>
-            <td>Customer/User</td>
-        </tr>
-        <tr>
-            <td> <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"></td>
-            <td><?= $pemesanan['konsumen'] ?>
-                <!-- <div>Jabatan:</div> -->
-        </td>
-        </tr>
-    </table>
+
+    <div class="signatures">
+        <div class="signature-box">
+            <br>CV. Gedrian Intimed Abadi<br><br>
+            <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo" style="margin-left: 60px;"><br>
+        </div>
+        <div class="signature-box">
+            <br>
+            Konsumen<br><br><br><br><br><br>
+            <?= $pemesanan['konsumen'] ?>
+        </div>
+    </div>
+
 
 </body>
 
