@@ -32,7 +32,7 @@ class AuthController extends BaseController
                 $this->session->set('user_id', $data['id']);
                 // session()->setFlashData('pesan', 'Anda berhasil login'); 
 
-                if ($data['level'] == 'operasional' || $data['level'] == 'pemasaran') {
+                if ($data['level'] == 'operasional' || $data['level'] == 'pemasaran' || $data['level'] == 'manajer pemasar') {
                     return redirect()->to(base_url('/admin/dashboard'));
                 }
 

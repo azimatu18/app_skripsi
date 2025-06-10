@@ -20,7 +20,7 @@
             <strong><i class="bi bi-pencil-fill me-2"></i>Form Edit Produk</strong>
         </div>
         <div class="card-body">
-            <form action="<?= base_url('/admin/produk/update/' . $produk['id']) ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('/admin/produk/pengajuan_edit_produk/' . $produk['id']) ?>" method="post" enctype="multipart/form-data">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label">Judul Produk</label>
@@ -64,7 +64,7 @@
 
                 <div class="mt-4 d-flex justify-content-end gap-1">
                     <button class="btn btn-blue px-4">
-                        <i class="bi bi-save2 me-1"></i> Simpan Perubahan
+                        <i class="bi bi-save2 me-1"></i> Ajukan Perubahan
                     </button>
                     <a href="<?= base_url('/admin/produk') ?>" class="btn btn-secondary">Batal</a>
                 </div>

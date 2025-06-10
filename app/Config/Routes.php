@@ -22,13 +22,18 @@ $routes->get('/admin/dashboard', 'AdminController::dashboard', ['filter' => 'adm
 $routes->get('/admin/konsumen', 'AdminController::konsumen', ['filter' => 'admin_filter']);
 $routes->post('/admin/konsumen/reset-password/(:num)', 'AdminController::konsumenResetPassword/$1', ['filter' => 'admin_filter']);
 
-
 $routes->get('/admin/produk', 'ProdukController::produk', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/tambah', 'ProdukController::produkTambah', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/edit/(:num)', 'ProdukController::produkEdit/$1', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/update/(:num)', 'ProdukController::produkUpdate/$1', ['filter' => 'admin_filter']);
+
+$routes->get('/admin/produk/pengajuan_edit_produk', 'ProdukController::pengajuanEditProduk', ['filter' => 'admin_filter']);
+$routes->post('/admin/produk/pengajuan_edit_produk/(:num)', 'ProdukController::pengajuanEdit/$1', ['filter' => 'admin_filter']);
+$routes->get('/admin/produk/pengajuan_edit_produk/detail/(:num)', 'ProdukController::detailPengajuanEditProduk/$1', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/hapus/(:num)', 'ProdukController::produkHapus/$1', ['filter' => 'admin_filter']);
+
+$routes->get('/admin/validasi_produk', 'ProdukController::validasiProduk', ['filter' => 'admin_filter']);
 
 $routes->get('/admin/chat', 'ChatController::admin', ['filter' => 'admin_filter']);
 $routes->get('/admin/chat/detail/(:num)', 'ChatController::adminDetail/$1', ['filter' => 'admin_filter']);
@@ -72,4 +77,3 @@ $routes->post('/lupa-password/submit', 'AuthController::lupa_password_submit');
 
 $routes->get('/reset-password/(:any)', 'AuthController::reset_password/$1');
 $routes->post('/reset-password/submit', 'AuthController::reset_password_submit');
-

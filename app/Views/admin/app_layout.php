@@ -52,14 +52,38 @@
                                 </a>
                             </li>
                         <?php endif ?>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/admin/pemesanan" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-shopping-cart"></i>
-                                </span>
-                                <span class="hide-menu">Pesanan</span>
-                            </a>
-                        </li>
+                        <!-- Validasi data produk yg diedit -->
+                        <?php if ($level == 'manajer pemasar'): ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/validasi_produk" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-box"></i>
+                                    </span>
+                                    <span class="hide-menu"> Validasi Produk</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
+                        <?php if ($level == 'pemasaran'): ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/produk/pengajuan_edit_produk" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-box"></i>
+                                    </span>
+                                    <span class="hide-menu"> Pengajuan Edit Produk</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
+                        <?php if (!($level == 'manajer pemasar')): ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/pemesanan" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-shopping-cart"></i>
+                                    </span>
+                                    <span class="hide-menu">Pesanan</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
+
                         <?php if ($level == 'pemasaran'): ?>
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="/admin/konsumen" aria-expanded="false">

@@ -29,7 +29,7 @@ class BuatUserTabel extends Migration
 			],
 			'level'      => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '15',
+				'constraint'     => '25',
 			],
 		]);
 
