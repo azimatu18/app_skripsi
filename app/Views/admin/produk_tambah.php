@@ -27,7 +27,7 @@
                         <input type="text" name="judul" class="form-control" placeholder="Contoh: Alat Ukur Tekanan Darah" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Type</label>
+                        <label class="form-label">Tipe</label>
                         <input type="text" name="tipe" class="form-control" placeholder="Contoh: Digital, Manual" required oninvalid="this.setCustomValidity('Harap isi bidang ini')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-md-6">

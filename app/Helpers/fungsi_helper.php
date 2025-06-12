@@ -18,8 +18,8 @@ if (!function_exists('status_pemesanan')) {
     }
 }
 
-if (!function_exists('status_validasi_produk')) {
-    function status_validasi_produk(int $kode): string
+if (!function_exists('status_pengajuan')) {
+    function status_pengajuan(int $kode): string
     {
         $status = [
             1 => 'Menunggu Validasi',

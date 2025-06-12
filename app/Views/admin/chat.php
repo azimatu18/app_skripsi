@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between mb-4">
-        <h4 class="text-primary"><i class="bi bi-person-lines-fill me-2"></i>Chat Konsumen</h4>
+        <h4 class="text-primary">Chat Konsumen</h4>
     </div>
 
     <section>

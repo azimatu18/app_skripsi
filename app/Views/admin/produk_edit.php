@@ -23,11 +23,11 @@
             <form action="<?= base_url('/admin/produk/pengajuan_edit_produk/' . $produk['id']) ?>" method="post" enctype="multipart/form-data">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label">Judul Produk</label>
+                        <label class="form-label">Nama Produk</label>
                         <input type="text" name="judul" class="form-control" value="<?= esc($produk['judul']) ?>" required>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Type</label>
+                        <label class="form-label">Tipe</label>
                         <input type="text" name="tipe" class="form-control" value="<?= esc($produk['tipe']) ?>" required>
                     </div>
                     <div class="col-md-6">

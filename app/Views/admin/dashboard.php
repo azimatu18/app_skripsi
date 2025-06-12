@@ -7,12 +7,12 @@
     <div class="card">
         <div class="card-body">
             <h4>Selamat Datang</h4>
-            <p>Halo, <?= App\Models\UserModel::data()['nama'] ?>. Anda Login Sebagai Staf <?= App\Models\UserModel::data()['level'] ?></p>
+            <p>Halo, <?= App\Models\UserModel::data()['nama'] ?>. Anda Login Sebagai <?= App\Models\UserModel::data()['level'] ?></p>
         </div>
     </div>
 
     <?php $level = App\Models\UserModel::data()['level'] ?>
-    <?php if ($level == 'pemasaran'): ?>
+    <?php if ($level == 'Staf Pemasaran'): ?>
         <div class="row g-4 mb-4">
             <!-- Konsumen -->
             <div class="col-md-4">

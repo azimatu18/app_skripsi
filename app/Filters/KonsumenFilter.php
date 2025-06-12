@@ -27,7 +27,15 @@ class KonsumenFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $user = UserModel::data();
-        if (!$user || $user['level'] == 'pemasaran' || $user['level'] == 'operasional' || $user['manajer pemasar']) {
+
+        $levelDilarang = [
+            'Staf Pemasaran',
+            'Staf Operasional',
+            'Manajer Pemasaran',
+            'Manajer Operasional'
+        ];
+
+        if (!$user || in_array($user['level'], $levelDilarang)) {
             return redirect()->to(base_url('/'));
         }
     }

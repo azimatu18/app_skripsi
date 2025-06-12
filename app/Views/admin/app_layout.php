@@ -42,7 +42,7 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <?php if ($level == 'pemasaran'): ?>
+                        <?php if ($level == 'Staf Pemasaran' || $level == 'Manajer Pemasaran'): ?>
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="/admin/produk" aria-expanded="false">
                                     <span>
@@ -52,28 +52,16 @@
                                 </a>
                             </li>
                         <?php endif ?>
-                        <!-- Validasi data produk yg diedit -->
-                        <?php if ($level == 'manajer pemasar'): ?>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="/admin/validasi_produk" aria-expanded="false">
-                                    <span>
-                                        <i class="ti ti-box"></i>
-                                    </span>
-                                    <span class="hide-menu"> Validasi Produk</span>
-                                </a>
-                            </li>
-                        <?php endif ?>
-                        <?php if ($level == 'pemasaran'): ?>
+                        <?php if ($level == 'Staf Pemasaran' || $level == 'Manajer Pemasaran'): ?>
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="/admin/produk/pengajuan_edit_produk" aria-expanded="false">
                                     <span>
-                                        <i class="ti ti-box"></i>
+                                        <i class="ti ti-archive"></i>
                                     </span>
                                     <span class="hide-menu"> Pengajuan Edit Produk</span>
                                 </a>
                             </li>
                         <?php endif ?>
-                        <?php if (!($level == 'manajer pemasar')): ?>
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="/admin/pemesanan" aria-expanded="false">
                                     <span>
@@ -82,9 +70,19 @@
                                     <span class="hide-menu">Pesanan</span>
                                 </a>
                             </li>
+
+                        <?php if ($level == 'Staf Operasional' || $level == 'Manajer Operasional'): ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/admin/validasi_dokumen" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-report"></i>
+                                    </span>
+                                    <span class="hide-menu">Pengajuan Validasi Dokumen</span>
+                                </a>
+                            </li>
                         <?php endif ?>
 
-                        <?php if ($level == 'pemasaran'): ?>
+                        <?php if ($level == 'Staf Pemasaran'): ?>
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="/admin/konsumen" aria-expanded="false">
                                     <span>
@@ -131,11 +129,14 @@
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <p class="mb-0 fw-bold"> <?= App\Models\UserModel::data()['level'] ?></p>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <img src="/admin/images/profile/admin.png" alt="" width="35" height="35" class="rounded-circle">
                                 </a>
+
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <div class="message-body">
                                         <a href="/logout"

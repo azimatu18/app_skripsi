@@ -27,13 +27,19 @@ $routes->get('/admin/produk/tambah', 'ProdukController::produkTambah', ['filter'
 $routes->post('/admin/produk/submit', 'ProdukController::produkSubmit', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/edit/(:num)', 'ProdukController::produkEdit/$1', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/update/(:num)', 'ProdukController::produkUpdate/$1', ['filter' => 'admin_filter']);
+$routes->post('/admin/produk/hapus/(:num)', 'ProdukController::produkHapus/$1', ['filter' => 'admin_filter']);
 
 $routes->get('/admin/produk/pengajuan_edit_produk', 'ProdukController::pengajuanEditProduk', ['filter' => 'admin_filter']);
 $routes->post('/admin/produk/pengajuan_edit_produk/(:num)', 'ProdukController::pengajuanEdit/$1', ['filter' => 'admin_filter']);
 $routes->get('/admin/produk/pengajuan_edit_produk/detail/(:num)', 'ProdukController::detailPengajuanEditProduk/$1', ['filter' => 'admin_filter']);
-$routes->post('/admin/produk/hapus/(:num)', 'ProdukController::produkHapus/$1', ['filter' => 'admin_filter']);
 
-$routes->get('/admin/validasi_produk', 'ProdukController::validasiProduk', ['filter' => 'admin_filter']);
+
+$routes->post('/admin/produk/pengajuanDisetujui/(:num)', 'ProdukController::pengajuanDisetujui/$1', ['filter' => 'admin_filter']);
+$routes->post('/admin/produk/pengajuanDitolak/(:num)', 'ProdukController::pengajuanDitolak/$1', ['filter' => 'admin_filter']);
+
+
+// $routes->get('/admin/pengajuan_validasi_dokumen', 'ProdukController::validasiDokumen', ['filter' => 'admin_filter']);
+
 
 $routes->get('/admin/chat', 'ChatController::admin', ['filter' => 'admin_filter']);
 $routes->get('/admin/chat/detail/(:num)', 'ChatController::adminDetail/$1', ['filter' => 'admin_filter']);

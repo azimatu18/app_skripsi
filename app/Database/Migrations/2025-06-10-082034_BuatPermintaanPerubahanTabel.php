@@ -9,29 +9,32 @@ class BuatPermintaanPerubahanTabel extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'auto_increment' => true
+            'id'                => [
+                'type'          => 'INT',
+                'constraint'    => 11,
+                'unsigned'      => true,
+                'auto_increment'=> true
             ],
-            'produk_id'       => [
-                'type'           => 'INT',
-                'constraint'     => 11
+            'produk_id'         => [
+                'type'          => 'INT',
+                'constraint'    => 11
             ],
-            'status'       => [
-                'type'           => 'INT',
-                'constraint'     => '10',
-                'default'         => 1 // 1= menunggu validasi, 2=disetujui, 3=ditolak
-
+            'status'            => [
+                'type'          => 'INT',
+                'constraint'    => '10',
+                'default'       => 1 // 1= menunggu validasi, 2=disetujui, 3=ditolak
             ],
-            'data_baru'      => [
-                'type'           => 'TEXT',
+            'data_baru'         => [
+                'type'          => 'TEXT',
             ],
-            'alasan_penolakan'      => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
-                'null'           => true,
+            'alasan_penolakan'  => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '255',
+                'null'          => true,
+            ],
+            'waktu'             => [
+                'type'          => 'TIMESTAMP',
+                'default'       => NULL
             ]
         ]);
 

@@ -21,11 +21,9 @@
                             </span>
                         </div>
 
-                        <?php if ($pemesanan['bukti_dp']): ?>
-                            <div>
-                                <a href="/pemesanan/cetak/invoice/<?= $pemesanan['id'] ?>" class="btn btn-sm btn-primary w-100">Cetak Invoice</a>
-                            </div>
-                        <?php endif ?>
+                        <div>
+                            <a href="/pemesanan/cetak/invoice/<?= $pemesanan['id'] ?>" class="btn btn-sm btn-primary w-100">Cetak Invoice</a>
+                        </div>
 
                         <?php if ($pemesanan['status_tipe'] == 4): ?>
                             <div>

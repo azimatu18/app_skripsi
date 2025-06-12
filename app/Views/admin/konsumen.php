@@ -3,32 +3,29 @@
 
 <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between mb-4">
-        <h4 class="text-primary"><i class="bi bi-person-lines-fill me-2"></i>Data Konsumen</h4>
+        <h4 class="text-primary">Data Konsumen</h4>
     </div>
 
-    <div class="card shadow-sm border-0">
-        <div class="card-body"> 
-
-            <div class="table-responsive">
-                <table class="table table-bordered align-middle table-hover">
-                    <thead class="table-primary text-center">
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($konsumen as $no => $data): ?>
-                            <tr>
-                                <td class="text-center"><?= $no + 1 ?></td>
-                                <td><?= $data['nama'] ?></td>
-                                <td><?= $data['email'] ?></td>
-                            </tr>
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle table-hover">
+            <thead class="table-primary text-center">
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($konsumen as $no => $data): ?>
+                    <tr>
+                        <td class="text-center"><?= $no + 1 ?></td>
+                        <td><?= $data['nama'] ?></td>
+                        <td><?= $data['email'] ?></td>
+                    </tr>
 
 
-                            <!-- Modal -->
-                            <!-- <div class="modal fade" id="exampleModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModal<?= $data['id'] ?>Label" aria-hidden="true">
+                    <!-- Modal -->
+                    <!-- <div class="modal fade" id="exampleModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModal<?= $data['id'] ?>Label" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -47,12 +44,11 @@
                                     </div>
                                 </div>
                             </div> -->
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                <?php endforeach ?>
+            </tbody>
+        </table>
     </div>
 </div>
+
 
 <?= $this->endSection() ?>

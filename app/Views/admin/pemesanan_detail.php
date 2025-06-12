@@ -29,7 +29,7 @@
                             </div>
 
                             <?php if ($pemesanan['status_tipe'] == '2' && !empty($pemesanan['bukti_dp'])): ?>
-                                <?php if ($level == 'pemasaran'): ?>
+                                <?php if ($level == 'Manajer Pemasaran'): ?>
                                     <div class="bg-primaryy bg-opacity-25 p-3 rounded">
                                         <h4>Konsumen sudah mengirim bukti pembayaran DP</h4>
                                         <p>
@@ -43,7 +43,7 @@
                                 <?php endif ?>
 
                             <?php elseif ($pemesanan['status_tipe'] == '3'): ?>
-                                <?php if ($level == 'operasional'): ?>
+                                <?php if ($level == 'Staf Operasional'): ?>
                                     <div class="bg-primaryy bg-opacity-25 p-3 rounded">
                                         <h4>Pesanan Sudah Siap Kirim</h4>
                                         <p>
@@ -58,7 +58,7 @@
 
 
                             <?php elseif ($pemesanan['status_tipe'] == '4'): ?>
-                                <?php if ($level == 'operasional'): ?>
+                                <?php if ($level == 'Staf Operasional'): ?>
                                     <div class="bg-primaryy bg-opacity-25 p-3 mb-4 rounded">
                                         <h4>Surat Jalan</h4>
                                         <p>
@@ -69,7 +69,7 @@
                                 <?php endif ?>
 
                             <?php elseif ($pemesanan['status_tipe'] == '6' && !empty($pemesanan['bukti_lunas'])): ?>
-                                <?php if ($level == 'pemasaran'): ?>
+                                <?php if ($level == 'Staf Pemasaran'): ?>
                                     <div class="bg-primaryy bg-opacity-25 p-3 rounded">
                                         <h4>Konsumen sudah mengirim bukti pembayaran lunas</h4>
                                         <p>
@@ -83,7 +83,7 @@
                                 <?php endif ?>
 
                             <?php elseif ($pemesanan['status_tipe'] == '7'): ?>
-                                <?php if ($level == 'operasional'): ?>
+                                <?php if ($level == 'Staf Operasional'): ?>
                                     <div class="bg-primaryy bg-opacity-25 p-3 rounded">
                                         <h4>Pesanan Sudah selesai</h4>
                                         <p>
