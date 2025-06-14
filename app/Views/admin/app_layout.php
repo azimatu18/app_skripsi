@@ -15,7 +15,7 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <aside class="left-sidebar">
+        <aside class="left-sidebar">    
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -71,13 +71,13 @@
                                 </a>
                             </li>
 
-                        <?php if ($level == 'Staf Operasional' || $level == 'Manajer Operasional'): ?>
+                        <?php if ($level == 'Manajer Operasional'): ?>
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="/admin/validasi_dokumen" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-report"></i>
                                     </span>
-                                    <span class="hide-menu">Pengajuan Validasi Dokumen</span>
+                                    <span class="hide-menu">Validasi Dokumen</span>
                                 </a>
                             </li>
                         <?php endif ?>

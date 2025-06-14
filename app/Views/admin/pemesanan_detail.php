@@ -27,7 +27,15 @@
                                 echo status_pemesanan($tipe);
                                 ?>
                             </div>
-
+                            <?php if ($surat_jalan): ?>
+                                <div class="alert alert-primary mb-2">
+                                    <b>Status Validasi Dokumen: </b>
+                                    <?php
+                                    $tipe = $surat_jalan['status_dokumen'];
+                                    echo status_validasi_dokumen($tipe);
+                                    ?>
+                                </div>
+                            <?php endif ?>
                             <?php if ($pemesanan['status_tipe'] == '2' && !empty($pemesanan['bukti_dp'])): ?>
                                 <?php if ($level == 'Manajer Pemasaran'): ?>
                                     <div class="bg-primaryy bg-opacity-25 p-3 rounded">
@@ -49,13 +57,15 @@
                                         <p>
                                             Silahkan tekan tombol dibawah jika pesanan sudah siap dikirim
                                         </p>
-                                        <form action="/admin/pemesanan/kirim" method="post">
-                                            <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
-                                            <button class="btn btn-primary">Submit</button>
-                                        </form>
+                                        <?php if ($surat_jalan['status_dokumen'] != '1'): ?>
+                                            <form action="/admin/validasi_dokumen/kirim" method="post">
+                                                <input type="hidden" name="id" value="<?= $pemesanan['id'] ?>">
+                                                <input type="hidden" name="tipe_dokumen" value="Surat Jalan">
+                                                <button class="btn btn-primary">Submit</button>
+                                            </form>
+                                        <?php endif ?>
                                     </div>
                                 <?php endif ?>
-
 
                             <?php elseif ($pemesanan['status_tipe'] == '4'): ?>
                                 <?php if ($level == 'Staf Operasional'): ?>

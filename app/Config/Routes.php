@@ -38,7 +38,13 @@ $routes->post('/admin/produk/pengajuanDisetujui/(:num)', 'ProdukController::peng
 $routes->post('/admin/produk/pengajuanDitolak/(:num)', 'ProdukController::pengajuanDitolak/$1', ['filter' => 'admin_filter']);
 
 
-// $routes->get('/admin/pengajuan_validasi_dokumen', 'ProdukController::validasiDokumen', ['filter' => 'admin_filter']);
+$routes->post('/admin/validasi_dokumen/kirim', 'ValidasiDokumenController::kirim', ['filter' => 'admin_filter']);
+$routes->get('/admin/validasi_dokumen', 'ValidasiDokumenController::daftar', ['filter' => 'admin_filter']);
+$routes->get('/admin/validasi_dokumen/detail/(:num)', 'ValidasiDokumenController::detail/$1');
+// $routes->get('/admin/validasi_dokumen/detail/(:num)/(:any)', 'AdminController::detail/$1/$2');
+
+$routes->post('/admin/validasi_dokumen/diTolak/(:num)', 'ValidasiDokumenController::ditolak/$1', ['filter' => 'admin_filter']);
+$routes->post('/admin/validasi_dokumen/diSetujui/(:num)', 'ValidasiDokumenController::disetujui/$1', ['filter' => 'admin_filter']);
 
 
 $routes->get('/admin/chat', 'ChatController::admin', ['filter' => 'admin_filter']);

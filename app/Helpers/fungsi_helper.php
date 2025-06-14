@@ -30,3 +30,16 @@ if (!function_exists('status_pengajuan')) {
         return $status[$kode] ?? 'Status Tidak Diketahui';
     }
 }
+
+if (!function_exists('status_validasi_dokumen')) {
+    function Status_validasi_dokumen (int $kode): string
+    {
+        $status = [
+            1 => 'Menunggu Validasi',
+            2 => 'Disetujui',
+            3 => 'Ditolak',
+        ];
+
+        return $status[$kode] ?? 'Status Tidak Diketahui';
+    }
+}

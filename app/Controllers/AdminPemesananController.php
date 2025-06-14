@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\PemesananModel;
 use App\Models\PemesananProdukModel;
 use App\Models\UserModel;
+use App\Models\ValidasiDokumenModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class AdminPemesananController extends BaseController
@@ -24,9 +25,13 @@ class AdminPemesananController extends BaseController
         }
 
         $detail_pesanan = PemesananProdukModel::where('pemesanan_id', $id)->get();
+        $surat_jalan = null;
+        $surat_jalan = $pemesanan->validasi_dokumen()->where('tipe_dokumen', 'Surat Jalan')->first();
+
         $data = [
             'pemesanan' => $pemesanan,
-            'detail_pesanan' => $detail_pesanan
+            'detail_pesanan' => $detail_pesanan,
+            'surat_jalan' => $surat_jalan
         ];
 
         return view('admin/pemesanan_detail', $data);
