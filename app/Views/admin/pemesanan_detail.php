@@ -2,8 +2,12 @@
 <?= $this->section('konten') ?>
 
 <div class="untree_co-section">
-    <div class="container">
-        <div class="row">
+    <div class="container" style="padding-top: 100px!important;">
+        <div class="row" style="
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;">
             <div class="col-md-12 mb-5">
                 <h2 class="h3 mb-3 text-black">Detail Pesanan</h2>
                 <div class="p-3 p-lg-5 border bg-white">
@@ -53,9 +57,9 @@
                             <?php elseif ($pemesanan['status_tipe'] == '3'): ?>
                                 <?php if ($level == 'Staf Operasional'): ?>
                                     <div class="bg-primaryy bg-opacity-25 p-3 rounded">
-                                        <h4>Pesanan Sudah Siap Kirim</h4>
+                                        <h4>Barang Sudah Siap</h4>
                                         <p>
-                                            Silahkan tekan tombol dibawah jika pesanan sudah siap dikirim
+                                            Tekan tombol dibawah untuk minta validasi dokumen surat jalan
                                         </p>
                                         <?php if ($surat_jalan['status_dokumen'] != '1'): ?>
                                             <form action="/admin/validasi_dokumen/kirim" method="post">
@@ -72,9 +76,9 @@
                                     <div class="bg-primaryy bg-opacity-25 p-3 mb-4 rounded">
                                         <h4>Surat Jalan</h4>
                                         <p>
-                                            Silahkan Unduh surat jalan berikut
+                                            Silahkan cetak surat jalan berikut
                                         </p>
-                                        <a href="/admin/pemesanan/cetak/surat_jalan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2">Surat jalan</a>
+                                        <a href="/admin/pemesanan/cetak/surat_jalan/<?= $pemesanan['id'] ?>" class="btn btn-primary w-100 mb-2"> Cetak Surat Jalan</a>
                                     </div>
                                 <?php endif ?>
 
@@ -135,46 +139,48 @@
                         </tbody>
                     </table>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <?php if (!empty($pemesanan['bukti_dp'])): ?>
-                                <h4 class="text-black mt-4">Bukti Pembayaran DP</h4>
-                                <div class="mb-3">
-                                    <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>"
-                                        alt="Bukti DP"
-                                        class="img-fluid img-thumbnail"
-                                        style="max-width: 400px; cursor: pointer;"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalBuktiDP">
-                                </div>
-                            <?php else: ?>
-                                <div class="alert alert-warning mt-4">Belum ada bukti pembayaran DP yang diunggah.</div>
-                            <?php endif; ?>
+                    <?php if ($level == 'Manajer Pemasaran'): ?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?php if (!empty($pemesanan['bukti_dp'])): ?>
+                                    <h4 class="text-black mt-4">Bukti Pembayaran DP</h4>
+                                    <div class="mb-3">
+                                        <img src="<?= base_url('uploads/bukti_dp/' . $pemesanan['bukti_dp']) ?>"
+                                            alt="Bukti DP"
+                                            class="img-fluid img-thumbnail"
+                                            style="max-width: 400px; cursor: pointer;"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalBuktiDP">
+                                    </div>
+                                <?php else: ?>
+                                    <div class="alert alert-warning mt-4">Belum ada bukti pembayaran DP yang diunggah.</div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?php if (!empty($pemesanan['bukti_lunas'])): ?>
+                                    <h4 class="text-black mt-4">Bukti Pembayaran lunas</h4>
+                                    <div class="mb-3">
+                                        <img src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>"
+                                            alt="Bukti Lunas"
+                                            class="img-fluid img-thumbnail"
+                                            style="max-width: 400px; cursor: pointer;"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalBuktiLunas">
+                                    </div>
+                                <?php else: ?>
+                                    <div class="alert alert-warning mt-4">Belum ada bukti pelunasan yang diunggah.</div>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <?php if (!empty($pemesanan['bukti_lunas'])): ?>
-                                <h4 class="text-black mt-4">Bukti Pembayaran lunas</h4>
-                                <div class="mb-3">
-                                    <img src="<?= base_url('uploads/bukti_lunas/' . $pemesanan['bukti_lunas']) ?>"
-                                        alt="Bukti Lunas"
-                                        class="img-fluid img-thumbnail"
-                                        style="max-width: 400px; cursor: pointer;"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalBuktiLunas">
-                                </div>
-                            <?php else: ?>
-                                <div class="alert alert-warning mt-4">Belum ada bukti pelunasan yang diunggah.</div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <a href="/admin/pemesanan" class="btn btn-black btn-lg py-3">Kembali</a>
-                    </div>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <a href="/admin/pemesanan" class="btn btn-outline-primary m-4">Kembali</a>
+        </div>
     </div>
+
 </div>
 
 <!-- Modal Bukti DP -->

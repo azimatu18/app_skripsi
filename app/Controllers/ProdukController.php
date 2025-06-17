@@ -5,18 +5,33 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\PermintaanPerubahanModel;
 use App\Models\ProdukModel;
+use App\Models\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class ProdukController extends BaseController
 {
     public function produk()
     {
+        $level = UserModel::data()['level'];
+
+        if ($level != 'Staf Pemasaran' && $level != 'Manajer Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
+        // if (UserModel::data()['level'] != 'Staf Pemasaran') {
+        //     return redirect()->back();
+        // }
+
         $data['data_produk'] = ProdukModel::get();
         return view('admin/produk', $data);
     }
 
     function produkTambah()
     {
+        if (UserModel::data()['level'] != 'Staf Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
         return view('admin/produk_tambah');
     }
 
@@ -48,6 +63,10 @@ class ProdukController extends BaseController
 
     public function produkEdit($id)
     {
+        if (UserModel::data()['level'] != 'Staf Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
         $produk = ProdukModel::find($id);
 
         return view('admin/produk_edit', ['produk' => $produk]);
@@ -105,13 +124,6 @@ class ProdukController extends BaseController
         return redirect()->to(base_url('/admin/produk'))->with('success', 'Produk berhasil dihapus');
     }
 
-    // function validasiProduk()
-    // {
-    //     $data['produk_menunggu'] = ProdukModel::where('status_validasi_produk', 1)->get();
-
-    //     return view('admin/validasi_produk', $data);
-    // }
-
     function pengajuanEdit($id)
     {
         $produk = ProdukModel::find($id);
@@ -164,14 +176,25 @@ class ProdukController extends BaseController
 
     function pengajuanEditProduk()
     {
+        $level = UserModel::data()['level'];
+
+        if ($level != 'Staf Pemasaran' && $level != 'Manajer Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
         $data['data_produk'] = PermintaanPerubahanModel::get();
         return view('admin/pengajuan_edit_produk', $data);
     }
 
     function detailPengajuanEditProduk($id)
     {
+        $level = UserModel::data()['level'];
+
+        if ($level != 'Staf Pemasaran' && $level != 'Manajer Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
         $data['permintaan_perubahan'] = PermintaanPerubahanModel::find($id);
-        // dd(json_decode($data['permintaan_perubahan']->data_baru, true));
         $data['produk'] = json_decode($data['permintaan_perubahan']->data_baru, true);
 
         return view('admin/detail_pengajuan_edit', $data);

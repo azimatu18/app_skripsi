@@ -24,10 +24,10 @@ class ValidasiDokumenController extends BaseController
 
     public function daftar()
     {
-        
         if (UserModel::data()['level'] != 'Manajer Operasional') {
             return redirect()->to('/admin/dashboard');
         }
+        
         $data['data_dokumen'] = \Config\Database::connect()
             ->table('validasi_dokumen')
             ->select('validasi_dokumen.*, pemesanan.konsumen, pemesanan.id as pemesanan_id')
@@ -41,7 +41,7 @@ class ValidasiDokumenController extends BaseController
     public function detail($id)
     {
         if (UserModel::data()['level'] != 'Manajer Operasional') {
-            return redirect()->back();
+            return redirect()->to('/admin/dashboard');
         }
         // $dokumen = ValidasiDokumenModel::where('pemesanan_id', $pemesanan_id)->get();
         $dokumen = ValidasiDokumenModel::find($id);
@@ -70,31 +70,18 @@ class ValidasiDokumenController extends BaseController
         if (!$dokumen) {
             return redirect()->back()->with('error', 'Dokumen tidak ditemukan');
         }
+        // Ambil data pemesanan berdasarkan relasi dari dokumen
+        $pemesanan = PemesananModel::find($dokumen->pemesanan_id);
+
+        if ($pemesanan) {
+            $pemesanan->status_tipe = 4;
+            $pemesanan->update(); // atau ->update()
+        }
 
         $dokumen->status_dokumen = 2; // Disetujui
         $dokumen->alasan = null;
         $dokumen->save();
 
-        return redirect()->to(base_url('admin/validasi_dokumen'))->with('success', 'Dokumen berhasil disetujui');
-    }
-
-    public function ditolak($id)
-    {
-        $dokumen = ValidasiDokumenModel::find($id);
-
-        if (!$dokumen) {
-            return redirect()->back()->with('error', 'Dokumen tidak ditemukan');
-        }
-
-        $alasan = $this->request->getPost('alasan_penolakan');
-        if (!$alasan) {
-            return redirect()->back()->with('error', 'Alasan penolakan harus diisi');
-        }
-
-        $dokumen->status_dokumen = 3; // Ditolak
-        $dokumen->alasan = $alasan;
-        $dokumen->save();
-
-        return redirect()->to(base_url('admin/validasi_dokumen'))->with('success', 'Dokumen berhasil ditolak');
+        return redirect()->to(base_url('admin/validasi_dokumen'))->with('success', 'Dokumen surat jalan disetujui');
     }
 }

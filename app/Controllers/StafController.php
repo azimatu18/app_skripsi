@@ -10,12 +10,20 @@ class StafController extends BaseController
 {
     public function staf()
     {
+        if (UserModel::data()['level'] != 'Staf Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
         $data['data_staf'] = UserModel::where('level', '!=', 'konsumen')->get();
         return view('admin/staf', $data);
     }
 
     function stafTambah()
     {
+        if (UserModel::data()['level'] != 'Staf Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
         return view('admin/staf_tambah');
     }
 
@@ -38,6 +46,10 @@ class StafController extends BaseController
 
     public function stafEdit($id)
     {
+        if (UserModel::data()['level'] != 'Staf Pemasaran') {
+            return redirect()->to('/admin/dashboard');
+        }
+
         $staf = UserModel::find($id);
 
         return view('admin/staf_edit', ['staf' => $staf]);
@@ -58,7 +70,7 @@ class StafController extends BaseController
         ];
 
         if (!empty($password)) {
-            $dataUpdate['password']=password_hash($password, PASSWORD_DEFAULT);
+            $dataUpdate['password'] = password_hash($password, PASSWORD_DEFAULT);
         }
 
 

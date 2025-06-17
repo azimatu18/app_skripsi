@@ -43,7 +43,6 @@ $routes->get('/admin/validasi_dokumen', 'ValidasiDokumenController::daftar', ['f
 $routes->get('/admin/validasi_dokumen/detail/(:num)', 'ValidasiDokumenController::detail/$1');
 // $routes->get('/admin/validasi_dokumen/detail/(:num)/(:any)', 'AdminController::detail/$1/$2');
 
-$routes->post('/admin/validasi_dokumen/diTolak/(:num)', 'ValidasiDokumenController::ditolak/$1', ['filter' => 'admin_filter']);
 $routes->post('/admin/validasi_dokumen/diSetujui/(:num)', 'ValidasiDokumenController::disetujui/$1', ['filter' => 'admin_filter']);
 
 

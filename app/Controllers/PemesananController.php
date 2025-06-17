@@ -14,6 +14,10 @@ class PemesananController extends BaseController
 {
     public function index()
     {
+        if (UserModel::data()['level'] != 'konsumen') {
+            return redirect()->back();
+        }
+
         $user = UserModel::data();
         $keranjang = KeranjangModel::with('produk')->where('user_id', $user['id'])->get();
 
@@ -80,6 +84,10 @@ class PemesananController extends BaseController
 
     function detail($id)
     {
+        if (UserModel::data()['level'] != 'konsumen') {
+            return redirect()->back();
+        }
+
         $pemesanan = PemesananModel::find($id);
         if (!$pemesanan) {
             return redirect()->to(base_url('/pemesanan'))->with('error', 'Pesanan tidak ditemukan.');
@@ -97,6 +105,10 @@ class PemesananController extends BaseController
 
     function daftar()
     {
+        if (UserModel::data()['level'] != 'konsumen') {
+            return redirect()->back();
+        }
+
         $user = UserModel::data();
 
         $pemesanan = $user->pemesanan()->orderBy('id', 'desc')->get();

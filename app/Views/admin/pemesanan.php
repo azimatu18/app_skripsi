@@ -37,7 +37,7 @@
                             ?>
                         </td>
 
-                        <td>
+                        <td class="text-center">
                             <a class="btn btn-sm btn-warning mb-1" href="/admin/pemesanan/detail/<?= $data['id'] ?>">Detail</a>
                         </td>
                     </tr>

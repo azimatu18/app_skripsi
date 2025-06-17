@@ -13,6 +13,10 @@ class KeranjangController extends BaseController
     // Menampilkan halaman keranjang dengan produk yang dimiliki pengguna
     public function index()
     {
+        if (UserModel::data()['level'] != 'konsumen') {
+            return redirect()->back();
+        }
+
         $user = UserModel::data();
         $data['keranjang_produk'] = KeranjangModel::with('produk')->where('user_id', $user['id'])->get();
         // return json_encode($data);

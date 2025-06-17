@@ -8,6 +8,10 @@ class HomeController extends BaseController
 {
     public function index(): string
     {
+        // if (User::data()['level'] != 'Staf Pemasaran') {
+        //     return redirect()->back();
+        // }
+
         $data['produk_lain'] = ProdukModel::limit(3)->get();
         return view('home', $data);
     }

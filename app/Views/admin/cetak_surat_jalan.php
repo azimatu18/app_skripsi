@@ -137,12 +137,12 @@
     <div class="signatures">
         <div class="signature-box">
             Penerima/Pembeli<br><br><br><br><br>
-            ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+            ( <?= $pemesanan['konsumen'] ?> )
         </div>
         <div class="signature-box">
             Pengirim/Penjual<br><br>
             <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"><br>
-            ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+            ( CV Gedrian Intimed Abadi )
         </div>
     </div>
 

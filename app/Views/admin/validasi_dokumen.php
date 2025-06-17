@@ -31,15 +31,8 @@
                         <td class="text-center">
                             <?php
                             $tipe = $dokumen['status_dokumen'];
-                            echo '<div>' . Status_validasi_dokumen($tipe) . '</div>';
-
-                            if ($tipe == 3 && !empty($dokumen['alasan_penolakan'])):
+                            echo Status_validasi_dokumen($tipe);
                             ?>
-                                <div class="mt-2 p-2 bg-light border rounded text-danger small">
-                                    <strong>Alasan Penolakan:</strong><br>
-                                    <?= esc($dokumen['alasan_penolakan']) ?>
-                                </div>
-                            <?php endif; ?>
                         </td>
 
                         <td class="text-center"><a href="/admin/validasi_dokumen/detail/<?= $dokumen['id'] ?>" class="btn btn-sm btn-warning mb-1">

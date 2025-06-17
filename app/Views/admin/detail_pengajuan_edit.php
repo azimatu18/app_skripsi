@@ -61,28 +61,31 @@
             </div>
 
             <?php if ($level == 'Manajer Pemasaran'): ?>
-                <div class="mb-4">
-                    <div class=" d-flex align-items-end ">
-                        <form action="<?= base_url('admin/produk/pengajuanDitolak/' . $permintaan_perubahan['id']) ?>" method="post">
-                            <?= csrf_field() ?>
-                            <div class="mb-3">
-                                <label for="alasan_penolakan" class="form-label fw-semibold">Alasan Penolakan</label>
-                                <textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" rows="2" required oninvalid="this.setCustomValidity('Harap isi alasan penolakan')" oninput="this.setCustomValidity('')"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-x-circle me-1"></i> Tolak Pengajuan
-                            </button>
-                        </form>
+                <?php if ($permintaan_perubahan['status'] != 2 ): ?>
 
-                        <!-- Form & Tombol Setujui -->
-                        <form action="<?= base_url('admin/produk/pengajuanDisetujui/' . $permintaan_perubahan['id']) ?>" method="post">
-                            <?= csrf_field() ?>
-                            <button type="submit" class="btn btn-blue px-4">
-                                <i class="bi bi-check2-circle me-1"></i> Setujui
-                            </button>
-                        </form>
+                    <div class="mb-4">
+                        <div class=" d-flex align-items-end ">
+                            <form action="<?= base_url('admin/produk/pengajuanDitolak/' . $permintaan_perubahan['id']) ?>" method="post">
+                                <?= csrf_field() ?>
+                                <div class="mb-3">
+                                    <label for="alasan_penolakan" class="form-label fw-semibold">Alasan Penolakan</label>
+                                    <textarea name="alasan_penolakan" id="alasan_penolakan" class="form-control" rows="2" required oninvalid="this.setCustomValidity('Harap isi alasan penolakan')" oninput="this.setCustomValidity('')"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-x-circle me-1"></i> Tolak Pengajuan
+                                </button>
+                            </form>
+
+                            <!-- Form & Tombol Setujui -->
+                            <form action="<?= base_url('admin/produk/pengajuanDisetujui/' . $permintaan_perubahan['id']) ?>" method="post">
+                                <?= csrf_field() ?>
+                                <button type="submit" class="btn-success px-4">
+                                    <i class="bi bi-check2-circle me-1"></i> Setujui
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                <?php endif ?>
             <?php endif ?>
             </class>
     </div>

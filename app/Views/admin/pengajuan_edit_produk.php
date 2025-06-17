@@ -13,7 +13,7 @@
                 <tr class="text-center">
                     <th scope="col">No</th>
                     <th scope="col">Nama Produk</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Status Pengajuan</th>
                     <th scope="col">Tanggal Pengajuan</th>
                     <th scope="col">Aksi</th>
                 </tr>
