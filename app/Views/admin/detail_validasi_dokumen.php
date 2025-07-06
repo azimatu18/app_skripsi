@@ -1,7 +1,7 @@
 <?= $this->extend('admin/app_layout') ?>
 <?= $this->section('konten') ?>
 
-<h2 style="padding-top: 100px!important;">Detail Validasi Dokumen</h2>
+<h2 class="h3 text-black m-2" style="padding-top: 100px!important;">Detail Validasi Dokumen</h2>
 
 <?php if ($dokumen->tipe_dokumen === 'Surat Jalan'): ?>
 
@@ -99,7 +99,37 @@
         <table class="table">
             <tr>
                 <td><strong>No PO</strong>: <?= $pemesanan['no_po'] ?></td>
-                <td><strong>Tanggal Pengiriman</strong>: <?= $pemesanan['tanggal_dikirim'] ?></td>
+                <td><strong>Tanggal Pengiriman</strong>:
+                    <?php
+                    if (!function_exists('bulan_indonesia')) {
+                        function bulan_indonesia($tanggal)
+                        {
+                            $bulan = [
+                                'January'   => 'Januari',
+                                'February'  => 'Februari',
+                                'March'     => 'Maret',
+                                'April'     => 'April',
+                                'May'       => 'Mei',
+                                'June'      => 'Juni',
+                                'July'      => 'Juli',
+                                'August'    => 'Agustus',
+                                'September' => 'September',
+                                'October'   => 'Oktober',
+                                'November'  => 'November',
+                                'December'  => 'Desember',
+                            ];
+
+                            $tanggal_angka = date('d', strtotime($tanggal));    // Ambil tanggal (01–31)
+                            $bulanInggris = date('F', strtotime($tanggal));
+                            $tahun = date('Y', strtotime($tanggal));
+                            return $tanggal_angka . ' ' . $bulan[$bulanInggris] . ' ' . $tahun;
+                        }
+                    }
+
+                    // Contoh penggunaan:
+                    echo bulan_indonesia(date('Y-m-d')); // Misal hasil: Mei 2025
+                    ?>
+                </td>
             </tr>
             <tr>
                 <td><strong>No Faktur</strong>: <?= $pemesanan['no_faktur'] ?></td>
@@ -142,18 +172,18 @@
 
         <div class="signatures">
             <div class="signature-box">
-                Penerima/Pembeli<br><br><br><br><br>
-                ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+                Penerima/Pembeli<br><br><br><br>
+                ( <?= $pemesanan['konsumen'] ?> )
             </div>
             <div class="signature-box">
-                Pengirim/Penjual<br><br>
+                Pengirim/Penjual<br>
                 <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo"><br>
                 ( CV Gedrian Intimed Abadi )
             </div>
         </div>
     </div>
 
-<?php elseif ($dokumen->tipe_dokumen === 'faktur'): ?>
+<?php elseif ($dokumen->tipe_dokumen === 'Faktur Penjualan'): ?>
     <style>
         .title {
             text-align: center;
@@ -364,7 +394,7 @@
 
         <div class="signatures">
             <div class="signature-box">
-                <br>Penerima<br><br><br><br><br>
+                <br>Penerima<br><br><br><br>
                 ( <?= $pemesanan['konsumen'] ?> )
             </div>
             <div class="signature-box">
@@ -405,7 +435,7 @@
         </div>
 
     </div>
-<?php elseif ($dokumen->tipe_dokumen === 'berita_acara'): ?>
+<?php elseif ($dokumen->tipe_dokumen === 'Berita Acara'): ?>
     <style>
         .surat-container {
             border: 2px solid black;
@@ -639,11 +669,11 @@
         <div class="signatures">
             <div class="signature-box">
                 <br>CV. Gedrian Intimed Abadi<br><br>
-                <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo" style="margin-left: 60px;"><br>
+                <img src="/homepage/images/logo_cap_gia.png" alt="Logo" class="logo" style="margin-left: 160px;"><br>
             </div>
             <div class="signature-box">
                 <br>
-                Konsumen<br><br><br><br><br><br>
+                Konsumen<br><br><br><br><br>
                 <?= $pemesanan['konsumen'] ?>
             </div>
         </div>
@@ -659,7 +689,7 @@
 
             <a href="/admin/validasi_dokumen" class="btn btn-outline-primary">
                 <i class="bi bi-arrow-left-circle me-1"></i> Kembali
-            </a> 
+            </a>
             <!-- Form Setujui Validasi Dokumen -->
             <form action="<?= base_url('admin/validasi_dokumen/diSetujui/' . $dokumen['id']) ?>" method="post" class="ms-auto">
                 <?= csrf_field() ?>

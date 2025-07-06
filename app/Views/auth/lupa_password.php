@@ -40,10 +40,10 @@
                                     </div>
 
                                     <!-- Pesan error kalau email tidak terdaftar -->
-                                    <?php if (session()->has('pesan_gagal')): ?>
+                                    <?php if (session()->has('pesan')): ?>
                                         <div class="alert alert-danger d-flex align-items-center" role="alert">
                                             <div>
-                                                <?= session('pesan_gagal') ?>
+                                                <?= session('pesan') ?>
                                             </div>
                                         </div>
                                     <?php endif; ?>
@@ -59,7 +59,7 @@
 
                                     <!-- Tombol submit -->
                                     <button type="submit" class="btn btn-primary w-100 py-2 fs-5" style="background-color: #003366;">
-                                        Reset Password
+                                        Kirim Tautan Reset Password
                                     </button>
 
                                 </form>
@@ -72,7 +72,6 @@
         </div>
 
     </div> <!-- End page-wrapper -->
-
 
     <?php if (!empty(session()->getFlashdata('success'))): ?>
         <script>

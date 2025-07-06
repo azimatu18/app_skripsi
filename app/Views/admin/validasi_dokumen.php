@@ -24,7 +24,7 @@
                         <td class="text-center"><?= $no + 1 ?></td>
                         <td class="text-center">
                             <strong><?= $dokumen['pemesanan_id'] ?></strong>
-                        <td class="text-center"><?= $dokumen['konsumen'] ?></td>
+                        <td class="text-center"><?= $dokumen['pemesanan']['konsumen'] ?? '-' ?></td>
                         <td class="text-center">
                             <?= $dokumen['tipe_dokumen'] ?>
                         </td>

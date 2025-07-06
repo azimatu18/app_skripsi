@@ -171,7 +171,7 @@ class ProdukController extends BaseController
             'alasan_penolakan' => null,
             'waktu' => date('Y-m-d H:i:s'),
         ]);
-        return redirect()->to(base_url('/admin/produk'))->with('success', ' berhasil ');
+        return redirect()->to(base_url('/admin/produk'))->with('success', ' Pengajuan edit produk berhasil dikirim ');
     }
 
     function pengajuanEditProduk()

@@ -49,6 +49,7 @@ class PemesananController extends BaseController
         $pemesanan->catatan = $catatan;
         $pemesanan->email = $email;
         $pemesanan->no_faktur = 'F' . date('my') . PemesananModel::count() + 1;
+        $pemesanan->no_surat_jalan = PemesananModel::count() + 1 . "SJ/" . date('y');
         // $pemesanan->no_po = 'PO-' . $user['id'] . '-' . date('dmy') . rand(100, 999);
         $pemesanan->save();
 

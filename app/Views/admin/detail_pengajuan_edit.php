@@ -54,7 +54,7 @@
                     <img src="<?= base_url('uploads/gambar/' . $produk['gambar']) ?>" width="120" class="img-thumbnail mb-2 d-block">
                 </div>
 
-                <div class="col-12">
+                <div class="col-12 mb-4">
                     <label class="form-label">Deskripsi</label>
                     <textarea name="deskripsi" class="form-control" rows="4" disabled><?= esc($produk['deskripsi']) ?></textarea>
                 </div>

@@ -27,11 +27,18 @@ class AdminPemesananController extends BaseController
         $detail_pesanan = PemesananProdukModel::where('pemesanan_id', $id)->get();
         $surat_jalan = null;
         $surat_jalan = $pemesanan->validasi_dokumen()->where('tipe_dokumen', 'Surat Jalan')->first();
+        $berita_acara = null;
+        $berita_acara = $pemesanan->validasi_dokumen()->where('tipe_dokumen', 'Berita Acara')->first();
+// nah, yg nnti tampil pas menunggu validasi cuma satu aja, tapi mewakili 2 dokumen
+// misal ya "sedang menunggu validasi faktur dan berita acara
+// gitu
+
 
         $data = [
             'pemesanan' => $pemesanan,
             'detail_pesanan' => $detail_pesanan,
-            'surat_jalan' => $surat_jalan
+            'surat_jalan' => $surat_jalan,
+            'berita_acara' => $berita_acara
         ];
 
         return view('admin/pemesanan_detail', $data);
@@ -50,7 +57,7 @@ class AdminPemesananController extends BaseController
         $pemesanan->status_tipe = '3';
         $pemesanan->save();
 
-        return redirect()->back()->with('success', 'Status pemesanan telah dikonfirmasi dan diubah ke Diproses.');
+        return redirect()->back()->with('success', 'Bukti Pembayaran DP telah dikonfirmasi dan status diubah ke Diproses');
     }
 
     public function konfirmasi_lunas()
@@ -66,7 +73,7 @@ class AdminPemesananController extends BaseController
         $pemesanan->status_tipe = '7';
         $pemesanan->save();
 
-        return redirect()->back()->with('success', 'Status pemesanan telah dikonfirmasi dan diubah ke Selesai.');
+        return redirect()->back()->with('success', 'Bukti pelunasan telah dikonfirmasi dan ajukan validasi dokumen faktur penjualan dan berita acara');
     }
 
     function kirim()

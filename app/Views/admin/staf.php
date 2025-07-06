@@ -81,7 +81,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah staf</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Akun Staf</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -98,7 +98,7 @@
                         <option value="operasional">Operasional</option>
                     </select>
                     <button class="btn btn-primary">
-                        Buat Staf
+                        Buat Akun Staf
                     </button>
                 </form>
             </div>

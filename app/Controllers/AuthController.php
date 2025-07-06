@@ -114,7 +114,7 @@ class AuthController extends BaseController
             $email_service->setMailType('html');
             $email_service->setSubject('reset password');
             if ($email_service->send()) {
-                session()->setFlashData('pesan_berhasil', 'Tautan reset password berhasil dikirim. Silahkan cek email anda dan klik tautan email password ');
+                session()->setFlashData('pesan_berhasil', 'Tautan reset password berhasil dikirim. Silahkan cek email anda dan klik tautan email password');
                 return redirect()->back();
                 // return redirect()->back()->with('success', 'Reset password berhasil dikirim. Silahkan cek email anda dan klik tautan email password ');
             } else {
@@ -144,6 +144,6 @@ class AuthController extends BaseController
         $user->update();
         $reset_password->delete();
 
-        return redirect()->to(base_url('/login'))->with('success', 'Password berhsil direset. Silahkan login menggunakan password yang baru.');
+        return redirect()->to(base_url('/login'))->with('success', 'Password berhasil direset. Silahkan login menggunakan password yang baru.');
     }
 }

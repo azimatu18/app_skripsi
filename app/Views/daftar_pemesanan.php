@@ -29,10 +29,12 @@
                                 <td>Rp <?= number_format($data['total_harga'], 0, ',', '.') ?></td>
 
                                 <td>
-                                    <?php
-                                    $tipe = $data['status_tipe'];
-                                    echo status_pemesanan($tipe);
-                                    ?>
+                                    <span style="font-size: medium;">
+                                        <?php
+                                        $tipe = $data['status_tipe'];
+                                        echo status_pemesanan($tipe);
+                                        ?>
+                                    </span>
                                 </td>
 
                                 <td>

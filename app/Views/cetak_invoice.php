@@ -103,9 +103,38 @@
     <table>
         <tr>
             <td><strong>Tagihan Kepada</strong><br><span class="bold"><?= $pemesanan['konsumen'] ?></span></td>
-            <td><strong>Tgl. Jatuh Tempo</strong><br>17/09/2024</td>
-            <td><strong>Referensi</strong><br>GIA/INV/00015</td>
-            <td><strong>Tanggal</strong><br>17/09/2024</td>
+            <td><strong>Referensi</strong><br>GIA/INV/00020</td>
+            <td><strong>Tanggal</strong><br>
+                <?php
+                if (!function_exists('bulan_indonesia')) {
+                    function bulan_indonesia($tanggal)
+                    {
+                        $bulan = [
+                            'January'   => 'Januari',
+                            'February'  => 'Februari',
+                            'March'     => 'Maret',
+                            'April'     => 'April',
+                            'May'       => 'Mei',
+                            'June'      => 'Juni',
+                            'July'      => 'Juli',
+                            'August'    => 'Agustus',
+                            'September' => 'September',
+                            'October'   => 'Oktober',
+                            'November'  => 'November',
+                            'December'  => 'Desember',
+                        ];
+
+                        $tanggal_angka = date('d', strtotime($tanggal));    // Ambil tanggal (01–31)
+                        $bulanInggris = date('F', strtotime($tanggal));
+                        $tahun = date('Y', strtotime($tanggal));
+                        return $tanggal_angka . ' ' . $bulan[$bulanInggris] . ' ' . $tahun;
+                    }
+                }
+
+                // Contoh penggunaan:
+                echo bulan_indonesia(date('Y-m-d')); // Misal hasil: Mei 2025
+                ?>
+            </td>
         </tr>
     </table>
 

@@ -7,21 +7,20 @@
             <div class="col-md-12 mb-5">
                 <div class="d-flex">
                     <h2 class="h3 text-black mb-3">Detail Pesanan</h2>
+                    <div class="ms-auto">
+                        <span class="text-black" style="font-size: medium;">
+                            Status Pengadaan:
+                            <?php
+                            $tipe = $pemesanan['status_tipe'];
+                            echo status_pemesanan($tipe);
+                            ?>
+                        </span>
+                    </div>
                 </div>
                 <div class="p-3 p-lg-5 border bg-white">
                     <div class="d-flex align-items-center gap-2">
                         <h4 class="text-black">Informasi Pemesan</h4>
                         <div class="ms-auto">
-                            <span class="alert alert-info fw-bolder">
-                                Status:
-                                <?php
-                                $tipe = $pemesanan['status_tipe'];
-                                echo status_pemesanan($tipe);
-                                ?>
-                            </span>
-                        </div>
-
-                        <div>
                             <a href="/pemesanan/cetak/invoice/<?= $pemesanan['id'] ?>" class="btn btn-sm btn-primary w-100">Cetak Invoice</a>
                         </div>
 

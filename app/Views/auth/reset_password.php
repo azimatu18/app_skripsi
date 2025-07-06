@@ -28,7 +28,7 @@
                                     <a href="/" class="d-block">
                                         <img src="/admin/images/logos/logo.png" width="120" alt="Logo">
                                     </a>
-                                    <p class="text-muted">reset password</p>
+                                    <p><b>Reset Password</b></p>
                                 </div>
 
                                 <!-- Form login -->
